@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Character Power Guide — Lost Ark</title>
+<title>Lost Ark Power Guide</title>
+<meta name="description" content="A character power reference guide for Lost Ark — Ark Grid, Accessories, Bracelets, Synergy, and more, with real damage values and a searchable class lookup.">
+<meta name="theme-color" content="#0a0d13">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loapowerguide.com/">
+<meta property="og:title" content="Lost Ark Power Guide">
+<meta property="og:description" content="A character power reference guide for Lost Ark — Ark Grid, Accessories, Bracelets, Synergy, and more, with real damage values and a searchable class lookup.">
+<meta property="og:image" content="https://loapowerguide.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lost Ark Power Guide">
+<meta name="twitter:description" content="A character power reference guide for Lost Ark — Ark Grid, Accessories, Bracelets, Synergy, and more, with real damage values and a searchable class lookup.">
+<meta name="twitter:image" content="https://loapowerguide.com/og-image.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d13'/%3E%3Cpolygon points='32,37 41,47 32,60 23,47' fill='%23e0a94f'/%3E%3Cpath d='M12 31 L32 10 L52 31' fill='none' stroke='%23e0a94f' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' opacity='0.35'/%3E%3Cpath d='M12 37 L32 16 L52 37' fill='none' stroke='%23e0a94f' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' opacity='0.6'/%3E%3Cpath d='M12 43 L32 22 L52 43' fill='none' stroke='%23e0a94f' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,8 +88,8 @@
   }
 
   .h1-emblem {
-    width: 0.85em;
-    height: 0.85em;
+    width: 1.0625em;
+    height: 1.0625em;
     flex-shrink: 0;
     color: var(--gold);
     filter: drop-shadow(0 0 7px rgba(224,169,79,0.55));
@@ -99,6 +115,132 @@
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+  }
+
+  .site-search {
+    position: absolute;
+    top: 0.9rem;
+    right: 1.5rem;
+    z-index: 20;
+  }
+
+  .search-toggle {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 50%;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color .15s ease, background .15s ease, border-color .15s ease;
+  }
+
+  .search-toggle:hover {
+    color: var(--gold);
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .site-search.open .search-toggle {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .search-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(420px, 90vw);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 16px 38px rgba(0,0,0,0.5);
+    padding: 0.7rem;
+  }
+
+  .site-search.open .search-panel { display: block; }
+
+  .search-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.92rem;
+    color: var(--text);
+    font-family: inherit;
+  }
+
+  .search-input:focus { outline: none; border-color: var(--gold); }
+
+  .search-results {
+    max-height: 360px;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+  }
+
+  .search-result-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .search-result-item:hover,
+  .search-result-item.active-hover {
+    background: rgba(255,255,255,0.055);
+  }
+
+  .search-result-title {
+    font-size: 0.88rem;
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .search-result-title mark {
+    background: color-mix(in srgb, var(--gold) 35%, transparent);
+    color: var(--gold);
+    border-radius: 3px;
+    padding: 0 1px;
+  }
+
+  .search-result-context {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+    margin-top: 0.15rem;
+  }
+
+  .search-empty {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  @keyframes searchFlash {
+    0%, 100% { box-shadow: 0 0 0 0 transparent; }
+    20%, 60% { box-shadow: 0 0 0 3px var(--gold), 0 0 24px color-mix(in srgb, var(--gold) 55%, transparent); }
+  }
+
+  .search-match-flash {
+    animation: searchFlash 1.6s ease;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .site-search { top: 0.7rem; right: 1rem; }
+    .search-panel { width: min(340px, 85vw); }
   }
 
   @media (max-width: 640px) {
@@ -1413,7 +1555,7 @@
 <body>
 
 <header>
-  <h1><svg class="h1-emblem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 9L12 22L20 9L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 9H20M8 9L12 22M16 9L12 22M12 2L8 9M12 2L16 9" stroke="currentColor" stroke-width="1" opacity="0.55"/></svg> Lost Ark <span>Power Guide</span></h1>
+  <h1><svg class="h1-emblem" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="100,124 128,158 100,204 72,158" fill="currentColor"/><path d="M30 104 L100 32 L170 104" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/><path d="M30 124 L100 52 L170 124" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M30 144 L100 72 L170 144" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg> Lost Ark <span>Power Guide</span></h1>
   <nav class="tabs">
     <button data-target="home" class="active">Home</button>
     <button data-target="accessories">Accessories</button>
@@ -1425,6 +1567,16 @@
     <button data-target="synergy">Synergy</button>
     <button data-target="resources">Resources</button>
   </nav>
+
+  <div class="site-search">
+    <button type="button" id="search-toggle" class="search-toggle" aria-label="Search the guide">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="search-panel" id="search-panel">
+      <input type="text" id="search-input" class="search-input" placeholder="Search classes, stats, items…" autocomplete="off">
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
 </header>
 
 <main>
@@ -2409,7 +2561,8 @@
   const buttons = document.querySelectorAll('nav.tabs button');
   const pages = document.querySelectorAll('.page');
 
-  function goToTab(target) {
+  function goToTab(target, opts) {
+    opts = opts || {};
     const btn = Array.from(buttons).find(b => b.dataset.target === target);
     const page = document.getElementById(target);
     if (!btn || !page) return;
@@ -2417,8 +2570,31 @@
     pages.forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     page.classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
+    if (!opts.skipScroll) window.scrollTo({top:0, behavior:'smooth'});
+    if (!opts.skipHash) {
+      const newHash = '#' + target;
+      if (location.hash !== newHash) history.pushState(null, '', newHash);
+    }
   }
+
+  function applyHashRoute(skipScroll) {
+    const raw = location.hash.replace(/^#/, '');
+    if (!raw) return;
+    const [tabPart, catPart] = raw.split('/');
+    if (!document.getElementById(tabPart) || !document.getElementById(tabPart).classList.contains('page')) return;
+    goToTab(tabPart, { skipHash: true, skipScroll: skipScroll });
+    if (catPart) {
+      const cat = document.querySelector('.syn-cat[data-syn-id="' + CSS.escape(catPart) + '"]');
+      if (cat) {
+        cat.classList.add('active');
+        const hbtn = cat.querySelector('.syn-cat-header');
+        if (hbtn) hbtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  }
+
+  applyHashRoute(true);
+  window.addEventListener('hashchange', () => applyHashRoute(false));
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => goToTab(btn.dataset.target));
@@ -2445,6 +2621,10 @@
       const isActive = cat.classList.contains('active');
       cat.classList.toggle('active', !isActive);
       btn.setAttribute('aria-expanded', String(!isActive));
+      if (!isActive) {
+        const newHash = '#synergy/' + cat.dataset.synId;
+        if (location.hash !== newHash) history.pushState(null, '', newHash);
+      }
     });
   });
 
@@ -2559,6 +2739,175 @@
       document.getElementById(btn.dataset.subtarget2).classList.add('active2');
     });
   });
+
+  /* ================= SITE SEARCH ================= */
+  (function() {
+    const TAB_LABELS = {
+      home: 'Home', accessories: 'Accessories', arkgrid: 'Ark Grid',
+      bracelets: 'Bracelets', positional: 'Positional Attack',
+      buffpriority: 'Buff Icon Priority', paradise: 'Paradise',
+      synergy: 'Synergy', resources: 'Resources'
+    };
+
+    function extractText(el) {
+      let text = '';
+      el.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) text += node.textContent;
+        else if (node.nodeType === Node.ELEMENT_NODE) text += ' ' + extractText(node) + ' ';
+      });
+      return text;
+    }
+
+    function buildIndex() {
+      const index = [];
+
+      // Tab names themselves, so typing a tab name finds it
+      Object.keys(TAB_LABELS).forEach(id => {
+        index.push({ el: null, tabId: id, title: TAB_LABELS[id], context: 'Jump to tab' });
+      });
+
+      const selector = 'li, tr, .syn-card, .resource-card, .astro-card, .buff-row';
+      document.querySelectorAll('.page').forEach(pageEl => {
+        const tabId = pageEl.id;
+        const tabLabel = TAB_LABELS[tabId] || tabId;
+
+        pageEl.querySelectorAll(selector).forEach(el => {
+          if (el.tagName === 'TR' && !el.querySelector('td')) return; // header rows
+          if (el.closest('.syn-filter-panel')) return;
+          if (el.tagName === 'LI' && el.closest('tr, .syn-card, .resource-card, .astro-card')) return;
+
+          let title = extractText(el).trim().replace(/\s+/g, ' ');
+          if (!title) return;
+          if (title.length > 140) title = title.slice(0, 140) + '…';
+
+          let context = tabLabel;
+          const synCat = el.closest('.syn-cat');
+          if (synCat) {
+            const nameEl = synCat.querySelector('.syn-cat-name');
+            if (nameEl) context = `${tabLabel} — ${nameEl.textContent.trim()}`;
+          } else {
+            const block = el.closest('section.block, .table-wrap, .priority-card, .resource-card, .astro-card, .pos-card');
+            if (block && block !== el) {
+              const heading = block.querySelector('h3, h4');
+              if (heading) context = `${tabLabel} — ${heading.textContent.trim()}`;
+            }
+          }
+
+          index.push({ el, tabId, title, context });
+        });
+      });
+
+      return index;
+    }
+
+    let SEARCH_INDEX = null;
+
+    const searchWrap = document.querySelector('.site-search');
+    const toggleBtn = document.getElementById('search-toggle');
+    const panel = document.getElementById('search-panel');
+    const input = document.getElementById('search-input');
+    const resultsEl = document.getElementById('search-results');
+    if (!searchWrap || !toggleBtn) return;
+
+    function openSearch() {
+      if (!SEARCH_INDEX) SEARCH_INDEX = buildIndex();
+      searchWrap.classList.add('open');
+      input.value = '';
+      resultsEl.innerHTML = '';
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function closeSearch() {
+      searchWrap.classList.remove('open');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (searchWrap.classList.contains('open')) closeSearch();
+      else openSearch();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (searchWrap.classList.contains('open') && !searchWrap.contains(e.target)) closeSearch();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSearch();
+      if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+        e.preventDefault();
+        if (searchWrap.classList.contains('open')) closeSearch(); else openSearch();
+      }
+    });
+
+    function highlight(text, query) {
+      const i = text.toLowerCase().indexOf(query.toLowerCase());
+      if (i === -1) return text;
+      return text.slice(0, i) + '<mark>' + text.slice(i, i + query.length) + '</mark>' + text.slice(i + query.length);
+    }
+
+    function renderResults(query) {
+      resultsEl.innerHTML = '';
+      if (!query.trim()) return;
+      const q = query.trim().toLowerCase();
+      const matches = SEARCH_INDEX.filter(item =>
+        item.title.toLowerCase().includes(q) || item.context.toLowerCase().includes(q)
+      ).slice(0, 8);
+
+      if (!matches.length) {
+        resultsEl.innerHTML = '<div class="search-empty">No matches found.</div>';
+        return;
+      }
+
+      matches.forEach(item => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'search-result-item';
+        btn.innerHTML = `<div class="search-result-title">${highlight(item.title, query)}</div><div class="search-result-context">${item.context}</div>`;
+        btn.addEventListener('click', () => jumpTo(item));
+        resultsEl.appendChild(btn);
+      });
+    }
+
+    function jumpTo(item) {
+      closeSearch();
+
+      const btn = Array.from(buttons).find(b => b.dataset.target === item.tabId);
+      const page = document.getElementById(item.tabId);
+      if (btn && page) {
+        buttons.forEach(b => b.classList.remove('active'));
+        pages.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        page.classList.add('active');
+      }
+
+      let newHash = '#' + item.tabId;
+
+      if (!item.el) {
+        if (location.hash !== newHash) history.pushState(null, '', newHash);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      const synCat = item.el.closest('.syn-cat');
+      if (synCat) {
+        if (!synCat.classList.contains('active')) {
+          synCat.classList.add('active');
+          const hbtn = synCat.querySelector('.syn-cat-header');
+          if (hbtn) hbtn.setAttribute('aria-expanded', 'true');
+        }
+        newHash = '#synergy/' + synCat.dataset.synId;
+      }
+      if (location.hash !== newHash) history.pushState(null, '', newHash);
+
+      setTimeout(() => {
+        item.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        item.el.classList.add('search-match-flash');
+        setTimeout(() => item.el.classList.remove('search-match-flash'), 1700);
+      }, 120);
+    }
+
+    input.addEventListener('input', () => renderResults(input.value));
+  })();
 </script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f06e3a7905e840ad87ec7f3891ed9b6c"}'></script><!-- End Cloudflare Web Analytics -->
