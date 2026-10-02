@@ -130,18 +130,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(255,255,255,0.09);
+    background: color-mix(in srgb, var(--gold) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
     border-radius: 50%;
-    color: var(--text-dim);
+    color: color-mix(in srgb, var(--gold) 70%, var(--text-dim));
+    box-shadow: 0 0 9px color-mix(in srgb, var(--gold) 18%, transparent);
     cursor: pointer;
-    transition: color .15s ease, background .15s ease, border-color .15s ease;
+    transition: color .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
   }
 
   .search-toggle:hover {
     color: var(--gold);
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.18);
+    background: color-mix(in srgb, var(--gold) 16%, transparent);
+    border-color: var(--gold);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 40%, transparent);
   }
 
   .site-search.open .search-toggle {
@@ -2561,6 +2563,17 @@
   const buttons = document.querySelectorAll('nav.tabs button');
   const pages = document.querySelectorAll('.page');
 
+  function safePushHash(newHash) {
+    if (location.hash === newHash) return;
+    try {
+      history.pushState(null, '', newHash);
+    } catch (e) {
+      // Some embedded/sandboxed preview contexts (e.g. about:srcdoc) don't
+      // allow URL changes — fail silently, the tab/category switch itself
+      // still works fine, only the shareable-link URL won't update there.
+    }
+  }
+
   function goToTab(target, opts) {
     opts = opts || {};
     const btn = Array.from(buttons).find(b => b.dataset.target === target);
@@ -2573,7 +2586,7 @@
     if (!opts.skipScroll) window.scrollTo({top:0, behavior:'smooth'});
     if (!opts.skipHash) {
       const newHash = '#' + target;
-      if (location.hash !== newHash) history.pushState(null, '', newHash);
+      safePushHash(newHash);
     }
   }
 
@@ -2623,7 +2636,7 @@
       btn.setAttribute('aria-expanded', String(!isActive));
       if (!isActive) {
         const newHash = '#synergy/' + cat.dataset.synId;
-        if (location.hash !== newHash) history.pushState(null, '', newHash);
+        safePushHash(newHash);
       }
     });
   });
@@ -2883,7 +2896,7 @@
       let newHash = '#' + item.tabId;
 
       if (!item.el) {
-        if (location.hash !== newHash) history.pushState(null, '', newHash);
+        safePushHash(newHash);
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
@@ -2897,7 +2910,7 @@
         }
         newHash = '#synergy/' + synCat.dataset.synId;
       }
-      if (location.hash !== newHash) history.pushState(null, '', newHash);
+      safePushHash(newHash);
 
       setTimeout(() => {
         item.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
