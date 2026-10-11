@@ -1552,6 +1552,64 @@
   .skill-tag.back { color: #3ecf8e; border-color: #3ecf8e; }
   .skill-tag.front { color: #e0556b; border-color: #e0556b; }
 
+
+  /* ---------- SSB Calculator ---------- */
+  #ssb .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1.5rem; margin-bottom: 1.5rem; align-items: start; }
+  @media (max-width: 860px) { #ssb .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
+  #ssb .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 8px; padding: 1.5rem 1.6rem; min-width: 0; }
+  #ssb .ssb-results { border-top-color: var(--teal); }
+  #ssb .ssb-info { border-top-color: var(--purple); }
+  #ssb .ssb-h { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; color: var(--gold); }
+  #ssb .ssb-results .ssb-h { color: var(--teal); }
+  #ssb .ssb-info .ssb-h { color: var(--purple); }
+  #ssb .ssb-group-title { margin: 1.3rem 0 0.6rem; padding-top: 1.1rem; border-top: 1px solid var(--line); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+  #ssb .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+  #ssb .ssb-field { margin-bottom: 0.9rem; }
+  #ssb .ssb-field label { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 0.35rem; }
+  #ssb .ssb-field input[type="number"], #ssb .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.75rem; font: inherit; font-size: 1rem; }
+  #ssb .ssb-field input[type="number"]:focus, #ssb .ssb-field select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  #ssb .ssb-hint { color: var(--text-dim); font-size: 0.82rem; margin-top: 0.35rem; line-height: 1.45; }
+  #ssb .ssb-class-section[hidden] { display: none; }
+  #ssb .ssb-class-section .ssb-hint { margin: 0 0 0.9rem; }
+  #ssb label.ssb-check { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; cursor: pointer; margin: 0; }
+  #ssb .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
+  #ssb .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  #ssb .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
+  #ssb .ssb-seg label { margin: 0; }
+  #ssb .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  #ssb .ssb-seg span { display: block; text-align: center; padding: 0.55rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  #ssb .ssb-seg label:hover span { color: var(--text); background: rgba(255,255,255,0.09); }
+  #ssb .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
+  #ssb .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
+  #ssb .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+  #ssb .ssb-stat, #ssb .ssb-mini, #ssb .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem 1rem; min-width: 0; }
+  #ssb .ssb-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
+  #ssb .ssb-value { font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 0.2rem 0; }
+  #ssb .ssb-stat-main .ssb-value { color: var(--gold); }
+  #ssb .ssb-value-sm { font-size: 1.15rem; font-weight: 700; margin: 0.25rem 0 0.1rem; overflow-wrap: anywhere; }
+  #ssb .ssb-muted { color: var(--text-dim); font-size: 0.82rem; }
+  #ssb .ssb-progress { margin-bottom: 1rem; }
+  #ssb .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+  #ssb .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s ease; }
+  #ssb .ssb-progress-text { margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-dim); }
+  #ssb .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+  #ssb .ssb-mini-wide { grid-column: 1 / -1; }
+  #ssb .ssb-bp { margin-bottom: 1rem; }
+  #ssb .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.5rem; }
+  #ssb .ssb-bp-item .ssb-label { font-size: 0.68rem; }
+  #ssb .ssb-bp-item .ssb-value-sm { color: var(--teal); }
+  #ssb .ssb-callouts p { margin: 0 0 0.4rem; padding: 0.55rem 0.8rem; border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  @media (max-width: 560px) {
+    #ssb .ssb-card { padding: 1.2rem 1rem; }
+    #ssb .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
+    #ssb .ssb-value { font-size: 1.7rem; }
+  }
+  #ssb .ssb-formula { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+  #ssb .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.4rem 0.7rem; font-size: 0.85rem; color: var(--text); overflow-wrap: anywhere; }
+  #ssb .ssb-legend { color: var(--text-dim); font-size: 0.92rem; display: grid; gap: 0.3rem; }
+  #ssb .ssb-legend strong { color: var(--text); }
+  #ssb .ssb-credit { margin: 1rem 0 0; color: var(--text-dim); font-size: 0.82rem; }
+  #ssb .ssb-credit a { color: var(--teal); }
 </style>
 </head>
 <body>
@@ -1560,6 +1618,7 @@
   <h1><svg class="h1-emblem" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="100,124 128,158 100,204 72,158" fill="currentColor"/><path d="M30 104 L100 32 L170 104" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/><path d="M30 124 L100 52 L170 124" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M30 144 L100 72 L170 144" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg> Lost Ark <span>Power Guide</span></h1>
   <nav class="tabs">
     <button data-target="home" class="active">Home</button>
+    <button data-target="ssb">SSB Calculator</button>
     <button data-target="accessories">Accessories</button>
     <button data-target="arkgrid">Ark Grid</button>
     <button data-target="bracelets">Bracelets</button>
@@ -1627,6 +1686,186 @@
     <div class="horizontal-note">
       <h3 class="section-head-dot" style="color: var(--purple);">Horizontal Content</h3>
       <p>Completing Horizontal Content also provides a significant increase to your character's strength.</p>
+    </div>
+  </section>
+
+  <!-- ================= SSB CALCULATOR ================= -->
+  <section class="page" id="ssb">
+    <div class="section-title">SSB Calculator</div>
+    <p class="section-sub">Enter your attack and movement speed to see how much Evolution Damage you gain from Supersonic Breakthrough. The base conversion uses speed up to 140%, and anything above 140% only counts toward the excess conversion.</p>
+
+    <div class="ssb-grid">
+      <div class="ssb-card ssb-inputs">
+        <h3 class="ssb-h">Inputs</h3>
+
+        <div class="ssb-group-title">Class</div>
+        <div class="ssb-field">
+          <label for="ssb-classSelect">Class</label>
+          <select id="ssb-classSelect">
+            <option value="none" selected>None</option>
+            <option value="berserker-bt">Berserker (Berserker's Technique)</option>
+            <option value="berserker-mayhem">Berserker (Mayhem)</option>
+            <option value="slayer">Slayer (Predator)</option>
+            <option value="wardancer">Wardancer (First Intention)</option>
+            <option value="machinist">Machinist (Evolutionary Legacy)</option>
+            <option value="machinist-bladesuit">Machinist (Blade Suit)</option>
+            <option value="sharpshooter">Sharpshooter (TA-09 Piercing Arrow)</option>
+            <option value="aeromancer">Aeromancer (Wind Fury)</option>
+            <option value="soulfist">Soulfist (Energy Overflow)</option>
+            <option value="shadowhunter">Shadowhunter (Perfect Suppression)</option>
+            <option value="guardianknight">Guardianknight (Dreadful Roar)</option>
+          </select>
+        </div>
+
+          <div class="ssb-class-section" data-class="guardianknight" hidden>
+            <div class="ssb-hint">Guardianknight: permanent +15% AS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="aeromancer" hidden>
+            <div class="ssb-hint">Wind Fury: permanent +12% AS/MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="soulfist" hidden>
+            <div class="ssb-hint">Energy Overflow: permanent +12% AS/MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="shadowhunter" hidden>
+            <div class="ssb-hint">Perfect Suppression: permanent +30% MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="wardancer" hidden>
+            <div class="ssb-hint">First Intention: permanent +20.8% AS / +16% MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="machinist" hidden>
+            <div class="ssb-hint">Evolutionary Legacy: permanent +15% AS / +30% MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="machinist-bladesuit" hidden>
+            <div class="ssb-hint">Blade Suit: permanent +35% AS / +30% MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="sharpshooter" hidden>
+            <div class="ssb-hint">TA-09 Piercing Arrow: permanent +10% AS / +10% MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="berserker-mayhem" hidden>
+            <div class="ssb-hint">Mayhem: permanent +15% AS/MS.</div>
+          </div>
+          <div class="ssb-class-section" data-class="slayer" hidden>
+            <div class="ssb-hint">Predator: permanent +20% AS/MS.</div>
+          </div>
+        <div class="ssb-class-section" data-class="berserker-bt" hidden>
+          <div class="ssb-field">
+            <label for="ssb-spec">Specialization (BT only)</label>
+            <input id="ssb-spec" type="number" inputmode="decimal" min="0" step="1" value="0">
+            <div class="ssb-hint">Formula: (1 + 0.26/699 * Spec) * 20%.</div>
+          </div>
+        </div>
+
+        <div class="ssb-group-title">Sheet Values</div>
+        <div class="ssb-field">
+          <label for="ssb-sheetAs">Sheet AS % (no buffs)</label>
+          <input id="ssb-sheetAs" type="number" inputmode="decimal" min="100" max="140" step="0.01" value="100">
+          <div class="ssb-hint">From Full Effect Info &gt; Attack, in town without buffs. Base is 100%.</div>
+        </div>
+        <div class="ssb-field">
+          <label for="ssb-sheetMs">Sheet MS % (no buffs)</label>
+          <input id="ssb-sheetMs" type="number" inputmode="decimal" min="100" max="140" step="0.01" value="100">
+          <div class="ssb-hint">From Full Effect Info &gt; Activity, in town without buffs. Base is 100%.</div>
+        </div>
+
+        <div class="ssb-group-title">Shared Buffs</div>
+        <div class="ssb-field">
+          <label for="ssb-feast">Feast bonus % (0-5)</label>
+          <input id="ssb-feast" type="number" inputmode="decimal" min="0" max="5" step="0.1" value="0">
+        </div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="ssb-support">
+            <input type="checkbox" id="ssb-support">
+            <span>Support buff (9% AS/MS)</span>
+          </label>
+        </div>
+
+        <div class="ssb-group-title">Consumables</div>
+        <div class="ssb-field">
+          <label>Wine bonus (3%)</label>
+          <div class="ssb-seg" role="radiogroup" aria-label="Wine bonus">
+            <label><input type="radio" name="ssb-wine" value="none" checked><span>None</span></label>
+            <label><input type="radio" name="ssb-wine" value="atk"><span>AS</span></label>
+            <label><input type="radio" name="ssb-wine" value="move"><span>MS</span></label>
+          </div>
+        </div>
+
+        <div class="ssb-group-title">Node Level</div>
+        <div class="ssb-field">
+          <div class="ssb-seg ssb-seg-2" role="radiogroup" aria-label="Node level">
+            <label><input type="radio" name="ssb-level" value="1"><span>Level 1</span></label>
+            <label><input type="radio" name="ssb-level" value="2" checked><span>Level 2</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="ssb-card ssb-results">
+        <h3 class="ssb-h">Results</h3>
+
+        <div class="ssb-stats">
+          <div class="ssb-stat ssb-stat-main">
+            <div class="ssb-label">SSB Evolution Damage</div>
+            <div class="ssb-value" id="ssb-totalEvo">0%</div>
+            <div class="ssb-muted" id="ssb-totalCap">Max 24%</div>
+          </div>
+          <div class="ssb-stat">
+            <div class="ssb-label">Excess Conversion</div>
+            <div class="ssb-value" id="ssb-excessEvo">0%</div>
+            <div class="ssb-muted">from overcap only</div>
+          </div>
+        </div>
+
+        <div class="ssb-progress">
+          <div class="ssb-progress-track"><div class="ssb-progress-bar" id="ssb-progressBar"></div></div>
+          <div class="ssb-progress-text" id="ssb-progressText"></div>
+        </div>
+
+        <div class="ssb-mini-grid">
+          <div class="ssb-mini ssb-mini-wide">
+            <div class="ssb-label">Total Speeds</div>
+            <div class="ssb-value-sm" id="ssb-computedSpeeds">AS 140 / MS 140</div>
+            <div class="ssb-muted">uncapped totals</div>
+          </div>
+          <div class="ssb-mini">
+            <div class="ssb-label">Overcap Total</div>
+            <div class="ssb-value-sm" id="ssb-overcapTotal">0%</div>
+            <div class="ssb-muted" id="ssb-overcapBreakdown">AS 0 / MS 0</div>
+          </div>
+          <div class="ssb-mini">
+            <div class="ssb-label">Overcap Needed</div>
+            <div class="ssb-value-sm" id="ssb-neededExcess">26.66%</div>
+            <div class="ssb-muted">combined above 140</div>
+          </div>
+        </div>
+
+        <div class="ssb-bp">
+          <div class="ssb-label">Swiftness Breakpoints</div>
+          <div class="ssb-bp-grid">
+            <div class="ssb-bp-item"><div class="ssb-label">Support + Feast + Wine</div><div class="ssb-value-sm" id="ssb-bpFull">-</div></div>
+            <div class="ssb-bp-item"><div class="ssb-label">Support + Feast</div><div class="ssb-value-sm" id="ssb-bpFeast">-</div></div>
+            <div class="ssb-bp-item"><div class="ssb-label">Support Only</div><div class="ssb-value-sm" id="ssb-bpNone">-</div></div>
+          </div>
+        </div>
+
+        <div class="ssb-callouts" id="ssb-callouts"></div>
+      </div>
+    </div>
+
+    <div class="ssb-card ssb-info">
+      <h3 class="ssb-h">How it is calculated</h3>
+      <div class="ssb-formula">
+        <code>Bonus (capped): max(min(speed, 140) - 100, 0)</code>
+        <code>Excess: max(speed - 140, 0)</code>
+        <code>Total speed: 100 + sum of bonuses</code>
+        <code>BT AS/MS: (1 + 0.26/699 * Spec) * 20%</code>
+        <code>Base: (bonusAS + bonusMS) * baseRate</code>
+        <code>Excess: (overAS + overMS) * excessRate</code>
+        <code>Total: min(base + flat + excess, maxEvo)</code>
+      </div>
+      <div class="ssb-legend">
+        <div><strong>Level 1</strong> base 5%, excess 15%, flat 4%, max 12%</div>
+        <div><strong>Level 2</strong> base 10%, excess 30%, flat 8%, max 24%</div>
+      </div>
+      <p class="ssb-credit">Calculation logic from the <a href="https://ssbcalc.poyomi.fyi/" target="_blank" rel="noopener">Supersonic Breakthrough Calculator</a> by poyomi. Class bonuses are game values and can change with patches.</p>
     </div>
   </section>
 
@@ -2762,7 +3001,7 @@
   /* ================= SITE SEARCH ================= */
   (function() {
     const TAB_LABELS = {
-      home: 'Home', accessories: 'Accessories', arkgrid: 'Ark Grid',
+      home: 'Home', ssb: 'SSB Calculator', accessories: 'Accessories', arkgrid: 'Ark Grid',
       bracelets: 'Bracelets', positional: 'Positional Attack',
       buffpriority: 'Buff Icon Priority', paradise: 'Paradise',
       synergy: 'Synergy', resources: 'Resources'
@@ -2929,6 +3168,427 @@
   })();
 </script>
 
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f06e3a7905e840ad87ec7f3891ed9b6c"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f06e3a7905e840ad87ec7f3891ed9b6c"}'></script>
+<script>
+/* SSB Calculator: calculation logic ported from the Supersonic Breakthrough Calculator by poyomi (ssbcalc.poyomi.fyi). */
+(function () {
+const CAP = 140;
+const BASE = 100;
+const CAP_BP = 14000;
+const BASE_BP = 10000;
+const BT_SPEC_RATE = 0.26 / 699;
+const BT_BASE_BUFF = 20;
+
+const LEVELS = {
+  1: { baseRate: 0.05, excessRate: 0.15, flatBonus: 4, maxEvo: 12 },
+  2: { baseRate: 0.1, excessRate: 0.3, flatBonus: 8, maxEvo: 24 },
+};
+
+const levelInputs = document.querySelectorAll("input[name='ssb-level']");
+const classSelect = document.getElementById("ssb-classSelect");
+const classSections = document.querySelectorAll(".ssb-class-section");
+const specInput = document.getElementById("ssb-spec");
+const sheetAsInput = document.getElementById("ssb-sheetAs");
+const sheetMsInput = document.getElementById("ssb-sheetMs");
+const feastInput = document.getElementById("ssb-feast");
+const supportToggle = document.getElementById("ssb-support");
+const wineInputs = document.querySelectorAll("input[name='ssb-wine']");
+
+const totalEvoEl = document.getElementById("ssb-totalEvo");
+const totalCapEl = document.getElementById("ssb-totalCap");
+const baseEvoEl = document.getElementById("ssb-baseEvo");
+const flatEvoEl = document.getElementById("ssb-flatEvo");
+const excessEvoEl = document.getElementById("ssb-excessEvo");
+const progressBarEl = document.getElementById("ssb-progressBar");
+const progressTextEl = document.getElementById("ssb-progressText");
+const computedSpeedsEl = document.getElementById("ssb-computedSpeeds");
+const overcapTotalEl = document.getElementById("ssb-overcapTotal");
+const overcapBreakdownEl = document.getElementById("ssb-overcapBreakdown");
+const neededExcessEl = document.getElementById("ssb-neededExcess");
+const calloutsEl = document.getElementById("ssb-callouts");
+const bpFullEl = document.getElementById("ssb-bpFull");
+const bpFeastEl = document.getElementById("ssb-bpFeast");
+const bpNoneEl = document.getElementById("ssb-bpNone");
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+const floor2 = (value) => Math.floor(value * 100) / 100;
+const toBP = (value) => Math.floor(value * 100 + 1e-6);
+
+const readNumber = (value) => {
+  const parsed = Number.parseFloat(value);
+  if (!Number.isFinite(parsed)) return 0;
+  return Math.max(parsed, 0);
+};
+
+
+const fmt = (value) => {
+  if (!Number.isFinite(value)) return "0.00";
+  return floor2(value).toFixed(2);
+};
+
+const fmtInt = (value) => {
+  if (!Number.isFinite(value)) return "0";
+  return Math.floor(value).toString();
+};
+
+const getLevel = () => {
+  const selected = document.querySelector("input[name='ssb-level']:checked");
+  const level = selected ? Number(selected.value) : 2;
+  return LEVELS[level] ? level : 2;
+};
+
+const getWineChoice = () => {
+  const selected = document.querySelector("input[name='ssb-wine']:checked");
+  return selected ? selected.value : "none";
+};
+
+const getClassChoice = () => {
+  return classSelect ? classSelect.value : "berserker-bt";
+};
+
+const updateClassVisibility = () => {
+  const classChoice = getClassChoice();
+  classSections.forEach((section) => {
+    const isMatch = section.dataset.class === classChoice;
+    section.classList.toggle("is-hidden", !isMatch);
+    section.hidden = !isMatch;
+  });
+};
+
+const getClassBaseBonus = () => {
+  const classChoice = getClassChoice();
+  const bonuses = { as: 0, ms: 0 };
+
+  if (classChoice === "berserker-bt") {
+    const btBonus = calcBtBonus();
+    bonuses.as += btBonus;
+    bonuses.ms += btBonus;
+  }
+
+  if (classChoice === "slayer") {
+    bonuses.as += 20;
+    bonuses.ms += 20;
+  }
+
+  if (classChoice === "berserker-mayhem") {
+    bonuses.as += 15;
+    bonuses.ms += 15;
+  }
+
+  if (classChoice === "aeromancer") {
+    bonuses.as += 12;
+    bonuses.ms += 12;
+  }
+
+  if (classChoice === "soulfist") {
+    bonuses.as += 12;
+    bonuses.ms += 12;
+  }
+
+  if (classChoice === "guardianknight") {
+    bonuses.as += 15;
+  }
+
+  if (classChoice === "wardancer") {
+    bonuses.as += 20.8;
+    bonuses.ms += 16;
+  }
+
+  if (classChoice === "machinist") {
+    bonuses.as += 15;
+    bonuses.ms += 30;
+  }
+
+  if (classChoice === "machinist-bladesuit") {
+    bonuses.as += 35;
+    bonuses.ms += 30;
+  }
+
+  if (classChoice === "sharpshooter") {
+    bonuses.as += 10;
+    bonuses.ms += 10;
+  }
+
+  if (classChoice === "shadowhunter") {
+    bonuses.ms += 30;
+  }
+
+  return bonuses;
+};
+
+const calculateEvo = (atk, move, levelConfig) => {
+  const cappedAtk = floor2(Math.min(atk, CAP));
+  const cappedMove = floor2(Math.min(move, CAP));
+  const bonusAtk = floor2(Math.max(cappedAtk - BASE, 0));
+  const bonusMove = floor2(Math.max(cappedMove - BASE, 0));
+  const overAtk = floor2(Math.max(atk - CAP, 0));
+  const overMove = floor2(Math.max(move - CAP, 0));
+  const overTotal = floor2(overAtk + overMove);
+
+  const bonusSum = floor2(bonusAtk + bonusMove);
+  const baseEvo = floor2(bonusSum * levelConfig.baseRate);
+  const flatEvo = atk >= CAP && move >= CAP ? levelConfig.flatBonus : 0;
+  const excessEvo = floor2(overTotal * levelConfig.excessRate);
+  const totalRaw = floor2(baseEvo + flatEvo + excessEvo);
+  const totalEvo = Math.min(totalRaw, levelConfig.maxEvo);
+
+  return {
+    cappedAtk,
+    cappedMove,
+    bonusAtk,
+    bonusMove,
+    overAtk,
+    overMove,
+    overTotal,
+    baseEvo,
+    flatEvo,
+    excessEvo,
+    totalEvo,
+  };
+};
+
+const calcBtBonus = () => {
+  const spec = readNumber(specInput.value);
+  return (1 + BT_SPEC_RATE * spec) * BT_BASE_BUFF;
+};
+
+const computeFromSources = () => {
+  const classBonus = getClassBaseBonus();
+  const sheetAsValue = clamp(readNumber(sheetAsInput.value), BASE, CAP);
+  const sheetMsValue = clamp(readNumber(sheetMsInput.value), BASE, CAP);
+  const sheetAsBonus = sheetAsValue - BASE;
+  const sheetMsBonus = sheetMsValue - BASE;
+  const feast = clamp(readNumber(feastInput.value), 0, 5);
+  const support = supportToggle.checked ? 9 : 0;
+  const wineChoice = getWineChoice();
+  const wineAtk = wineChoice === "atk" ? 3 : 0;
+  const wineMove = wineChoice === "move" ? 3 : 0;
+
+  const atkBonus = floor2(
+    classBonus.as +
+      sheetAsBonus +
+      feast +
+      support +
+      wineAtk
+  );
+  const moveBonus = floor2(
+    classBonus.ms +
+      sheetMsBonus +
+      feast +
+      support +
+      wineMove
+  );
+
+  return {
+    atk: floor2(BASE + atkBonus),
+    move: floor2(BASE + moveBonus),
+  };
+};
+
+const updateCallouts = (messages) => {
+  calloutsEl.innerHTML = "";
+  messages.forEach((message) => {
+    const p = document.createElement("p");
+    p.textContent = message;
+    calloutsEl.appendChild(p);
+  });
+};
+
+const update = () => {
+  const { atk, move } = computeFromSources();
+  const level = getLevel();
+  const levelConfig = LEVELS[level];
+  const {
+    cappedAtk,
+    cappedMove,
+    overAtk,
+    overMove,
+    overTotal,
+    baseEvo,
+    flatEvo,
+    excessEvo,
+    totalEvo,
+  } = calculateEvo(atk, move, levelConfig);
+
+  const baseAtCap = (CAP - BASE) * 2 * levelConfig.baseRate;
+  const requiredExcess = Math.max(
+    0,
+    (levelConfig.maxEvo - levelConfig.flatBonus - baseAtCap) /
+      levelConfig.excessRate
+  );
+
+  const progress =
+    levelConfig.maxEvo === 0
+      ? 0
+      : Math.min((totalEvo / levelConfig.maxEvo) * 100, 100);
+  const remainingOvercap = Math.max(0, requiredExcess - overTotal);
+
+  totalEvoEl.textContent = `${fmt(totalEvo)}%`;
+  totalCapEl.textContent = `Max ${levelConfig.maxEvo}%`;
+  if (baseEvoEl) {
+    baseEvoEl.textContent = `${fmt(baseEvo)}%`;
+  }
+  if (flatEvoEl) {
+    flatEvoEl.textContent = `${fmt(flatEvo)}%`;
+  }
+  excessEvoEl.textContent = `${fmt(excessEvo)}%`;
+  progressBarEl.style.width = `${progress}%`;
+  progressTextEl.textContent = `${fmt(totalEvo)}% of ${levelConfig.maxEvo}% cap`;
+  computedSpeedsEl.textContent = `AS ${fmt(atk)} / MS ${fmt(move)}`;
+  overcapTotalEl.textContent = `${fmt(overTotal)}%`;
+  overcapBreakdownEl.textContent = `AS ${fmt(overAtk)} / MS ${fmt(overMove)}`;
+  neededExcessEl.textContent = `${fmt(requiredExcess)}%`;
+
+  const messages = [];
+  if (atk < CAP || move < CAP) {
+    messages.push(`Raise both speeds to ${CAP}% to unlock excess conversion.`);
+  }
+
+  if (totalEvo >= levelConfig.maxEvo - 0.001) {
+    messages.push("Breakpoint reached. This node is capped.");
+  } else if (atk >= CAP && move >= CAP) {
+    messages.push(`Short by ${fmt(remainingOvercap)}% combined overcap to max the node.`);
+  } else {
+    messages.push(
+      `After reaching ${CAP}% on both, you need ${fmt(requiredExcess)}% combined overcap to max the node.`
+    );
+  }
+
+  updateCallouts(messages);
+  updateBreakpoints(levelConfig);
+};
+
+const getRequiredOvercapBP = (levelConfig) => {
+  const baseRatePercent = levelConfig.baseRate * 100;
+  const excessRatePercent = levelConfig.excessRate * 100;
+  const flatBP = levelConfig.flatBonus * 100;
+  const maxBP = levelConfig.maxEvo * 100;
+  const baseAtCapBP = Math.floor(
+    ((CAP_BP - BASE_BP) * 2 * baseRatePercent) / 100
+  );
+  const remainingBP = maxBP - flatBP - baseAtCapBP;
+  if (remainingBP <= 0) return 0;
+  return Math.floor((remainingBP * 100) / excessRatePercent);
+};
+
+const findSwiftRequired = (baseAsBonusBP, baseMsBonusBP, requiredOvercapBP) => {
+  const maxSwift = 1850;
+  for (let swift = 0; swift <= maxSwift; swift += 1) {
+    const swiftBonusBP = Math.ceil((swift * 1200) / 699);
+    const atkBP = BASE_BP + baseAsBonusBP + swiftBonusBP;
+    const moveBP = BASE_BP + baseMsBonusBP + swiftBonusBP;
+    if (atkBP < CAP_BP || moveBP < CAP_BP) {
+      continue;
+    }
+    const overTotalBP = (atkBP - CAP_BP) + (moveBP - CAP_BP);
+    if (overTotalBP >= requiredOvercapBP) {
+      return swift;
+    }
+  }
+
+  return null;
+};
+
+const updateBreakpoints = (levelConfig) => {
+  const classChoice = getClassChoice();
+  if (classChoice === "berserker-bt") {
+    bpFullEl.textContent = "N/A";
+    bpFeastEl.textContent = "N/A";
+    bpNoneEl.textContent = "N/A";
+    return;
+  }
+
+  const classBonus = getClassBaseBonus();
+  const baseAs = classBonus.as;
+  const baseMs = classBonus.ms;
+  const requiredOvercapBP = getRequiredOvercapBP(levelConfig);
+
+  const scenarios = {
+    full: { support: 9, feast: 5, wine: "best" },
+    feast: { support: 9, feast: 5, wine: "none" },
+    none: { support: 9, feast: 0, wine: "none" },
+  };
+
+  const withWine = [
+    { key: "as", as: 3, ms: 0 },
+    { key: "ms", as: 0, ms: 3 },
+  ];
+
+  const resolveScenario = ({ support, feast, wine }) => {
+    const baseAsBonusBP = toBP(baseAs + support + feast);
+    const baseMsBonusBP = toBP(baseMs + support + feast);
+
+    if (wine === "none") {
+      return {
+        swift: findSwiftRequired(baseAsBonusBP, baseMsBonusBP, requiredOvercapBP),
+        wine: "none",
+      };
+    }
+
+    let best = { swift: null, wine: "as" };
+    withWine.forEach((choice) => {
+      const swift = findSwiftRequired(
+        baseAsBonusBP + toBP(choice.as),
+        baseMsBonusBP + toBP(choice.ms),
+        requiredOvercapBP
+      );
+      if (swift === null) {
+        return;
+      }
+      if (best.swift === null || swift < best.swift) {
+        best = { swift, wine: choice.key };
+      }
+    });
+
+    return best;
+  };
+
+  const full = resolveScenario(scenarios.full);
+  const feast = resolveScenario(scenarios.feast);
+  const none = resolveScenario(scenarios.none);
+
+  const renderSwift = (value) => (value === null ? "Not reachable" : `${fmtInt(value)} Swift`);
+
+  bpFullEl.textContent = renderSwift(full.swift);
+  bpFeastEl.textContent = renderSwift(feast.swift);
+  bpNoneEl.textContent = renderSwift(none.swift);
+
+};
+
+const init = () => {
+  [
+    specInput,
+    sheetAsInput,
+    sheetMsInput,
+    feastInput,
+  ].forEach((input) => {
+    input.addEventListener("input", update);
+  });
+
+  [supportToggle].forEach((input) => {
+    input.addEventListener("change", update);
+  });
+
+  wineInputs.forEach((input) => {
+    input.addEventListener("change", update);
+  });
+
+  levelInputs.forEach((input) => {
+    input.addEventListener("change", update);
+  });
+
+  if (classSelect) {
+    classSelect.addEventListener("change", () => {
+      updateClassVisibility();
+      update();
+    });
+  }
+  updateClassVisibility();
+  update();
+};
+
+init();
+})();
+</script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
