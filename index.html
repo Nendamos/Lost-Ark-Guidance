@@ -1554,63 +1554,67 @@
 
 
   /* ---------- SSB Calculator ---------- */
-  #ssb .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1.5rem; margin-bottom: 1.5rem; align-items: start; }
-  @media (max-width: 860px) { #ssb .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
-  #ssb .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 8px; padding: 1.5rem 1.6rem; min-width: 0; }
-  #ssb .ssb-results { border-top-color: var(--teal); }
-  #ssb .ssb-info { border-top-color: var(--purple); }
-  #ssb .ssb-h { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; color: var(--gold); }
-  #ssb .ssb-results .ssb-h { color: var(--teal); }
-  #ssb .ssb-info .ssb-h { color: var(--purple); }
-  #ssb .ssb-group-title { margin: 1.3rem 0 0.6rem; padding-top: 1.1rem; border-top: 1px solid var(--line); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
-  #ssb .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-  #ssb .ssb-field { margin-bottom: 0.9rem; }
-  #ssb .ssb-field label { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 0.35rem; }
-  #ssb .ssb-field input[type="number"], #ssb .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.75rem; font: inherit; font-size: 1rem; }
-  #ssb .ssb-field input[type="number"]:focus, #ssb .ssb-field select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
-  #ssb .ssb-hint { color: var(--text-dim); font-size: 0.82rem; margin-top: 0.35rem; line-height: 1.45; }
-  #ssb .ssb-class-section[hidden] { display: none; }
-  #ssb .ssb-class-section .ssb-hint { margin: 0 0 0.9rem; }
-  #ssb label.ssb-check { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; cursor: pointer; margin: 0; }
-  #ssb .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
-  #ssb .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  #ssb .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
-  #ssb .ssb-seg label { margin: 0; }
-  #ssb .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
-  #ssb .ssb-seg span { display: block; text-align: center; padding: 0.55rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
-  #ssb .ssb-seg label:hover span { color: var(--text); background: rgba(255,255,255,0.09); }
-  #ssb .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
-  #ssb .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
-  #ssb .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
-  #ssb .ssb-stat, #ssb .ssb-mini, #ssb .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem 1rem; min-width: 0; }
-  #ssb .ssb-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
-  #ssb .ssb-value { font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 0.2rem 0; }
-  #ssb .ssb-stat-main .ssb-value { color: var(--gold); }
-  #ssb .ssb-value-sm { font-size: 1.15rem; font-weight: 700; margin: 0.25rem 0 0.1rem; overflow-wrap: anywhere; }
-  #ssb .ssb-muted { color: var(--text-dim); font-size: 0.82rem; }
-  #ssb .ssb-progress { margin-bottom: 1rem; }
-  #ssb .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
-  #ssb .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s ease; }
-  #ssb .ssb-progress-text { margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-dim); }
-  #ssb .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
-  #ssb .ssb-mini-wide { grid-column: 1 / -1; }
-  #ssb .ssb-bp { margin-bottom: 1rem; }
-  #ssb .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.5rem; }
-  #ssb .ssb-bp-item .ssb-label { font-size: 0.68rem; }
-  #ssb .ssb-bp-item .ssb-value-sm { color: var(--teal); }
-  #ssb .ssb-callouts p { margin: 0 0 0.4rem; padding: 0.55rem 0.8rem; border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  :is(#ssb, #bluntthorn) .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1.5rem; margin-bottom: 1.5rem; align-items: start; }
+  @media (max-width: 860px) { :is(#ssb, #bluntthorn) .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
+  :is(#ssb, #bluntthorn) .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 8px; padding: 1.5rem 1.6rem; min-width: 0; }
+  :is(#ssb, #bluntthorn) .ssb-results { border-top-color: var(--teal); }
+  :is(#ssb, #bluntthorn) .ssb-info { border-top-color: var(--purple); }
+  :is(#ssb, #bluntthorn) .ssb-h { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; color: var(--gold); }
+  :is(#ssb, #bluntthorn) .ssb-results .ssb-h { color: var(--teal); }
+  :is(#ssb, #bluntthorn) .ssb-info .ssb-h { color: var(--purple); }
+  :is(#ssb, #bluntthorn) .ssb-group-title { margin: 1.3rem 0 0.6rem; padding-top: 1.1rem; border-top: 1px solid var(--line); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn) .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+  :is(#ssb, #bluntthorn) .ssb-field { margin-bottom: 0.9rem; }
+  :is(#ssb, #bluntthorn) .ssb-field label { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 0.35rem; }
+  :is(#ssb, #bluntthorn) .ssb-field input[type="number"], :is(#ssb, #bluntthorn) .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.75rem; font: inherit; font-size: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-field input[type="number"]:focus, :is(#ssb, #bluntthorn) .ssb-field select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  :is(#ssb, #bluntthorn) .ssb-hint { color: var(--text-dim); font-size: 0.82rem; margin-top: 0.35rem; line-height: 1.45; }
+  :is(#ssb, #bluntthorn) .ssb-class-section[hidden] { display: none; }
+  :is(#ssb, #bluntthorn) .ssb-class-section .ssb-hint { margin: 0 0 0.9rem; }
+  :is(#ssb, #bluntthorn) label.ssb-check { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; cursor: pointer; margin: 0; }
+  :is(#ssb, #bluntthorn) .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
+  :is(#ssb, #bluntthorn) .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  :is(#ssb, #bluntthorn) .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
+  :is(#ssb, #bluntthorn) .ssb-seg label { margin: 0; }
+  :is(#ssb, #bluntthorn) .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  :is(#ssb, #bluntthorn) .ssb-seg span { display: block; text-align: center; padding: 0.55rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  :is(#ssb, #bluntthorn) .ssb-seg label:hover span { color: var(--text); background: rgba(255,255,255,0.09); }
+  :is(#ssb, #bluntthorn) .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
+  :is(#ssb, #bluntthorn) .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
+  :is(#ssb, #bluntthorn) .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-stat, :is(#ssb, #bluntthorn) .ssb-mini, :is(#ssb, #bluntthorn) .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem 1rem; min-width: 0; }
+  :is(#ssb, #bluntthorn) .ssb-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn) .ssb-value { font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 0.2rem 0; }
+  :is(#ssb, #bluntthorn) .ssb-stat-main .ssb-value { color: var(--gold); }
+  :is(#ssb, #bluntthorn) .ssb-value-sm { font-size: 1.15rem; font-weight: 700; margin: 0.25rem 0 0.1rem; overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn) .ssb-muted { color: var(--text-dim); font-size: 0.82rem; }
+  :is(#ssb, #bluntthorn) .ssb-progress { margin-bottom: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+  :is(#ssb, #bluntthorn) .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s ease; }
+  :is(#ssb, #bluntthorn) .ssb-progress-text { margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn) .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-mini-wide { grid-column: 1 / -1; }
+  :is(#ssb, #bluntthorn) .ssb-bp { margin-bottom: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.5rem; }
+  :is(#ssb, #bluntthorn) .ssb-bp-item .ssb-label { font-size: 0.68rem; }
+  :is(#ssb, #bluntthorn) .ssb-bp-item .ssb-value-sm { color: var(--teal); }
+  :is(#ssb, #bluntthorn) .ssb-callouts p { margin: 0 0 0.4rem; padding: 0.55rem 0.8rem; border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 6px 6px 0; font-size: 0.9rem; }
   @media (max-width: 560px) {
-    #ssb .ssb-card { padding: 1.2rem 1rem; }
-    #ssb .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
-    #ssb .ssb-value { font-size: 1.7rem; }
+    :is(#ssb, #bluntthorn) .ssb-card { padding: 1.2rem 1rem; }
+    :is(#ssb, #bluntthorn) .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
+    :is(#ssb, #bluntthorn) .ssb-value { font-size: 1.7rem; }
   }
-  #ssb .ssb-formula { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
-  #ssb .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.4rem 0.7rem; font-size: 0.85rem; color: var(--text); overflow-wrap: anywhere; }
-  #ssb .ssb-legend { color: var(--text-dim); font-size: 0.92rem; display: grid; gap: 0.3rem; }
-  #ssb .ssb-legend strong { color: var(--text); }
-  #ssb .ssb-credit { margin: 1rem 0 0; color: var(--text-dim); font-size: 0.82rem; }
-  #ssb .ssb-credit a { color: var(--teal); }
+  :is(#ssb, #bluntthorn) .ssb-formula { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+  :is(#ssb, #bluntthorn) .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.4rem 0.7rem; font-size: 0.85rem; color: var(--text); overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn) .ssb-legend { color: var(--text-dim); font-size: 0.92rem; display: grid; gap: 0.3rem; }
+  :is(#ssb, #bluntthorn) .ssb-legend strong { color: var(--text); }
+  :is(#ssb, #bluntthorn) .ssb-credit { margin: 1rem 0 0; color: var(--text-dim); font-size: 0.82rem; }
+  :is(#ssb, #bluntthorn) .ssb-credit a { color: var(--teal); }
 
+
+  :is(#ssb, #bluntthorn) .ssb-sub { margin: -0.3rem 0 1rem 0.55rem; padding-left: 0.9rem; border-left: 2px solid var(--line); }
+  :is(#ssb, #bluntthorn) .ssb-sub[hidden] { display: none; }
+  :is(#ssb, #bluntthorn) .ssb-hint-top { margin: -0.2rem 0 0.8rem; }
   #resources .table-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 900px) { #resources .table-trio { grid-template-columns: minmax(0, 1fr); } }
 </style>
@@ -1622,6 +1626,7 @@
   <nav class="tabs">
     <button data-target="home" class="active">Home</button>
     <button data-target="ssb">SSB Calculator</button>
+    <button data-target="bluntthorn">BT Calculator</button>
     <button data-target="accessories">Accessories</button>
     <button data-target="arkgrid">Ark Grid</button>
     <button data-target="bracelets">Bracelets</button>
@@ -1761,12 +1766,12 @@
         <div class="ssb-group-title">Sheet Values</div>
         <div class="ssb-field">
           <label for="ssb-sheetAs">Sheet AS % (no buffs)</label>
-          <input id="ssb-sheetAs" type="number" inputmode="decimal" min="100" max="140" step="0.01" value="100">
+          <input id="ssb-sheetAs" type="number" inputmode="decimal" min="100" max="200" step="0.01" value="100">
           <div class="ssb-hint">From Full Effect Info &gt; Attack, in town without buffs. Base is 100%.</div>
         </div>
         <div class="ssb-field">
           <label for="ssb-sheetMs">Sheet MS % (no buffs)</label>
-          <input id="ssb-sheetMs" type="number" inputmode="decimal" min="100" max="140" step="0.01" value="100">
+          <input id="ssb-sheetMs" type="number" inputmode="decimal" min="100" max="200" step="0.01" value="100">
           <div class="ssb-hint">From Full Effect Info &gt; Activity, in town without buffs. Base is 100%.</div>
         </div>
 
@@ -1869,6 +1874,161 @@
         <div><strong>Level 2</strong> base 10%, excess 30%, flat 8%, max 24%</div>
       </div>
       <p class="ssb-credit">Calculation logic from the <a href="https://ssbcalc.poyomi.fyi/" target="_blank" rel="noopener">Supersonic Breakthrough Calculator</a> by poyomi. Class bonuses are game values and can change with patches.</p>
+    </div>
+  </section>
+
+  <!-- ================= BLUNT THORN CALCULATOR ================= -->
+  <section class="page" id="bluntthorn">
+    <div class="section-title">Blunt Thorn Calculator</div>
+    <p class="section-sub">Enter your crit rate to see how much Evolution Damage Blunt Thorn gives you, and how much crit you still need to max it. Crit rate is capped at 80%, and crit above that cap is converted into Evolution Damage.</p>
+
+    <div class="ssb-grid">
+      <div class="ssb-card ssb-inputs">
+        <h3 class="ssb-h">Inputs</h3>
+
+        <div class="ssb-group-title">Node Level</div>
+        <div class="ssb-field">
+          <div class="ssb-seg ssb-seg-2" role="radiogroup" aria-label="Blunt Thorn level">
+            <label><input type="radio" name="bt-level" value="1"><span>Level 1</span></label>
+            <label><input type="radio" name="bt-level" value="2" checked><span>Level 2</span></label>
+          </div>
+        </div>
+
+        <div class="ssb-group-title">Crit Rate</div>
+        <div class="ssb-field">
+          <label for="bt-other">Crit Rate %</label>
+          <input id="bt-other" type="number" inputmode="decimal" min="0" max="150" step="0.01" value="0">
+          <div class="ssb-hint">Take it from your character window: Full Effect Info &gt; Attack &gt; Crit Rate. It already includes your Crit stat, so enter the total. Check it without party buffs on, so Back Attack and Crit Synergy are not counted twice.</div>
+        </div>
+
+        <div class="ssb-group-title">Crit Bonuses</div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="bt-back">
+            <input type="checkbox" id="bt-back">
+            <span>Back Attack (+10% Crit Rate)</span>
+          </label>
+        </div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="bt-synergy">
+            <input type="checkbox" id="bt-synergy">
+            <span>Crit Synergy (+10% Crit Rate)</span>
+          </label>
+        </div>
+
+        <div class="ssb-group-title">Crit Engravings</div>
+        <div class="ssb-hint ssb-hint-top">Only add these if they are not already included in the Crit Rate above.</div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="bt-adr">
+            <input type="checkbox" id="bt-adr">
+            <span>Adrenaline</span>
+          </label>
+        </div>
+        <div class="ssb-sub" id="bt-adr-sub" hidden>
+          <div class="ssb-field">
+            <label for="bt-adr-book">Book quality</label>
+            <select id="bt-adr-book">
+              <option value="14">Legendary (+14%)</option>
+              <option value="20" selected>Relic (+20%)</option>
+            </select>
+            <div class="ssb-hint">At max stacks. An Ability Stone only adds Attack Power here, so it does not change crit.</div>
+          </div>
+        </div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="bt-pd">
+            <input type="checkbox" id="bt-pd">
+            <span>Precise Dagger</span>
+          </label>
+        </div>
+        <div class="ssb-sub" id="bt-pd-sub" hidden>
+          <div class="ssb-field">
+            <label for="bt-pd-book">Book quality</label>
+            <select id="bt-pd-book">
+              <option value="18">Legendary (+18%)</option>
+              <option value="21" selected>Relic (+21%)</option>
+            </select>
+          </div>
+          <div class="ssb-field">
+            <label for="bt-pd-stone">Ability Stone</label>
+            <select id="bt-pd-stone">
+              <option value="0" selected>Not on the stone</option>
+              <option value="3">Level 1 (+3%)</option>
+              <option value="3.75">Level 2 (+3.75%)</option>
+              <option value="5.25">Level 3 (+5.25%)</option>
+              <option value="6">Level 4 (+6%)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="ssb-card ssb-results">
+        <h3 class="ssb-h">Results</h3>
+
+        <div class="ssb-stats">
+          <div class="ssb-stat ssb-stat-main">
+            <div class="ssb-label">Blunt Thorn Evolution Damage</div>
+            <div class="ssb-value" id="bt-totalEvo">0%</div>
+            <div class="ssb-muted" id="bt-totalCap">Max 75%</div>
+          </div>
+          <div class="ssb-stat">
+            <div class="ssb-label">Total Crit Rate</div>
+            <div class="ssb-value" id="bt-totalCrit">0%</div>
+            <div class="ssb-muted" id="bt-aboveCap">0% above the 80% cap</div>
+          </div>
+        </div>
+
+        <div class="ssb-progress">
+          <div class="ssb-progress-track"><div class="ssb-progress-bar" id="bt-progressBar"></div></div>
+          <div class="ssb-progress-text" id="bt-progressText"></div>
+        </div>
+
+        <div class="ssb-mini-grid">
+          <div class="ssb-mini ssb-mini-wide">
+            <div class="ssb-label">Crit Rate Needed to Max</div>
+            <div class="ssb-value-sm" id="bt-target">120%</div>
+            <div class="ssb-muted" id="bt-targetNote">80% cap + 40% converted</div>
+          </div>
+          <div class="ssb-mini">
+            <div class="ssb-label">Missing Crit</div>
+            <div class="ssb-value-sm" id="bt-missing">0%</div>
+            <div class="ssb-muted" id="bt-missingStat">0 crit stat</div>
+          </div>
+          <div class="ssb-mini">
+            <div class="ssb-label">Over-crit</div>
+            <div class="ssb-value-sm" id="bt-over">0%</div>
+            <div class="ssb-muted">wasted above the max</div>
+          </div>
+        </div>
+
+        <div class="ssb-bp">
+          <div class="ssb-label">Evolution Damage Breakdown</div>
+          <div class="ssb-bp-grid">
+            <div class="ssb-bp-item"><div class="ssb-label">Flat bonus</div><div class="ssb-value-sm" id="bt-flat">15%</div></div>
+            <div class="ssb-bp-item"><div class="ssb-label">From crit conversion</div><div class="ssb-value-sm" id="bt-conv">0%</div></div>
+            <div class="ssb-bp-item"><div class="ssb-label">Node cap</div><div class="ssb-value-sm" id="bt-cap">75%</div></div>
+          </div>
+        </div>
+
+        <div class="ssb-callouts" id="bt-callouts"></div>
+      </div>
+    </div>
+
+    <div class="ssb-card ssb-info">
+      <h3 class="ssb-h">How it is calculated</h3>
+      <div class="ssb-formula">
+        <code>Total crit: Crit Rate (Full Effect Info) + back attack 10 + crit synergy 10 + engravings</code>
+        <code>Adrenaline: 14 (Legendary) or 20 (Relic)</code>
+        <code>Precise Dagger: 18 (Legendary) or 21 (Relic), plus Ability Stone 3 / 3.75 / 5.25 / 6</code>
+        <code>Above cap: max(total crit - 80, 0)</code>
+        <code>Converted: above cap * conversion rate</code>
+        <code>Evolution Damage: min(flat + converted, node cap)</code>
+        <code>Crit needed: 80 + (node cap - flat) / conversion rate</code>
+        <code>Crit stat for 1% crit rate: 27.944</code>
+      </div>
+      <div class="ssb-legend">
+        <div><strong>Level 1</strong> flat 7.5%, conversion 125%, cap 52.5%, needs 116% crit</div>
+        <div><strong>Level 2</strong> flat 15%, conversion 150%, cap 75%, needs 120% crit</div>
+      </div>
+      <p class="ssb-credit">Values are taken from the in-game Blunt Thorn tooltip and can change with patches.</p>
     </div>
   </section>
 
@@ -3010,11 +3170,13 @@
   /* ================= SITE SEARCH ================= */
   (function() {
     const TAB_LABELS = {
-      home: 'Home', ssb: 'SSB Calculator', accessories: 'Accessories', arkgrid: 'Ark Grid',
+      home: 'Home', ssb: 'SSB Calculator', bluntthorn: 'BT Calculator', accessories: 'Accessories', arkgrid: 'Ark Grid',
       bracelets: 'Bracelets', positional: 'Positional Attack',
       buffpriority: 'Buff Icon Priority', paradise: 'Paradise',
       synergy: 'Synergy', resources: 'Resources'
     };
+
+    const TAB_ALIASES = { bluntthorn: 'Blunt Thorn Calculator', ssb: 'Supersonic Breakthrough Calculator' };
 
     function extractText(el) {
       let text = '';
@@ -3030,7 +3192,7 @@
 
       // Tab names themselves, so typing a tab name finds it
       Object.keys(TAB_LABELS).forEach(id => {
-        index.push({ el: null, tabId: id, title: TAB_LABELS[id], context: 'Jump to tab' });
+        index.push({ el: null, tabId: id, title: TAB_LABELS[id], context: TAB_ALIASES[id] ? 'Jump to tab — ' + TAB_ALIASES[id] : 'Jump to tab' });
       });
 
       const selector = 'li, tr, .syn-card, .resource-card, .astro-card, .buff-row';
@@ -3597,6 +3759,104 @@ const init = () => {
 };
 
 init();
+})();
+</script>
+<script>
+/* SSB Calculator: input limits. The calculation code above is untouched; these only keep the text boxes within sensible ranges. */
+(function () {
+  const limits = { "ssb-sheetAs": [0, 200], "ssb-sheetMs": [0, 200], "ssb-feast": [0, 5] };
+  Object.keys(limits).forEach(function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("input", function () {
+      if (el.value === "") return;
+      const n = Number.parseFloat(el.value);
+      if (!Number.isFinite(n)) return;
+      const lo = limits[id][0], hi = limits[id][1];
+      if (n > hi || n < lo) {
+        el.value = n > hi ? hi : lo;
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    });
+  });
+})();
+</script>
+<script>
+/* Blunt Thorn Calculator: values from the in-game Blunt Thorn tooltip. */
+(function () {
+  const CRIT_CAP = 80;
+  const STAT_PER_PCT = 27.944;
+  const MAX_CRIT_INPUT = 150;
+  const BACK_ATTACK = 10;
+  const SYNERGY = 10;
+  const LEVELS = {
+    1: { flat: 7.5, rate: 1.25, cap: 52.5 },
+    2: { flat: 15, rate: 1.5, cap: 75 },
+  };
+  const $ = (id) => document.getElementById("bt-" + id);
+  const num = (v) => { const n = Number.parseFloat(v); return Number.isFinite(n) ? Math.max(n, 0) : 0; };
+  const r2 = (v) => (Math.round((v + 1e-9) * 100) / 100);
+  const fmt = (v) => r2(v).toFixed(2).replace(/\.?0+$/, "");
+  const pct = (v) => fmt(v) + "%";
+
+  const getLevel = () => {
+    const el = document.querySelector("input[name='bt-level']:checked");
+    const l = el ? Number(el.value) : 2;
+    return LEVELS[l] ? l : 2;
+  };
+
+  const update = () => {
+    const L = LEVELS[getLevel()];
+    const critField = $("other");
+    if (critField.value !== "" && num(critField.value) > MAX_CRIT_INPUT) critField.value = MAX_CRIT_INPUT;
+    if (critField.value !== "" && Number.parseFloat(critField.value) < 0) critField.value = 0;
+    const adr = $("adr").checked ? num($("adr-book").value) : 0;
+    const pd = $("pd").checked ? num($("pd-book").value) + num($("pd-stone").value) : 0;
+    const total = Math.min(num($("other").value), MAX_CRIT_INPUT) + ($("back").checked ? BACK_ATTACK : 0) + ($("synergy").checked ? SYNERGY : 0) + adr + pd;
+    $("adr-sub").hidden = !$("adr").checked;
+    $("pd-sub").hidden = !$("pd").checked;
+    const above = Math.max(total - CRIT_CAP, 0);
+    const converted = Math.min(above * L.rate, L.cap - L.flat);
+    const evo = Math.min(L.flat + above * L.rate, L.cap);
+    const needAbove = (L.cap - L.flat) / L.rate;
+    const target = CRIT_CAP + needAbove;
+    const capped = total >= target - 1e-9;
+    const missing = capped ? 0 : target - total;
+    const over = capped ? total - target : 0;
+
+    $("totalEvo").textContent = pct(evo);
+    $("totalCap").textContent = "Max " + pct(L.cap);
+    $("totalCrit").textContent = pct(total);
+    $("aboveCap").textContent = pct(above) + " above the " + CRIT_CAP + "% cap";
+    $("progressBar").style.width = Math.min((evo / L.cap) * 100, 100) + "%";
+    $("progressText").textContent = pct(evo) + " of " + pct(L.cap) + " cap";
+    $("target").textContent = pct(target);
+    $("targetNote").textContent = CRIT_CAP + "% cap + " + fmt(needAbove) + "% converted";
+    $("missing").textContent = pct(missing);
+    $("missingStat").textContent = Math.ceil(missing * STAT_PER_PCT - 1e-9) + " crit stat";
+    $("over").textContent = pct(over);
+    $("flat").textContent = pct(L.flat);
+    $("conv").textContent = pct(converted);
+    $("cap").textContent = pct(L.cap);
+
+    const msgs = [];
+    if (capped) {
+      msgs.push("Blunt Thorn is maxed." + (over > 0.005 ? " " + pct(over) + " of crit is over the max and is wasted. Move it into other stats." : ""));
+    } else if (total < CRIT_CAP) {
+      msgs.push("Below the " + CRIT_CAP + "% crit cap there is no conversion yet, only the flat " + pct(L.flat) + ".");
+      msgs.push("Missing " + pct(missing) + " crit (about " + Math.ceil(missing * STAT_PER_PCT - 1e-9) + " crit stat) to max the node.");
+    } else {
+      msgs.push("Missing " + pct(missing) + " crit (about " + Math.ceil(missing * STAT_PER_PCT - 1e-9) + " crit stat) to max the node.");
+    }
+    const box = $("callouts");
+    box.innerHTML = "";
+    msgs.forEach((m) => { const p = document.createElement("p"); p.textContent = m; box.appendChild(p); });
+  };
+
+  $("other").addEventListener("input", update);
+  ["back", "synergy", "adr", "pd", "adr-book", "pd-book", "pd-stone"].forEach((id) => $(id).addEventListener("change", update));
+  document.querySelectorAll("input[name='bt-level']").forEach((i) => i.addEventListener("change", update));
+  update();
 })();
 </script><!-- End Cloudflare Web Analytics -->
 </body>
