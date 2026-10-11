@@ -3844,9 +3844,6 @@ init();
       msgs.push("Blunt Thorn is maxed." + (over > 0.005 ? " " + pct(over) + " of crit is over the max and is wasted. Move it into other stats." : ""));
     } else if (total < CRIT_CAP) {
       msgs.push("Below the " + CRIT_CAP + "% crit cap there is no conversion yet, only the flat " + pct(L.flat) + ".");
-      msgs.push("Missing " + pct(missing) + " crit (about " + Math.ceil(missing * STAT_PER_PCT - 1e-9) + " crit stat) to max the node.");
-    } else {
-      msgs.push("Missing " + pct(missing) + " crit (about " + Math.ceil(missing * STAT_PER_PCT - 1e-9) + " crit stat) to max the node.");
     }
     const box = $("callouts");
     box.innerHTML = "";
