@@ -1610,6 +1610,9 @@
   #ssb .ssb-legend strong { color: var(--text); }
   #ssb .ssb-credit { margin: 1rem 0 0; color: var(--text-dim); font-size: 0.82rem; }
   #ssb .ssb-credit a { color: var(--teal); }
+
+  #resources .table-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 900px) { #resources .table-trio { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -2797,6 +2800,12 @@
         <h4>Maxroll</h4>
         <p class="resource-desc">Detailed build guides, raid guides, and tools — including guidance on horizontal content like Islands, the Adventure Tome, and other collectibles.</p>
         <a href="https://maxroll.gg/lost-ark" target="_blank" rel="noopener noreferrer" class="resource-link">Visit Site &rarr;</a>
+      </div>
+
+      <div class="resource-card" style="--accent: var(--blue);">
+        <h4>Combat Power Simulator</h4>
+        <p class="resource-desc">A Combat Power simulator that loads your characters from Lost Ark Bible. Change gear, gems, skills, engravings, Ark Grid, accessories and more to see exactly how each change affects your Combat Power.</p>
+        <a href="https://loa-sim.vercel.app/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit Site &rarr;</a>
       </div>
     </div>
   </section>
