@@ -132,7 +132,7 @@
   }
 
   .site-search {
-    position: fixed;
+    position: absolute;
     top: 0.9rem;
     right: 1.5rem;
     z-index: 20;
@@ -1708,19 +1708,6 @@
   }
   img { height: auto; }
   /* Tab bar: balanced two rows on mid-size screens, one row on wide screens */
-  /* Desktop: the header collapses to just the tab bar (animated) once the page is scrolled */
-  #header-spacer { display: none; }
-  @media (min-width: 900px) {
-    #header-spacer { display: block; }
-    header { position: fixed; top: 0; left: 0; right: 0; transition: padding-top 1s cubic-bezier(.45,.05,.2,1), box-shadow 1s ease; }
-    header h1 { display: flex; justify-content: center; max-height: var(--h1-h, 2.4rem); overflow: hidden; transition: max-height 1s cubic-bezier(.45,.05,.2,1), margin-bottom 1s cubic-bezier(.45,.05,.2,1), opacity .75s ease, transform 1s cubic-bezier(.45,.05,.2,1); }
-    header::before { transition: opacity .85s ease; }
-    header.is-scrolled { padding-top: 0.5rem; box-shadow: 0 10px 24px -10px rgba(0,0,0,0.65); }
-    header.is-scrolled h1 { max-height: 0; margin-bottom: 0; opacity: 0; transform: translateY(-18px); }
-    header.is-scrolled::before { opacity: 0; }
-    header.measuring, header.measuring * { transition: none !important; }
-  }
-  @media (min-width: 900px) and (max-width: 1040px) { nav.tabs { padding-left: 3.5rem; padding-right: 3.5rem; } }
   @media (min-width: 900px) and (max-width: 1699px) { nav.tabs { max-width: 1000px; margin-left: auto; margin-right: auto; } }
   @media print {
     header { position: static; background: none; border: 0; }
@@ -1853,9 +1840,6 @@
     <button type="button" role="tab" id="tab-resources" aria-controls="resources" aria-selected="false" tabindex="-1" data-target="resources">Resources</button>
   </nav>
 
-  </header>
-  <div id="header-spacer" aria-hidden="true"></div>
-
   <div class="site-search">
     <button type="button" id="search-toggle" class="search-toggle" aria-label="Search the guide">
       <svg viewBox="0 0 24 24" width="19" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -1865,7 +1849,7 @@
       <div class="search-results" id="search-results"></div>
     </div>
   </div>
-
+</header>
 
 <main id="main" tabindex="-1">
 
@@ -1919,7 +1903,6 @@
       <h2 class="section-head-dot c-teal">Updates</h2>
       <p class="updates-meta">Last updated: 12 October 2026</p>
       <ul>
-        <li><time datetime="2026-10-12">12 Oct 2026</time><span>More room to read on desktop: the logo and title now slide away smoothly as you scroll, and only the menu and search stay pinned at the top.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>The SSB and Blunt Thorn calculators now remember your last inputs on this device, and have a Reset button and a Copy link button for sharing your setup.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Fixed a rounding error in the SSB calculator that could be off by 0.01% with decimal inputs. The overcap needed to max the node is now shown correctly as 26.67%.</span></li>
@@ -3275,40 +3258,10 @@
   (function () {
     const header = document.querySelector('header');
     if (!header) return;
-    const wide = window.matchMedia('(min-width: 900px)');
-    const spacer = document.getElementById('header-spacer');
-    let ticking = false;
-    // Measure the header in both states without animating, so the spacer always holds the full-size height
-    const sync = () => {
-      const root = document.documentElement.style;
-      if (!wide.matches) {
-        header.classList.remove('is-scrolled'); if (spacer) spacer.style.height = '0px';
-        root.scrollPaddingTop = (header.offsetHeight + 12) + 'px'; return;
-      }
-      const was = header.classList.contains('is-scrolled');
-      header.classList.add('measuring');
-      header.classList.remove('is-scrolled'); const full = header.offsetHeight;
-      const h1el = header.querySelector('h1'); if (h1el) { h1el.style.maxHeight = 'none'; root.setProperty('--h1-h', h1el.offsetHeight + 'px'); h1el.style.maxHeight = ''; }
-      header.classList.add('is-scrolled'); const compact = header.offsetHeight;
-      if (!was) header.classList.remove('is-scrolled');
-      void header.offsetHeight; header.classList.remove('measuring');
-      if (spacer) spacer.style.height = full + 'px';
-      root.scrollPaddingTop = (compact + 12) + 'px';
-      onScroll();
-    };
-    if (wide.addEventListener) wide.addEventListener('change', sync);
-    function onScroll() {
-      ticking = false;
-      if (!wide.matches) return;
-      const y = window.scrollY, on = header.classList.contains('is-scrolled');
-      if (!on && y > 40) header.classList.add('is-scrolled');
-      else if (on && y < 6) header.classList.remove('is-scrolled');
-    }
-    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    const sync = () => { document.documentElement.style.scrollPaddingTop = (header.offsetHeight + 12) + 'px'; };
     sync();
-    window.addEventListener('resize', sync);
-    window.addEventListener('load', sync);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+    if (window.ResizeObserver) new ResizeObserver(sync).observe(header);
+    else window.addEventListener('resize', sync);
   })();
 
   const BASE_TITLE = document.title;
