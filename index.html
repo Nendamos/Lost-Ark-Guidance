@@ -456,6 +456,23 @@
   .priority-card.big h2 { color: var(--gold); }
   .priority-card.small h2 { color: var(--teal); }
 
+  .group-nav { display: flex; gap: var(--sp-6); margin: 0 0 var(--sp-15); padding-bottom: var(--sp-10); border-bottom: 1px solid var(--line); }
+  .group-nav button { font: inherit; font-size: var(--fs-88); font-weight: 600; line-height: var(--lh-ui); color: var(--text-dim); background: transparent; border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-12); cursor: pointer; transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); }
+  .group-nav button:hover { color: var(--text); border-color: var(--wh-5); }
+  .group-nav button[aria-current="page"] { color: var(--gold); border-color: var(--gold); background: var(--wh-2); }
+  @media (max-width: 640px) { .group-nav button { flex: 1 1 0; min-height: 44px; } }
+  .calc-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-6); margin: 0 0 var(--sp-12); }
+  .calc-btn { font: inherit; font-size: var(--fs-88); line-height: var(--lh-ui); color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-10); cursor: pointer; transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+  .calc-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .calc-status { font-size: var(--fs-88); color: var(--text-dim); }
+  .updates { margin-top: var(--sp-15); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--sp-15); }
+  .updates h2 { margin-bottom: var(--sp-5); }
+  .updates .updates-meta { color: var(--text-dim); font-size: var(--fs-88); margin-bottom: var(--sp-10); }
+  .updates ul { list-style: none; margin: 0; padding: 0; }
+  .updates li { display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--sp-10); padding: var(--sp-6) 0; border-top: 1px solid var(--line); line-height: var(--lh-read); }
+  .updates time { color: var(--gold); font-weight: 600; font-size: var(--fs-88); }
+  @media (max-width: 560px) { .updates li { grid-template-columns: 1fr; gap: var(--sp-2); } }
+
   .horizontal-note {
     margin-top: var(--sp-15);
     background: var(--panel);
@@ -1813,13 +1830,11 @@
   <h1><svg class="h1-emblem" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="100,124 128,158 100,204 72,158" fill="currentColor"/><path d="M30 104 L100 32 L170 104" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/><path d="M30 124 L100 52 L170 124" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M30 144 L100 72 L170 144" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg> Lost Ark <span>Power Guide</span></h1>
   <nav class="tabs" role="tablist" aria-label="Guide sections">
     <button type="button" role="tab" id="tab-home" aria-controls="home" aria-selected="true" tabindex="0" data-target="home" class="active">Home</button>
-    <button type="button" role="tab" id="tab-ssb" aria-controls="ssb" aria-selected="false" tabindex="-1" data-target="ssb">SSB Calculator</button>
-    <button type="button" role="tab" id="tab-bluntthorn" aria-controls="bluntthorn" aria-selected="false" tabindex="-1" data-target="bluntthorn">BT Calculator</button>
+    <button type="button" role="tab" id="tab-ssb" aria-controls="ssb" aria-selected="false" tabindex="-1" data-target="ssb">Calculators</button>
     <button type="button" role="tab" id="tab-accessories" aria-controls="accessories" aria-selected="false" tabindex="-1" data-target="accessories">Accessories</button>
     <button type="button" role="tab" id="tab-arkgrid" aria-controls="arkgrid" aria-selected="false" tabindex="-1" data-target="arkgrid">Ark Grid</button>
     <button type="button" role="tab" id="tab-bracelets" aria-controls="bracelets" aria-selected="false" tabindex="-1" data-target="bracelets">Bracelets</button>
-    <button type="button" role="tab" id="tab-positional" aria-controls="positional" aria-selected="false" tabindex="-1" data-target="positional">Positional Attack</button>
-    <button type="button" role="tab" id="tab-buffpriority" aria-controls="buffpriority" aria-selected="false" tabindex="-1" data-target="buffpriority">Buff Icon Priority</button>
+    <button type="button" role="tab" id="tab-positional" aria-controls="positional" aria-selected="false" tabindex="-1" data-target="positional">Combat</button>
     <button type="button" role="tab" id="tab-paradise" aria-controls="paradise" aria-selected="false" tabindex="-1" data-target="paradise">Paradise</button>
     <button type="button" role="tab" id="tab-synergy" aria-controls="synergy" aria-selected="false" tabindex="-1" data-target="synergy">Synergy</button>
     <button type="button" role="tab" id="tab-resources" aria-controls="resources" aria-selected="false" tabindex="-1" data-target="resources">Resources</button>
@@ -1883,12 +1898,35 @@
       <h2 class="section-head-dot c-purple">Horizontal Content</h2>
       <p>Completing Horizontal Content also provides a significant increase to your character's strength.</p>
     </div>
+
+    <div class="updates" id="updates">
+      <h2 class="section-head-dot c-teal">Updates</h2>
+      <p class="updates-meta">Last updated: 12 October 2026</p>
+      <ul>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>The SSB and Blunt Thorn calculators now remember your last inputs on this device, and have a Reset button and a Copy link button for sharing your setup.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Fixed a rounding error in the SSB calculator that could be off by 0.01% with decimal inputs. The overcap needed to max the node is now shown correctly as 26.67%.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Ark Grid passive effects now show a per-level value, so you can see what a single point gives.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Cleaner, easier-to-read design across the whole site, keyboard navigation for tabs and search, and faster loading.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Better phone layout for tables, bracelets, Ark Grid and Synergy.</span></li>
+      </ul>
+    </div>
   </section>
 
   <!-- ================= SSB CALCULATOR ================= -->
   <section class="page" id="ssb" role="tabpanel" aria-labelledby="tab-ssb">
+    <div class="group-nav" role="group" aria-label="Calculators">
+      <button type="button" data-goto="ssb">SSB Calculator</button>
+      <button type="button" data-goto="bluntthorn">BT Calculator</button>
+    </div>
     <div class="section-title">SSB Calculator</div>
     <p class="section-sub">Enter your attack and movement speed to see how much Evolution Damage you gain from Supersonic Breakthrough. The base conversion uses speed up to 140%, and anything above 140% only counts toward the excess conversion.</p>
+
+    <div class="calc-tools">
+      <button type="button" class="calc-btn" data-calc-copy="ssb">Copy link</button>
+      <button type="button" class="calc-btn" data-calc-reset="ssb">Reset</button>
+      <span class="calc-status" role="status" aria-live="polite"></span>
+    </div>
 
     <div class="ssb-grid">
       <div class="ssb-card ssb-inputs">
@@ -2066,9 +2104,19 @@
   </section>
 
   <!-- ================= BLUNT THORN CALCULATOR ================= -->
-  <section class="page" id="bluntthorn" role="tabpanel" aria-labelledby="tab-bluntthorn">
+  <section class="page" id="bluntthorn" role="tabpanel" aria-labelledby="tab-ssb">
+    <div class="group-nav" role="group" aria-label="Calculators">
+      <button type="button" data-goto="ssb">SSB Calculator</button>
+      <button type="button" data-goto="bluntthorn">BT Calculator</button>
+    </div>
     <div class="section-title">Blunt Thorn Calculator</div>
     <p class="section-sub">Enter your crit rate to see how much Evolution Damage Blunt Thorn gives you, and how much crit you still need to max it. Crit rate is capped at 80%, and crit above that cap is converted into Evolution Damage.</p>
+
+    <div class="calc-tools">
+      <button type="button" class="calc-btn" data-calc-copy="bt">Copy link</button>
+      <button type="button" class="calc-btn" data-calc-reset="bt">Reset</button>
+      <span class="calc-status" role="status" aria-live="polite"></span>
+    </div>
 
     <div class="ssb-grid">
       <div class="ssb-card ssb-inputs">
@@ -2641,6 +2689,10 @@
 
   <!-- ================= POSITIONAL ATTACK ================= -->
   <section class="page" id="positional" role="tabpanel" aria-labelledby="tab-positional">
+    <div class="group-nav" role="group" aria-label="Combat">
+      <button type="button" data-goto="positional">Positional Attack</button>
+      <button type="button" data-goto="buffpriority">Buff Icon Priority</button>
+    </div>
     <div class="section-title">Positional Attack</div>
     <p class="section-sub">Skills carry a position tag — hover over a skill in-game to see whether it's tagged Back Attack or Front Attack. Landing the hit from the matching position applies these bonuses.</p>
 
@@ -2680,7 +2732,11 @@
   </section>
 
   <!-- ================= BUFF ICON PRIORITY ================= -->
-  <section class="page" id="buffpriority" role="tabpanel" aria-labelledby="tab-buffpriority">
+  <section class="page" id="buffpriority" role="tabpanel" aria-labelledby="tab-positional">
+    <div class="group-nav" role="group" aria-label="Positional and buffs">
+      <button type="button" data-goto="positional">Positional Attack</button>
+      <button type="button" data-goto="buffpriority">Buff Icon Priority</button>
+    </div>
     <div class="section-title">Buff Icon Priority</div>
     <p class="section-sub">Controls which buff icons take priority on your screen when several are active at once. Set under display options — higher priority buffs stay visible first when icon space is limited.</p>
 
@@ -3168,7 +3224,7 @@
   </section>
 
 </main>
-<footer class="site-footer">Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.</footer>
+<footer class="site-footer">Last updated 12 October 2026 · Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.</footer>
 
 
 <script>
@@ -3211,9 +3267,12 @@
   const BASE_TITLE = document.title;
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Pages that live under a shared top-level tab (their own ids and #links keep working)
+  const TAB_GROUP = { bluntthorn: 'ssb', buffpriority: 'positional' };
+
   function goToTab(target, opts) {
     opts = opts || {};
-    const btn = Array.from(buttons).find(b => b.dataset.target === target);
+    const btn = Array.from(buttons).find(b => b.dataset.target === (TAB_GROUP[target] || target));
     const page = document.getElementById(target);
     if (!btn || !page) return;
     buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); b.tabIndex = -1; });
@@ -3221,7 +3280,8 @@
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     btn.tabIndex = 0;
-    document.title = target === 'home' ? BASE_TITLE : btn.textContent.trim() + ' \u00b7 ' + BASE_TITLE;
+    document.title = target === 'home' ? BASE_TITLE : (((document.querySelector('.group-nav button[data-goto="' + target + '"]') || btn).textContent || '').trim()) + ' \u00b7 ' + BASE_TITLE;
+    document.querySelectorAll('.group-nav button').forEach(b => { if (b.dataset.goto === target) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
     page.classList.add('active');
     keepTabInView(btn, !opts.skipScroll);
     if (!opts.skipScroll) window.scrollTo({top:0, behavior: REDUCED.matches ? 'auto' : 'smooth'});
@@ -3278,6 +3338,10 @@
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => goToTab(btn.dataset.target));
+  });
+
+  document.querySelectorAll('.group-nav button').forEach(el => {
+    el.addEventListener('click', () => goToTab(el.dataset.goto, { skipScroll: true }));
   });
 
   document.querySelectorAll('.goto-link').forEach(el => {
@@ -3429,7 +3493,7 @@
       synergy: 'Synergy', resources: 'Resources'
     };
 
-    const TAB_ALIASES = { bluntthorn: 'Blunt Thorn Calculator', ssb: 'Supersonic Breakthrough Calculator' };
+    const TAB_ALIASES = { bluntthorn: 'Blunt Thorn Calculator (Calculators)', ssb: 'Supersonic Breakthrough Calculator (Calculators)', positional: 'Combat', buffpriority: 'Combat' };
 
     function extractText(el) {
       let text = '';
@@ -4126,6 +4190,58 @@ init();
   ["back", "synergy", "adr", "pd", "adr-book", "pd-book", "pd-stone"].forEach((id) => $(id).addEventListener("change", update));
   document.querySelectorAll("input[name='bt-level']").forEach((i) => i.addEventListener("change", update));
   update();
+})();
+</script><script>
+/* Calculator state: remember inputs (localStorage, this device only), Reset, and Copy link (inputs encoded in the URL). */
+(function () {
+  const CALCS = {
+    ssb: { tab: 'ssb', fields: ['ssb-classSelect','ssb-spec','ssb-sheetAs','ssb-sheetMs','ssb-feast','ssb-support'], radios: ['ssb-wine','ssb-level'] },
+    bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] }
+  };
+  const store = { get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }, del(k){ try { localStorage.removeItem(k); } catch (e) {} } };
+  const key = (c) => 'lopg-calc-' + c;
+  const read = (c) => {
+    const o = {};
+    CALCS[c].fields.forEach((id) => { const el = document.getElementById(id); if (el) o[id] = el.type === 'checkbox' ? (el.checked ? '1' : '0') : el.value; });
+    CALCS[c].radios.forEach((n) => { const el = document.querySelector('input[name="' + n + '"]:checked'); if (el) o[n] = el.value; });
+    return o;
+  };
+  const fire = (el, t) => el.dispatchEvent(new Event(t, { bubbles: true }));
+  const apply = (c, st) => {
+    CALCS[c].fields.forEach((id) => {
+      if (!(id in st)) return; const el = document.getElementById(id); if (!el) return; const v = String(st[id]);
+      if (el.type === 'checkbox') { el.checked = v === '1'; fire(el, 'change'); }
+      else if (el.tagName === 'SELECT') { if ([...el.options].some((o) => o.value === v)) { el.value = v; fire(el, 'change'); } }
+      else if (v === '' || /^\d{0,5}(\.\d{0,4})?$/.test(v)) { el.value = v; fire(el, 'input'); }
+    });
+    CALCS[c].radios.forEach((n) => {
+      if (!(n in st)) return; const el = document.querySelector('input[name="' + n + '"][value="' + String(st[n]).replace(/[^\w.-]/g, '') + '"]');
+      if (el) { el.checked = true; fire(el, 'change'); }
+    });
+  };
+  const defaults = {}; Object.keys(CALCS).forEach((c) => { defaults[c] = read(c); });
+  const params = new URLSearchParams(location.search);
+  Object.keys(CALCS).forEach((c) => {
+    const fromUrl = {}; let any = false;
+    Object.keys(defaults[c]).forEach((k) => { if (params.has(k)) { fromUrl[k] = params.get(k); any = true; } });
+    if (any) { apply(c, Object.assign({}, defaults[c], fromUrl)); store.set(key(c), JSON.stringify(read(c))); }
+    else { const raw = store.get(key(c)); if (raw) { try { const st = JSON.parse(raw); if (st && typeof st === 'object') apply(c, st); } catch (e) {} } }
+  });
+  if (location.search) { try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {} }
+  const status = (c, msg) => { const el = document.querySelector('[data-calc-copy="' + c + '"]').parentNode.querySelector('.calc-status'); el.textContent = msg; clearTimeout(el._t); el._t = setTimeout(() => { el.textContent = ''; }, 2500); };
+  Object.keys(CALCS).forEach((c) => {
+    const sec = document.getElementById(CALCS[c].tab);
+    const save = () => store.set(key(c), JSON.stringify(read(c)));
+    sec.addEventListener('input', save); sec.addEventListener('change', save);
+    document.querySelector('[data-calc-reset="' + c + '"]').addEventListener('click', () => { apply(c, defaults[c]); store.del(key(c)); status(c, 'Inputs reset'); });
+    document.querySelector('[data-calc-copy="' + c + '"]').addEventListener('click', () => {
+      const cur = read(c), q = new URLSearchParams();
+      Object.keys(cur).forEach((k) => { if (cur[k] !== defaults[c][k]) q.set(k, cur[k]); });
+      const url = location.origin + location.pathname + (q.toString() ? '?' + q.toString() : '') + '#' + CALCS[c].tab;
+      const ok = () => status(c, 'Link copied'), fail = () => { window.prompt('Copy this link:', url); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, fail); else fail();
+    });
+  });
 })();
 </script><!-- End Cloudflare Web Analytics -->
 </body>
