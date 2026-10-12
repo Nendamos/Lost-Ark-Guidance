@@ -106,23 +106,10 @@
     height: 1.0625em;
     flex-shrink: 0;
     color: var(--gold);
-    filter: drop-shadow(0 0 7px rgba(224,169,79,0.55));
   }
 
-  h1 span { color: var(--gold); text-shadow: 0 0 22px rgba(224,169,79,0.4); }
+  h1 span { color: var(--gold); }
 
-  header::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(560px, 90%);
-    height: 150px;
-    background: radial-gradient(ellipse at center, rgba(224,169,79,0.12), transparent 72%);
-    pointer-events: none;
-    z-index: -1;
-  }
 
   nav.tabs {
     display: flex;
@@ -461,6 +448,36 @@
   .group-nav button:hover { color: var(--text); border-color: var(--wh-5); }
   .group-nav button[aria-current="page"] { color: var(--gold); border-color: var(--gold); background: var(--wh-2); }
   @media (max-width: 640px) { .group-nav button { flex: 1 1 0; min-height: 44px; } }
+  .link-btn { font: inherit; color: var(--gold); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .link-btn:hover { color: var(--text); }
+  dialog.report { width: min(34rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); overflow: auto; padding: 0; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: 0 24px 60px rgba(0,0,0,0.6); }
+  dialog.report::backdrop { background: rgba(5,7,11,0.72); }
+  .report-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-10); padding: var(--sp-15) var(--sp-15) var(--sp-10); border-bottom: 1px solid var(--line); }
+  .report-head h2 { margin: 0 0 var(--sp-2); font-size: var(--fs-125); line-height: var(--lh-tight); }
+  .report-head p { margin: 0; color: var(--text-dim); font-size: var(--fs-88); line-height: var(--lh-ui); }
+  .report-close, .report-actions button { font: inherit; font-size: var(--fs-88); font-weight: 600; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-12); cursor: pointer; }
+  .report-close:hover, .report-actions button:hover { border-color: var(--wh-5); }
+  .report-form { padding: var(--sp-12) var(--sp-15) var(--sp-15); display: grid; gap: var(--sp-10); }
+  .report-types { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+  .report-types label { margin: 0; display: flex; }
+  .report-types input { position: absolute; opacity: 0; pointer-events: none; }
+  .report-types span { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--sp-6) var(--sp-5); font-size: var(--fs-88); font-weight: 600; color: var(--text-dim); background: var(--bg); cursor: pointer; border-left: 1px solid var(--line); }
+  .report-types label:first-child span { border-left: 0; }
+  .report-types input:checked + span { color: var(--bg); background: var(--gold); }
+  .report-types input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: -4px; }
+  .report-field { display: grid; gap: var(--sp-3); font-size: var(--fs-88); color: var(--text-dim); }
+  .report-field input, .report-field textarea { font: inherit; font-size: var(--fs-95); color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-7) var(--sp-8); width: 100%; }
+  .report-field textarea { min-height: 7.5rem; resize: vertical; line-height: var(--lh-read); }
+  .report-field input::placeholder, .report-field textarea::placeholder { color: var(--text-dim); opacity: 0.7; }
+  .report-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .report-note { margin: 0; font-size: var(--fs-80); color: var(--text-dim); line-height: var(--lh-ui); }
+  .report-status { margin: 0; font-size: var(--fs-88); line-height: var(--lh-ui); min-height: 1.2em; }
+  .report-status.err { color: #ff8a7a; }
+  .report-status.ok { color: var(--teal); }
+  .report-actions { display: flex; justify-content: flex-end; gap: var(--sp-6); }
+  .report-actions .report-send { color: var(--bg); background: var(--gold); border-color: var(--gold); }
+  .report-actions .report-send:disabled { opacity: 0.55; cursor: default; }
+  @media (max-width: 560px) { .report-actions button, .report-close { min-height: 44px; } }
   .calc-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-6); margin: 0 0 var(--sp-12); }
   .calc-btn { font: inherit; font-size: var(--fs-88); line-height: var(--lh-ui); color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-10); cursor: pointer; transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
   .calc-btn:hover { border-color: var(--gold); color: var(--gold); }
@@ -1708,6 +1725,10 @@
   }
   img { height: auto; }
   /* Tab bar: balanced two rows on mid-size screens, one row on wide screens */
+  /* Desktop: smaller logo and title */
+  @media (min-width: 900px) {
+    h1 { font-size: 1.45rem; margin-bottom: var(--sp-4); }
+  }
   @media (min-width: 900px) and (max-width: 1699px) { nav.tabs { max-width: 1000px; margin-left: auto; margin-right: auto; } }
   @media print {
     header { position: static; background: none; border: 0; }
@@ -1903,6 +1924,8 @@
       <h2 class="section-head-dot c-teal">Updates</h2>
       <p class="updates-meta">Last updated: 12 October 2026</p>
       <ul>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Slightly smaller logo and title on desktop, so the menu takes less room at the top.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>The SSB and Blunt Thorn calculators now remember your last inputs on this device, and have a Reset button and a Copy link button for sharing your setup.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Fixed a rounding error in the SSB calculator that could be off by 0.01% with decimal inputs. The overcap needed to max the node is now shown correctly as 26.67%.</span></li>
@@ -3224,7 +3247,41 @@
   </section>
 
 </main>
-<footer class="site-footer">Last updated 12 October 2026 · Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.</footer>
+<footer class="site-footer">Last updated 12 October 2026 · Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.<br>Spotted a wrong number or a bug? <button type="button" class="link-btn" id="report-open">Report a mistake</button></footer>
+
+<dialog class="report" id="report-dialog" aria-labelledby="report-title">
+  <div class="report-head">
+    <div>
+      <h2 id="report-title">Report a mistake</h2>
+      <p>No account needed. It&rsquo;s posted as a public GitHub issue.</p>
+    </div>
+    <button type="button" class="report-close" id="report-close">Close</button>
+  </div>
+  <form class="report-form" id="report-form" novalidate>
+    <div class="report-types" role="radiogroup" aria-label="Type of report">
+      <label><input type="radio" name="report-type" value="bug" checked><span>Bug</span></label>
+      <label><input type="radio" name="report-type" value="feature"><span>Feature request</span></label>
+    </div>
+    <label class="report-field">Title
+      <input type="text" id="report-title-input" maxlength="100" autocomplete="off" required>
+    </label>
+    <label class="report-field">Details
+      <textarea id="report-details" maxlength="2000" required></textarea>
+    </label>
+    <label class="report-field">Contact (optional, shown publicly)
+      <input type="text" id="report-contact" maxlength="60" autocomplete="off" placeholder="Discord or Reddit name">
+    </label>
+    <div class="report-trap" aria-hidden="true"><label>Leave this empty<input type="text" id="report-website" tabindex="-1" autocomplete="off"></label></div>
+    <div id="report-turnstile"></div>
+    <p class="report-note">The page you were on and your browser name are added so the problem can be reproduced. Reports are public, so please don&rsquo;t include personal info.</p>
+    <p class="report-status" id="report-status" role="status" aria-live="polite"></p>
+    <div class="report-actions">
+      <button type="button" id="report-cancel">Cancel</button>
+      <button type="submit" class="report-send" id="report-send">Send report</button>
+    </div>
+  </form>
+</dialog>
+
 
 
 <script>
@@ -4241,6 +4298,89 @@ init();
       const ok = () => status(c, 'Link copied'), fail = () => { window.prompt('Copy this link:', url); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, fail); else fail();
     });
+  });
+})();
+</script><script>
+/* Report a mistake: posts to the report relay (a Cloudflare Worker) which files a public GitHub issue.
+   Until the relay is set up (REPORT_ENDPOINT empty) the form falls back to opening a prefilled GitHub issue. */
+(function () {
+  const REPORT_ENDPOINT = 'https://loa-report.nendamos-gaming.workers.dev';
+  const TURNSTILE_SITEKEY = '0x4AAAAAAFVCENPmpcf5eEiJ';
+  const REPO = 'Nendamos/Lost-Ark-Guidance';
+  const $ = (id) => document.getElementById(id);
+  const dlg = $('report-dialog'), form = $('report-form'), statusEl = $('report-status'), sendBtn = $('report-send');
+  if (!dlg || typeof dlg.showModal !== 'function') { const b = $('report-open'); if (b) b.addEventListener('click', () => window.open('https://github.com/' + REPO + '/issues/new', '_blank', 'noopener')); return; }
+  const HINTS = {
+    bug: ['Calculator total looks wrong', 'What happened, and what you expected instead. If a number looks wrong, say which page and what it should be.'],
+    feature: ['Add a section for\u2026', 'What would you like to see, and how would it help?']
+  };
+  const LABEL = { bug: 'Bug', feature: 'Feature request' };
+  const type = () => (form.querySelector('input[name="report-type"]:checked') || {}).value || 'bug';
+  if (!REPORT_ENDPOINT) { const sub = dlg.querySelector('.report-head p'); if (sub) sub.textContent = 'Opens a prefilled public GitHub issue for you to submit.'; }
+  const setHints = () => { const h = HINTS[type()]; $('report-title-input').placeholder = h[0]; $('report-details').placeholder = h[1]; };
+  form.querySelectorAll('input[name="report-type"]').forEach((r) => r.addEventListener('change', setHints));
+  const say = (msg, kind) => { statusEl.textContent = msg; statusEl.className = 'report-status' + (kind ? ' ' + kind : ''); };
+  const pageName = () => { const parts = document.title.split(' \u00b7 '); return parts.length > 1 ? parts[0].trim() : 'Home'; };
+  const browserName = () => {
+    const ua = navigator.userAgent || '';
+    const b = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox\//.test(ua) ? 'Firefox' : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : 'Unknown browser';
+    return b + (/Mobi|Android|iPhone|iPad/.test(ua) ? ' (mobile)' : ' (desktop)');
+  };
+
+  // Human check (Cloudflare Turnstile), loaded only when the relay is configured
+  let widgetId = null, token = '', tsLoading = null;
+  const loadTurnstile = () => {
+    if (!REPORT_ENDPOINT || !TURNSTILE_SITEKEY) return Promise.resolve();
+    if (window.turnstile) return Promise.resolve();
+    if (tsLoading) return tsLoading;
+    tsLoading = new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+    return tsLoading;
+  };
+  const renderTurnstile = () => {
+    if (!REPORT_ENDPOINT || !TURNSTILE_SITEKEY) return;
+    loadTurnstile().then(() => {
+      if (widgetId !== null) { window.turnstile.reset(widgetId); token = ''; return; }
+      widgetId = window.turnstile.render('#report-turnstile', { sitekey: TURNSTILE_SITEKEY, appearance: 'interaction-only', callback: (t) => { token = t; }, 'expired-callback': () => { token = ''; }, 'error-callback': () => { token = ''; } });
+    }).catch(() => say('Could not load the human check. Please try again later.', 'err'));
+  };
+
+  let opener = null;
+  const open = () => { opener = document.activeElement; say(''); sendBtn.disabled = false; setHints(); dlg.showModal(); $('report-title-input').focus(); renderTurnstile(); };
+  const close = () => { dlg.close(); };
+  $('report-open').addEventListener('click', open);
+  $('report-close').addEventListener('click', close);
+  $('report-cancel').addEventListener('click', close);
+  dlg.addEventListener('close', () => { if (opener && opener.focus) opener.focus(); });
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = $('report-title-input').value.trim(), details = $('report-details').value.trim(), contact = $('report-contact').value.trim();
+    if (title.length < 3) { say('Please add a short title.', 'err'); $('report-title-input').focus(); return; }
+    if (details.length < 10) { say('Please add a few more details.', 'err'); $('report-details').focus(); return; }
+    const payload = { type: type(), title, details, contact, page: pageName(), browser: browserName(), website: $('report-website').value, token };
+
+    if (!REPORT_ENDPOINT) { // fallback: prefilled GitHub issue (needs a GitHub account)
+      const body = '**Type:** ' + LABEL[payload.type] + '\n**Page:** ' + payload.page + '\n**Browser:** ' + payload.browser + (contact ? '\n**Contact:** ' + contact : '') + '\n\n### Details\n' + details;
+      const url = 'https://github.com/' + REPO + '/issues/new?title=' + encodeURIComponent('[' + LABEL[payload.type] + '] ' + title) + '&body=' + encodeURIComponent(body);
+      window.open(url, '_blank', 'noopener'); say('GitHub opened in a new tab. Press \u201cSubmit new issue\u201d there to finish.', 'ok'); return;
+    }
+    if (TURNSTILE_SITEKEY && !token) { say('Please wait a moment for the human check to finish, then send again.', 'err'); renderTurnstile(); return; }
+
+    sendBtn.disabled = true; say('Sending\u2026');
+    const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 15000);
+    try {
+      const res = await fetch(REPORT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctl.signal });
+      let data = {}; try { data = await res.json(); } catch (x) {}
+      if (res.ok && data.ok) {
+        say(data.number ? 'Thanks! Your report was posted as issue #' + data.number + '.' : 'Thanks! Your report was sent.', 'ok');
+        form.reset(); setHints(); token = ''; if (widgetId !== null) window.turnstile.reset(widgetId); setTimeout(() => { if (dlg.open) close(); }, 3500); return;
+      }
+      const msg = { rate_limited: 'You can send one report per hour. Please try again in about ' + (data.retryMinutes || 60) + ' minutes.', daily_cap: 'The report box is full for today. Please try again tomorrow.', captcha: 'The human check failed. Please try again.', invalid: 'Please check the title and details and try again.', links: 'Please remove some of the links and try again.' }[data.error] || 'Something went wrong on our side. Please try again later.';
+      say(msg, 'err'); sendBtn.disabled = false;
+      if (data.error === 'captcha' && widgetId !== null) { window.turnstile.reset(widgetId); token = ''; }
+    } catch (err) { say('Could not reach the report service. Please try again later.', 'err'); sendBtn.disabled = false; }
+    finally { clearTimeout(timer); }
   });
 })();
 </script><!-- End Cloudflare Web Analytics -->
