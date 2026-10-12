@@ -53,7 +53,7 @@
     --fs-60: 0.6rem; --fs-70: 0.7rem; --fs-80: 0.8rem; --fs-88: 0.88rem; --fs-95: 0.95rem; --fs-100: 1rem; --fs-110: 1.1rem; --fs-125: 1.25rem; --fs-140: 1.4rem; --fs-170: 1.7rem; --fs-200: 2rem;
     --lh-tight: 1.25; --lh-ui: 1.45; --lh-read: 1.55;
     --ls-tight: 0.02em; --ls-label: 0.06em; --ls-caps: 0.09em;
-    --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-pill: 999px;
+    --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
     --wh-1: rgba(255,255,255,0.025); --wh-2: rgba(255,255,255,0.05); --wh-3: rgba(255,255,255,0.09); --wh-4: rgba(255,255,255,0.18); --wh-5: rgba(255,255,255,0.25);
     --dur-fast: .15s; --dur: .2s; --ease: ease;
   }
@@ -1671,7 +1671,7 @@
   .fs-110 { font-size: var(--fs-110); } .fw-600 { font-weight: 600; }
   .mb-0 { margin-bottom: 0; } .mb-9 { margin-bottom: var(--sp-9); } .mb-12 { margin-bottom: var(--sp-12); }
   .note-line { margin: 0 0 var(--sp-9); font-size: var(--fs-88); color: var(--text-dim); }
-  .w-7 { width: 7%; } .w-9 { width: 9%; } .w-16-5 { width: 16.5%; } .w-27 { width: 27%; } .w-34 { width: 34%; } .w-40 { width: 40%; } .w-46 { width: 46%; } .w-60 { width: 60%; } .w-66 { width: 66%; } .w-91 { width: 91%; }
+  .w-7 { width: 7%; } .w-9 { width: 9%; } .w-27 { width: 27%; } .w-40 { width: 40%; } .w-46 { width: 46%; } .w-60 { width: 60%; } .w-66 { width: 66%; } .w-91 { width: 91%; }
   .w-28 { width: 28%; } .w-14-4 { width: 14.4%; }
   .table-note { margin: var(--sp-8) 0 0; font-size: var(--fs-80); color: var(--text-dim); }
   th.per-level, td.per-level { border-right: 1px solid var(--line); }
@@ -3198,6 +3198,16 @@
     } catch (e) { /* purely cosmetic */ }
   }
 
+  // Keep focused / scrolled-to elements clear of the sticky header
+  (function () {
+    const header = document.querySelector('header');
+    if (!header) return;
+    const sync = () => { document.documentElement.style.scrollPaddingTop = (header.offsetHeight + 12) + 'px'; };
+    sync();
+    if (window.ResizeObserver) new ResizeObserver(sync).observe(header);
+    else window.addEventListener('resize', sync);
+  })();
+
   const BASE_TITLE = document.title;
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -3481,9 +3491,13 @@
     const resultsEl = document.getElementById('search-results');
     if (!searchWrap || !toggleBtn) return;
 
+    toggleBtn.setAttribute('aria-controls', 'search-panel');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+
     function openSearch() {
       if (!SEARCH_INDEX) SEARCH_INDEX = buildIndex();
       searchWrap.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
       input.value = '';
       resultsEl.innerHTML = '';
       setTimeout(() => input.focus(), 50);
@@ -3491,6 +3505,7 @@
 
     function closeSearch() {
       searchWrap.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
     }
 
     toggleBtn.addEventListener('click', (e) => {
@@ -3504,7 +3519,11 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeSearch();
+      if (e.key === 'Escape' && searchWrap.classList.contains('open')) {
+        const hadFocus = searchWrap.contains(document.activeElement);
+        closeSearch();
+        if (hadFocus) toggleBtn.focus();
+      }
       if ((e.ctrlKey || e.metaKey) && e.key === '/') {
         e.preventDefault();
         if (searchWrap.classList.contains('open')) closeSearch(); else openSearch();
@@ -3543,14 +3562,7 @@
     function jumpTo(item) {
       closeSearch();
 
-      const btn = Array.from(buttons).find(b => b.dataset.target === item.tabId);
-      const page = document.getElementById(item.tabId);
-      if (btn && page) {
-        buttons.forEach(b => b.classList.remove('active'));
-        pages.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        page.classList.add('active');
-      }
+      goToTab(item.tabId, { skipHash: true, skipScroll: true });
 
       let newHash = '#' + item.tabId;
 
@@ -3579,6 +3591,21 @@
     }
 
     input.addEventListener('input', () => renderResults(input.value));
+
+    // Keyboard: Enter opens the top result, Down/Up move through the results
+    input.addEventListener('keydown', (e) => {
+      const items = Array.from(resultsEl.querySelectorAll('.search-result-item'));
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); items[0].focus(); }
+      else if (e.key === 'Enter') { e.preventDefault(); items[0].click(); }
+    });
+    resultsEl.addEventListener('keydown', (e) => {
+      const items = Array.from(resultsEl.querySelectorAll('.search-result-item'));
+      const i = items.indexOf(document.activeElement);
+      if (i < 0) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); (items[i + 1] || items[i]).focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); (i > 0 ? items[i - 1] : input).focus(); }
+    });
   })();
 </script>
 
@@ -3625,7 +3652,7 @@ const bpFeastEl = document.getElementById("ssb-bpFeast");
 const bpNoneEl = document.getElementById("ssb-bpNone");
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-const floor2 = (value) => Math.floor(value * 100) / 100;
+const floor2 = (value) => Math.floor(value * 100 + 1e-6) / 100;
 const toBP = (value) => Math.floor(value * 100 + 1e-6);
 
 const readNumber = (value) => {
@@ -3827,8 +3854,10 @@ const update = () => {
   const baseAtCap = (CAP - BASE) * 2 * levelConfig.baseRate;
   const requiredExcess = Math.max(
     0,
-    (levelConfig.maxEvo - levelConfig.flatBonus - baseAtCap) /
-      levelConfig.excessRate
+    Math.ceil(
+      ((levelConfig.maxEvo - levelConfig.flatBonus - baseAtCap) /
+        levelConfig.excessRate) * 100 - 1e-6
+    ) / 100
   );
 
   const progress =
@@ -3882,7 +3911,7 @@ const getRequiredOvercapBP = (levelConfig) => {
   );
   const remainingBP = maxBP - flatBP - baseAtCapBP;
   if (remainingBP <= 0) return 0;
-  return Math.floor((remainingBP * 100) / excessRatePercent);
+  return Math.ceil((remainingBP * 100) / excessRatePercent - 1e-6);
 };
 
 const findSwiftRequired = (baseAsBonusBP, baseMsBonusBP, requiredOvercapBP) => {
