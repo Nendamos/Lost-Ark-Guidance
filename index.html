@@ -1956,6 +1956,35 @@
   .info-pop-sub { margin-top: var(--sp-6); color: var(--text-dim); font-size: var(--fs-80); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
   .info-pop ul { margin: var(--sp-3) 0 0; padding-left: 1.1rem; }
   .info-pop li { margin: 0.15rem 0; }
+  /* ---- Bracelets: custom baseline ---- */
+  .br-base { margin: 0 0 var(--sp-6); }
+  .br-base-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; margin-top: 0; transition: grid-template-rows 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.22s ease, margin-top 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.34s; }
+  .br-base.is-custom .br-base-wrap { grid-template-rows: 1fr; opacity: 1; visibility: visible; margin-top: var(--sp-8); transition: grid-template-rows 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease 0.06s, margin-top 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s; }
+  .br-base-panel { min-height: 0; overflow: hidden; }
+  .br-base-inner { padding: var(--sp-9) var(--sp-12); background: var(--panel); border: 1px solid var(--gold); border-radius: var(--r-md); }
+  @media (prefers-reduced-motion: reduce) { .br-base-wrap, .br-base.is-custom .br-base-wrap { transition: none; } }
+  .br-base-active { margin: var(--sp-8) 0 0; padding: var(--sp-6) var(--sp-9); border-radius: var(--r-md); background: color-mix(in srgb, var(--gold) 12%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); color: var(--text); font-size: var(--fs-88); line-height: 1.45; }
+  .br-base-active strong { color: var(--gold); }
+  .br-base-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--sp-8); margin-top: var(--sp-9); }
+  .br-base-grid .ssb-field { margin-bottom: 0; }
+  .br-base-foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-8); margin-top: var(--sp-9); }
+  .br-base-msg { color: var(--gold); font-size: var(--fs-88); }
+  .br-chip { display: inline-block; vertical-align: middle; margin-left: var(--sp-8); padding: 0.1rem 0.6rem; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold); background: color-mix(in srgb, var(--gold) 12%, transparent); font-size: var(--fs-80); font-weight: 600; letter-spacing: 0; text-transform: none; }
+  .br-chip[hidden] { display: none; }
+  /* compact custom-baseline switch */
+  #bracelets .br-base label.ssb-check { font-size: var(--fs-88); gap: 0.55rem; font-weight: 500; color: var(--text-dim); width: max-content; max-width: 100%; }
+  @media (pointer: fine) { #bracelets .br-base label.ssb-check { min-height: 0; } }
+  #bracelets .br-base.is-custom label.ssb-check { color: var(--gold); font-weight: 600; }
+  #bracelets .br-base .ssb-check input { appearance: none; -webkit-appearance: none; flex: none; width: 1.9rem; height: 1.05rem; border-radius: 999px; background: var(--wh-3); border: 1px solid var(--line); position: relative; margin: 0; cursor: pointer; }
+  #bracelets .br-base .ssb-check input::before { content: ""; position: absolute; top: 50%; left: 2px; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--text-dim); transform: translateY(-50%); transition: left 0.15s ease, background 0.15s ease; }
+  #bracelets .br-base .ssb-check input:checked { background: color-mix(in srgb, var(--gold) 30%, transparent); border-color: var(--gold); }
+  #bracelets .br-base .ssb-check input:checked::before { left: calc(100% - 0.75rem - 2px); background: var(--gold); }
+  #bracelets .br-base .ssb-check input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { #bracelets .br-base .ssb-check input::before { transition: none; } }
+  .br-chip { white-space: nowrap; }
+  @media (max-width: 560px) { #bracelets h3.section-head-dot { flex-wrap: wrap; } .br-chip { margin-left: 0; } }
+  .info-pop .br-tip-custom { color: var(--gold); }
+  .info-pop .br-tip-custom[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -2039,6 +2068,7 @@
       <p class="updates-meta">Last updated: 13 October 2026</p>
       <ul>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: DPS bracelet values are now estimated for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator. The Weapon Power and STR/DEX/INT lines are lower than before, the table is re-ranked, and new info icons explain the baseline.</span></li>
+        <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: optional custom baseline. Tick &ldquo;Use a custom baseline&rdquo; above the DPS Bracelet table to enter your own Weapon Power, STR/DEX/INT, Additional Damage, crit rate and Crit Damage. The table, ranking and calculator update to match, and Reset returns to the default baseline.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New Accessory Calculator on the Accessories tab: choose a necklace, earring or ring, the tier of each bonus effect and an optional common effect to see the combined damage value.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New DPS Bracelet Calculator on the Bracelets tab: pick up to three effects and their grade to see the combined damage value.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
@@ -2864,29 +2894,51 @@
     </section>
 
     <section class="block">
-      <h3 class="section-head-dot c-gold">DPS Bracelet<button type="button" class="info-tip" data-tip="tip-base" aria-label="How these values are estimated" aria-expanded="false" aria-controls="tip-base"></button></h3>
+      <h3 class="section-head-dot c-gold">DPS Bracelet<button type="button" class="info-tip" data-tip="tip-base" aria-label="How these values are estimated" aria-expanded="false" aria-controls="tip-base"></button><span class="br-chip" id="br-chip" hidden>Custom baseline</span></h3>
       <div class="info-pop" id="tip-base" role="tooltip" hidden>
         <p class="info-pop-title">How these values are estimated</p>
+        <p class="br-tip-custom" id="br-tip-custom" hidden><strong>Custom baseline active.</strong> The values below are the numbers you entered.</p>
         <p>Estimates for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator applied as baseline.</p>
         <p class="info-pop-sub">Baseline used</p>
         <ul>
-          <li>Weapon Power 230,000</li>
-          <li>STR/DEX/INT 630,000</li>
-          <li>Additional Damage 35%</li>
-          <li>Total crit rate 70%</li>
-          <li>Crit Damage 250%</li>
+          <li>Weapon Power <span id="tb-wp">230,000</span></li>
+          <li>STR/DEX/INT <span id="tb-ms">630,000</span></li>
+          <li>Additional Damage <span id="tb-add">35%</span></li>
+          <li>Total crit rate <span id="tb-cr">70%</span></li>
+          <li>Crit Damage <span id="tb-cd">250%</span></li>
           <li>Support buffs accounted for</li>
         </ul>
       </div>
       <div class="info-pop" id="tip-add" role="tooltip" hidden>
         <p>Total value, applicable only against Demon and Archdemon bosses (such as Kazeros and Legion raids).</p>
-        <p>Against any other target, the total damage value: <span class="t-blue">1.85%</span> / <span class="t-purple">2.22%</span> / <span class="t-orange">2.59%</span></p>
+        <p>Against any other target, the total damage value: <span id="tip-add-vals"><span class="t-blue">1.85%</span> / <span class="t-purple">2.22%</span> / <span class="t-orange">2.59%</span></span></p>
       </div>
       <div class="info-pop" id="tip-back" role="tooltip" hidden>
         <p>Displayed value assumes more than 90% of your skill damage comes from skills labeled as a Back attack.</p>
       </div>
       <div class="info-pop" id="tip-front" role="tooltip" hidden>
         <p>Displayed value assumes more than 90% of your skill damage comes from skills labeled as a Front attack.</p>
+      </div>
+      <div class="br-base" id="br-base">
+        <label class="ssb-check" for="br-custom"><input type="checkbox" id="br-custom" role="switch"><span>Use a custom baseline</span></label>
+        <div class="br-base-wrap" id="br-base-wrap" inert>
+          <div class="br-base-panel" id="br-base-panel">
+          <div class="br-base-inner">
+          <p class="br-base-active" id="br-base-active" role="status"><strong>Custom baseline active.</strong> The DPS Bracelet values and calculator totals on this page are based on the numbers you enter below.</p>
+          <div class="br-base-grid">
+            <div class="ssb-field"><label for="br-b-wp">Weapon Power</label><input id="br-b-wp" type="number" inputmode="numeric" step="any" min="10000" max="999000" value="230000" data-k="wp"><div class="ssb-hint">10,000 &ndash; 999,000</div></div>
+            <div class="ssb-field"><label for="br-b-ms">STR/DEX/INT</label><input id="br-b-ms" type="number" inputmode="numeric" step="any" min="10000" max="999000" value="630000" data-k="ms"><div class="ssb-hint">10,000 &ndash; 999,000</div></div>
+            <div class="ssb-field"><label for="br-b-add">Additional Damage (%)</label><input id="br-b-add" type="number" inputmode="decimal" step="any" min="10" max="100" value="35" data-k="add"><div class="ssb-hint">10 &ndash; 100</div></div>
+            <div class="ssb-field"><label for="br-b-cr">Total crit rate (%)</label><input id="br-b-cr" type="number" inputmode="decimal" step="any" min="0" max="100" value="70" data-k="cr"><div class="ssb-hint">0 &ndash; 100</div></div>
+            <div class="ssb-field"><label for="br-b-cd">Crit Damage (%)</label><input id="br-b-cd" type="number" inputmode="decimal" step="any" min="100" max="999" value="250" data-k="cd"><div class="ssb-hint">100 &ndash; 999</div></div>
+          </div>
+          <div class="br-base-foot">
+            <button type="button" class="calc-btn" id="br-base-reset">Reset to default baseline</button>
+            <span class="br-base-msg" id="br-base-msg" role="status" aria-live="polite"></span>
+          </div>
+          </div>
+          </div>
+        </div>
       </div>
       <p class="note-line">Ranked by the Legendary (L) grade value — the R and E columns for the same row won't always be in descending order on their own.</p>
       <table class="data table-bracelet-dps">
@@ -2896,23 +2948,23 @@
           <tr><th>Rank</th><th>Effect</th><th class="t-blue">R</th><th class="t-purple">E</th><th class="t-orange">L</th></tr>
         </thead>
         <tbody>
-        <tr><td><span class="rank-badge">1</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.83%</td><td class="t-purple">4.43%</td><td class="t-orange">5.03%</td></tr>
-        <tr><td><span class="rank-badge">2</span></td><td>Additional Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span>. Bonus vs. Demon/Archdemon +2.5%<button type="button" class="info-tip" data-tip="tip-add" aria-label="About this value" aria-expanded="false" aria-controls="tip-add"></button></td><td class="t-blue">4.23%</td><td class="t-purple">4.61%</td><td class="t-orange">4.99%</td></tr>
-        <tr><td><span class="rank-badge">3</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.64%</td><td class="t-purple">4.19%</td><td class="t-orange">4.75%</td></tr>
-        <tr><td><span class="rank-badge">4</span></td><td>Outgoing Damage <span class="t-blue">+4.5</span>/<span class="t-purple">+5</span>/<span class="t-orange">+5.5%</span>, but Skill Cooldown +2%.</td><td class="t-blue">3.10%</td><td class="t-purple">3.60%</td><td class="t-orange">4.10%</td></tr>
-        <tr><td><span class="rank-badge">5</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.49%</td><td class="t-purple">3.07%</td><td class="t-orange">3.66%</td></tr>
-        <tr><td><span class="rank-badge">6</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span></td><td class="t-blue">2.32%</td><td class="t-purple">2.87%</td><td class="t-orange">3.41%</td></tr>
-        <tr><td><span class="rank-badge">7</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span>. Outgoing Damage against Staggered foes <span class="t-blue">+4</span>/<span class="t-purple">+4.5</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.20%</td><td class="t-purple">2.73%</td><td class="t-orange">3.25%</td></tr>
-        <tr><td><span class="rank-badge">8</span></td><td>Non-Directional Skill Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span> (does not apply to Awakening skills)</td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">8</span></td><td>Back Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-back" aria-label="About this value" aria-expanded="false" aria-controls="tip-back"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">8</span></td><td>Front Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-front" aria-label="About this value" aria-expanded="false" aria-controls="tip-front"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">9</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span></td><td class="t-blue">2.00%</td><td class="t-purple">2.50%</td><td class="t-orange">3.00%</td></tr>
-        <tr><td><span class="rank-badge">10</span></td><td>Additional Damage <span class="t-blue">+3</span>/<span class="t-purple">+3.5</span>/<span class="t-orange">+4%</span></td><td class="t-blue">2.22%</td><td class="t-purple">2.59%</td><td class="t-orange">2.96%</td></tr>
-        <tr><td><span class="rank-badge">11</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span>. When HP above 50%, up on hit: Weapon Power <span class="t-blue">+2,000</span>/<span class="t-purple">+2,200</span>/<span class="t-orange">+2,400</span> for 5s.</td><td class="t-blue">1.57%</td><td class="t-purple">1.76%</td><td class="t-orange">1.94%</td></tr>
-        <tr><td><span class="rank-badge">12</span></td><td>Weapon Power <span class="t-blue">+6,900</span>/<span class="t-purple">+7,800</span>/<span class="t-orange">+8,700</span>. Up on hit: Weapon Power <span class="t-blue">+130</span>/<span class="t-purple">+140</span>/<span class="t-orange">+150</span> for 120s every 30s (Max 30 stacks)</td><td class="t-blue">1.46%</td><td class="t-purple">1.64%</td><td class="t-orange">1.81%</td></tr>
-        <tr><td><span class="rank-badge">13</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span></td><td class="t-blue">1.24%</td><td class="t-purple">1.39%</td><td class="t-orange">1.54%</td></tr>
-        <tr><td><span class="rank-badge">14</span></td><td>On hit: Weapon Power <span class="t-blue">+1,160</span>/<span class="t-purple">+1,320</span>/<span class="t-orange">+1,480</span> and Attack and Movement Speed +1% for 10s (Max 6 stacks)</td><td class="t-blue">1.00%</td><td class="t-purple">1.13%</td><td class="t-orange">1.27%</td></tr>
-        <tr><td><span class="rank-badge">15</span></td><td>Dexterity/Intelligence/Strength <span class="t-blue">+12,000</span>/<span class="t-purple">+14,000</span>/<span class="t-orange">+16,000</span></td><td class="t-blue">0.75%</td><td class="t-purple">0.88%</td><td class="t-orange">1.00%</td></tr>
+        <tr data-eid="a3"><td><span class="rank-badge">1</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.83%</td><td class="t-purple">4.43%</td><td class="t-orange">5.03%</td></tr>
+        <tr data-eid="a1"><td><span class="rank-badge">2</span></td><td>Additional Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span>. Bonus vs. Demon/Archdemon +2.5%<button type="button" class="info-tip" data-tip="tip-add" aria-label="About this value" aria-expanded="false" aria-controls="tip-add"></button></td><td class="t-blue">4.23%</td><td class="t-purple">4.61%</td><td class="t-orange">4.99%</td></tr>
+        <tr data-eid="a2"><td><span class="rank-badge">3</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.64%</td><td class="t-purple">4.19%</td><td class="t-orange">4.75%</td></tr>
+        <tr data-eid="a5"><td><span class="rank-badge">4</span></td><td>Outgoing Damage <span class="t-blue">+4.5</span>/<span class="t-purple">+5</span>/<span class="t-orange">+5.5%</span>, but Skill Cooldown +2%.</td><td class="t-blue">3.10%</td><td class="t-purple">3.60%</td><td class="t-orange">4.10%</td></tr>
+        <tr data-eid="a8"><td><span class="rank-badge">5</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.49%</td><td class="t-purple">3.07%</td><td class="t-orange">3.66%</td></tr>
+        <tr data-eid="a7"><td><span class="rank-badge">6</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span></td><td class="t-blue">2.32%</td><td class="t-purple">2.87%</td><td class="t-orange">3.41%</td></tr>
+        <tr data-eid="a13"><td><span class="rank-badge">7</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span>. Outgoing Damage against Staggered foes <span class="t-blue">+4</span>/<span class="t-purple">+4.5</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.20%</td><td class="t-purple">2.73%</td><td class="t-orange">3.25%</td></tr>
+        <tr data-eid="a10"><td><span class="rank-badge">8</span></td><td>Non-Directional Skill Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span> (does not apply to Awakening skills)</td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr data-eid="a11"><td><span class="rank-badge">8</span></td><td>Back Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-back" aria-label="About this value" aria-expanded="false" aria-controls="tip-back"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr data-eid="a12"><td><span class="rank-badge">8</span></td><td>Front Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-front" aria-label="About this value" aria-expanded="false" aria-controls="tip-front"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr data-eid="a14"><td><span class="rank-badge">9</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span></td><td class="t-blue">2.00%</td><td class="t-purple">2.50%</td><td class="t-orange">3.00%</td></tr>
+        <tr data-eid="a15"><td><span class="rank-badge">10</span></td><td>Additional Damage <span class="t-blue">+3</span>/<span class="t-purple">+3.5</span>/<span class="t-orange">+4%</span></td><td class="t-blue">2.22%</td><td class="t-purple">2.59%</td><td class="t-orange">2.96%</td></tr>
+        <tr data-eid="a4"><td><span class="rank-badge">11</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span>. When HP above 50%, up on hit: Weapon Power <span class="t-blue">+2,000</span>/<span class="t-purple">+2,200</span>/<span class="t-orange">+2,400</span> for 5s.</td><td class="t-blue">1.57%</td><td class="t-purple">1.76%</td><td class="t-orange">1.94%</td></tr>
+        <tr data-eid="a6"><td><span class="rank-badge">12</span></td><td>Weapon Power <span class="t-blue">+6,900</span>/<span class="t-purple">+7,800</span>/<span class="t-orange">+8,700</span>. Up on hit: Weapon Power <span class="t-blue">+130</span>/<span class="t-purple">+140</span>/<span class="t-orange">+150</span> for 120s every 30s (Max 30 stacks)</td><td class="t-blue">1.46%</td><td class="t-purple">1.64%</td><td class="t-orange">1.81%</td></tr>
+        <tr data-eid="a9"><td><span class="rank-badge">13</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span></td><td class="t-blue">1.24%</td><td class="t-purple">1.39%</td><td class="t-orange">1.54%</td></tr>
+        <tr data-eid="a16"><td><span class="rank-badge">14</span></td><td>On hit: Weapon Power <span class="t-blue">+1,160</span>/<span class="t-purple">+1,320</span>/<span class="t-orange">+1,480</span> and Attack and Movement Speed +1% for 10s (Max 6 stacks)</td><td class="t-blue">1.00%</td><td class="t-purple">1.13%</td><td class="t-orange">1.27%</td></tr>
+        <tr data-eid="a17"><td><span class="rank-badge">15</span></td><td>Dexterity/Intelligence/Strength <span class="t-blue">+12,000</span>/<span class="t-purple">+14,000</span>/<span class="t-orange">+16,000</span></td><td class="t-blue">0.75%</td><td class="t-purple">0.88%</td><td class="t-orange">1.00%</td></tr>
         </tbody>
       </table>
     </section>
@@ -4483,6 +4535,7 @@ init();
 </script><script>
 /* Bracelet effect calculator: plain sum of the "Total Damage Value" column in the DPS Bracelet table below. */
 (function () {
+  let BR_CUSTOM = false;
   const EFFECTS = [
     ['a3', 'Crit Rate + Crit Hit Damage', 3.83, 4.43, 5.03],
     ['a1', 'Additional Damage + Demon/Archdemon bonus', 4.23, 4.61, 4.99],
@@ -4533,6 +4586,7 @@ init();
       cents += Math.round(v * 100); count++;
       if (key === 'a1') notes.push('Additional Damage + Demon/Archdemon bonus only reaches this value against Kazeros/Legion raid bosses; outside that content the value drops by 50%.');
     });
+    if (BR_CUSTOM && count) notes.push('Totals use your custom baseline (see the DPS Bracelet section).');
     $('br-total').textContent = (cents / 100).toFixed(2) + '%';
     $('br-count').textContent = count === 0 ? 'No effects selected' : count + (count === 1 ? ' effect selected' : ' effects selected');
     const box = $('br-notes'); box.innerHTML = '';
@@ -4603,6 +4657,116 @@ init();
   sels.forEach((s) => s.addEventListener('change', update));
   document.querySelectorAll('input[name^="br-g"]').forEach((r) => r.addEventListener('change', update));
   update();
+
+  /* ---- Custom baseline: recomputes every bracelet value from five inputs. Default baseline = the published table. ---- */
+  const BASE_DEF = { wp: 230000, ms: 630000, add: 35, cr: 70, cd: 250 };
+  const LIM = { wp: [10000, 999000, 'Weapon Power'], ms: [10000, 999000, 'STR/DEX/INT'], add: [10, 100, 'Additional Damage'], cr: [0, 100, 'Total crit rate'], cd: [100, 999, 'Crit Damage'] };
+  const compute = (b) => {
+    const c = b.cr / 100, cd = b.cd / 100, add = b.add / 100;
+    const sup = Math.sqrt(b.wp * b.ms / 6) * 1.088 * 0.3447;
+    const ap = (wp, ms) => Math.floor((Math.sqrt(wp * ms / 6) * 1.088 + 3990 + sup) * 1.1234);
+    const base = ap(b.wp, b.ms);
+    const wpg = (d) => ap(b.wp + d * 1.09, b.ms) / base - 1;
+    const sg = (d) => ap(b.wp, b.ms + d * 1.09) / base - 1;
+    const den = 1 + c * (cd - 1);
+    const rate = (x, dual) => (1 + Math.min(1, c + x) * (cd * (dual ? 1.015 : 1) - 1)) / den - 1;
+    const dmg = (y, dual) => (1 + c * ((cd + y) * (dual ? 1.015 : 1) - 1)) / den - 1;
+    const p = (f, arr) => arr.map((v) => f(v) * 100);
+    const addAlone = p((x) => x / (1 + add), [0.025, 0.03, 0.035]);
+    const out = {
+      a3: p((x) => rate(x, true), [0.034, 0.042, 0.05]),
+      a1: addAlone.map((a) => ((a / 100 + 1) * (0.025 / 1.07 + 1) - 1) * 100),
+      a2: p((y) => dmg(y, true), [0.068, 0.084, 0.10]),
+      a5: [4.5 - 1.4, 5 - 1.4, 5.5 - 1.4],
+      a8: p((x) => rate(x, false), [0.034, 0.042, 0.05]),
+      a7: p((y) => dmg(y, false), [0.068, 0.084, 0.10]),
+      a13: [2 + 4 * 0.05, 2.5 + 4.5 * 0.05, 3 + 5 * 0.05],
+      a10: [2.25, 2.7, 3.15], a11: [2.25, 2.7, 3.15], a12: [2.25, 2.7, 3.15],
+      a14: [2, 2.5, 3],
+      a15: p((x) => x / (1 + add), [0.03, 0.035, 0.04]),
+      a4: p(wpg, [7200 + 2000 * 0.99, 8100 + 2200 * 0.99, 9000 + 2400 * 0.99]),
+      a6: p(wpg, [6900 + 12.5 * 130, 7800 + 12.5 * 140, 8700 + 12.5 * 150]),
+      a9: p(wpg, [7200, 8100, 9000]),
+      a16: p(wpg, [1160 * 5, 1320 * 5, 1480 * 5]),
+      a17: p(sg, [12000, 14000, 16000])
+    };
+    const r2 = (v) => Math.round((v + 1e-9) * 100) / 100;
+    Object.keys(out).forEach((k) => { out[k] = out[k].map(r2); });
+    out.__add = addAlone.map(r2);
+    return out;
+  };
+  window.__brCompute = compute;
+  EFFECTS.forEach((e, i) => { e.idx = i; });
+  const tbody = document.querySelector('.table-bracelet-dps tbody');
+  const rowOf = {}; tableRows.forEach((tr) => { rowOf[tr.dataset.eid] = tr; });
+  const fmt = (n) => Number(n).toLocaleString('en-US');
+  const tidy = (v) => String(Math.round(v * 1000) / 1000);
+  let cur = Object.assign({}, BASE_DEF);
+  const applyValues = (b) => {
+    const v = compute(b);
+    EFFECTS.forEach((e) => { const x = v[e[0]]; if (x) { e[2] = x[0]; e[3] = x[1]; e[4] = x[2]; } });
+    EFFECTS.sort((a, z) => (Math.round(z[4] * 100) - Math.round(a[4] * 100)) || (a.idx - z.idx));
+    let rank = 0, prev = null;
+    EFFECTS.forEach((e) => {
+      const tr = rowOf[e[0]]; if (!tr) return;
+      const l = Math.round(e[4] * 100); if (l !== prev) { rank++; prev = l; }
+      tr.querySelector('.rank-badge').textContent = String(rank);
+      tr.children[2].textContent = e[2].toFixed(2) + '%'; tr.children[3].textContent = e[3].toFixed(2) + '%'; tr.children[4].textContent = e[4].toFixed(2) + '%';
+      tbody.appendChild(tr);
+    });
+    const addEl = $('tip-add-vals');
+    if (addEl) addEl.innerHTML = '<span class="t-blue">' + v.__add[0].toFixed(2) + '%</span> / <span class="t-purple">' + v.__add[1].toFixed(2) + '%</span> / <span class="t-orange">' + v.__add[2].toFixed(2) + '%</span>';
+    sels.forEach((sel) => {
+      const keep = sel.value;
+      [...sel.options].forEach((o) => { if (o.value) o.remove(); });
+      EFFECTS.forEach((e) => { const o = document.createElement('option'); o.value = e[0]; o.textContent = e[1]; sel.appendChild(o); });
+      sel.value = keep; sel.dispatchEvent(new Event('change'));
+    });
+    $('tb-wp').textContent = fmt(b.wp); $('tb-ms').textContent = fmt(b.ms);
+    $('tb-add').textContent = tidy(b.add) + '%'; $('tb-cr').textContent = tidy(b.cr) + '%'; $('tb-cd').textContent = tidy(b.cd) + '%';
+  };
+  const chk = $('br-custom'), wrap = $('br-base-wrap'), box = $('br-base'), msg = $('br-base-msg');
+  const inputs = [...document.querySelectorAll('#br-base [data-k]')];
+  const store = {
+    get() { try { return JSON.parse(localStorage.getItem('lopg-br-baseline') || 'null'); } catch (e) { return null; } },
+    set(o) { try { localStorage.setItem('lopg-br-baseline', JSON.stringify(o)); } catch (e) {} },
+    del() { try { localStorage.removeItem('lopg-br-baseline'); } catch (e) {} }
+  };
+  const save = () => { const same = Object.keys(BASE_DEF).every((k) => cur[k] === BASE_DEF[k]); if (!chk.checked && same) store.del(); else store.set({ on: chk.checked, v: cur }); };
+  const refresh = () => {
+    BR_CUSTOM = chk.checked;
+    wrap.inert = !chk.checked; box.classList.toggle('is-custom', chk.checked); $('br-chip').hidden = !chk.checked; $('br-tip-custom').hidden = !chk.checked;
+    applyValues(chk.checked ? cur : BASE_DEF);
+    update(); save();
+  };
+  const setMsg = (t) => { msg.textContent = t || ''; };
+  const parse = (txt) => { const n = parseFloat(String(txt).replace(/[,\s]/g, '')); return isFinite(n) ? n : null; };
+  const inRange = (k, n) => n !== null && n >= LIM[k][0] && n <= LIM[k][1];
+  inputs.forEach((inp) => {
+    const k = inp.dataset.k;
+    inp.addEventListener('input', () => { const n = parse(inp.value); if (inRange(k, n)) { cur[k] = n; setMsg(''); if (chk.checked) refresh(); } });
+    inp.addEventListener('change', () => {
+      const n = parse(inp.value), lim = LIM[k];
+      if (n === null) { inp.value = cur[k]; setMsg(lim[2] + ' needs a number, so your last value was kept.'); }
+      else if (n < lim[0] || n > lim[1]) { cur[k] = Math.min(lim[1], Math.max(lim[0], n)); inp.value = cur[k]; setMsg(lim[2] + ' must be between ' + fmt(lim[0]) + ' and ' + fmt(lim[1]) + '. It was set to ' + fmt(cur[k]) + '.'); }
+      else { cur[k] = n; setMsg(''); }
+      if (chk.checked) refresh(); else save();
+    });
+  });
+  chk.addEventListener('change', () => { setMsg(''); refresh(); });
+  $('br-base-reset').addEventListener('click', () => {
+    cur = Object.assign({}, BASE_DEF); inputs.forEach((i) => { i.value = cur[i.dataset.k]; });
+    chk.checked = false; setMsg('Default baseline restored.'); refresh();
+  });
+  try {
+    const sv = store.get();
+    if (sv && sv.v) {
+      Object.keys(BASE_DEF).forEach((k) => { const n = parse(sv.v[k]); cur[k] = inRange(k, n) ? n : BASE_DEF[k]; });
+      inputs.forEach((i) => { i.value = cur[i.dataset.k]; });
+      chk.checked = !!sv.on;
+    }
+  } catch (e) {}
+  refresh();
 })();
 </script><script>
 /* Standard dropdown: any <select data-dd> becomes the same modern custom dropdown used on Bracelets.
