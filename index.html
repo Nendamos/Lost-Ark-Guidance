@@ -1942,6 +1942,20 @@
   /* pressed: the button sinks onto its edge */
   nav.tabs button:active, .subtabs button:active, .subtabs2 button:active, .group-nav button:active, .calc-btn:active, .report-close:active, .report-actions button:active, .syn-filter-clear:active,
   :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg label:active span { transform: translateY(2px) !important; box-shadow: 0 1px 0 var(--btn-edge) !important; }
+
+  /* ---- Info tooltip (i): standard pattern for explanatory hovers. Button .info-tip[data-tip=ID] + hidden .info-pop#ID ---- */
+  .info-tip { display: inline-grid; place-items: center; vertical-align: middle; width: 1.15rem; height: 1.15rem; margin-left: 0.5rem; padding: 0; border-radius: 50%; border: 1.5px solid var(--text-dim); background: transparent; color: var(--text-dim); cursor: pointer; font: 700 0.7rem/1 Georgia, 'Times New Roman', serif; transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); }
+  .info-tip::before { content: "i"; font-style: italic; }
+  .info-tip:hover, .info-tip[aria-expanded="true"] { color: var(--gold); border-color: var(--gold); background: color-mix(in srgb, var(--gold) 14%, transparent); }
+  .info-tip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .info-pop { position: fixed; z-index: 60; width: min(21rem, calc(100vw - 2rem)); box-sizing: border-box; padding: var(--sp-8) var(--sp-10); background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55); font-size: var(--fs-88); font-weight: 400; line-height: 1.5; text-align: left; letter-spacing: 0; text-transform: none; }
+  .info-pop[hidden] { display: none; }
+  .info-pop p { margin: 0 0 var(--sp-5); }
+  .info-pop p:last-child, .info-pop ul:last-child { margin-bottom: 0; }
+  .info-pop-title { font-weight: 700; font-size: var(--fs-95); }
+  .info-pop-sub { margin-top: var(--sp-6); color: var(--text-dim); font-size: var(--fs-80); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .info-pop ul { margin: var(--sp-3) 0 0; padding-left: 1.1rem; }
+  .info-pop li { margin: 0.15rem 0; }
 </style>
 </head>
 <body>
@@ -2024,6 +2038,7 @@
       <h2 class="section-head-dot c-teal">Updates</h2>
       <p class="updates-meta">Last updated: 13 October 2026</p>
       <ul>
+        <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: DPS bracelet values are now estimated for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator. The Weapon Power and STR/DEX/INT lines are lower than before, the table is re-ranked, and new info icons explain the baseline.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New Accessory Calculator on the Accessories tab: choose a necklace, earring or ring, the tier of each bonus effect and an optional common effect to see the combined damage value.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New DPS Bracelet Calculator on the Bracelets tab: pick up to three effects and their grade to see the combined damage value.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
@@ -2407,8 +2422,8 @@
           <div class="role-split">
             <div>
               <div class="role-label">DPS</div>
-              <div class="stat-line">Additional Damage <span class="t-blue">+0.55%</span> / <span class="t-purple">1.2%</span> / <span class="t-orange">2.0%</span></div>
-              <div class="stat-line">Outgoing Damage <span class="t-blue">+0.70%</span> / <span class="t-purple">1.6%</span> / <span class="t-orange">2.6%</span></div>
+              <div class="stat-line">Additional Damage <span class="t-blue">+0.70%</span> / <span class="t-purple">1.6%</span> / <span class="t-orange">2.6%</span></div>
+              <div class="stat-line">Outgoing Damage <span class="t-blue">+0.55%</span> / <span class="t-purple">1.2%</span> / <span class="t-orange">2.0%</span></div>
             </div>
             <div>
               <div class="role-label">Support</div>
@@ -2849,7 +2864,30 @@
     </section>
 
     <section class="block">
-      <h3 class="section-head-dot c-gold">DPS Bracelet</h3>
+      <h3 class="section-head-dot c-gold">DPS Bracelet<button type="button" class="info-tip" data-tip="tip-base" aria-label="How these values are estimated" aria-expanded="false" aria-controls="tip-base"></button></h3>
+      <div class="info-pop" id="tip-base" role="tooltip" hidden>
+        <p class="info-pop-title">How these values are estimated</p>
+        <p>Estimates for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator applied as baseline.</p>
+        <p class="info-pop-sub">Baseline used</p>
+        <ul>
+          <li>Weapon Power 230,000</li>
+          <li>STR/DEX/INT 630,000</li>
+          <li>Additional Damage 35%</li>
+          <li>Total crit rate 70%</li>
+          <li>Crit Damage 250%</li>
+          <li>Support buffs accounted for</li>
+        </ul>
+      </div>
+      <div class="info-pop" id="tip-add" role="tooltip" hidden>
+        <p>Total value, applicable only against Demon and Archdemon bosses (such as Kazeros and Legion raids).</p>
+        <p>Against any other target, the total damage value: <span class="t-blue">1.85%</span> / <span class="t-purple">2.22%</span> / <span class="t-orange">2.59%</span></p>
+      </div>
+      <div class="info-pop" id="tip-back" role="tooltip" hidden>
+        <p>Displayed value assumes more than 90% of your skill damage comes from skills labeled as a Back attack.</p>
+      </div>
+      <div class="info-pop" id="tip-front" role="tooltip" hidden>
+        <p>Displayed value assumes more than 90% of your skill damage comes from skills labeled as a Front attack.</p>
+      </div>
       <p class="note-line">Ranked by the Legendary (L) grade value — the R and E columns for the same row won't always be in descending order on their own.</p>
       <table class="data table-bracelet-dps">
         <colgroup><col class="w-7"><col class="w-66"><col class="w-9"><col class="w-9"><col class="w-9"></colgroup>
@@ -2858,24 +2896,23 @@
           <tr><th>Rank</th><th>Effect</th><th class="t-blue">R</th><th class="t-purple">E</th><th class="t-orange">L</th></tr>
         </thead>
         <tbody>
-        <tr><td><span class="rank-badge">1</span></td><td>Additional Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span>. Bonus vs. Demon/Archdemon +2.5%<br><span class="footnote">Only reaches this value against Kazeros/Legion raid bosses — value drops by 50% outside that content.</span></td><td class="t-blue">4.30%</td><td class="t-purple">4.67%</td><td class="t-orange">5.04%</td></tr>
-        <tr><td><span class="rank-badge">2</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.78%</td><td class="t-purple">4.36%</td><td class="t-orange">4.93%</td></tr>
-        <tr><td><span class="rank-badge">3</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.78%</td><td class="t-purple">4.36%</td><td class="t-orange">4.91%</td></tr>
-        <tr><td><span class="rank-badge">4</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span>. When HP above 50%, up on hit: Weapon Power <span class="t-blue">+2,000</span>/<span class="t-purple">+2,200</span>/<span class="t-orange">+2,400</span> for 5s.</td><td class="t-blue">3.37%</td><td class="t-purple">3.77%</td><td class="t-orange">4.18%</td></tr>
-        <tr><td><span class="rank-badge">5</span></td><td>Outgoing Damage <span class="t-blue">+4.5</span>/<span class="t-purple">+5</span>/<span class="t-orange">+5.5%</span>, but Skill Cooldown +2%.</td><td class="t-blue">3.10%</td><td class="t-purple">3.60%</td><td class="t-orange">4.10%</td></tr>
-        <tr><td><span class="rank-badge">6</span></td><td>Weapon Power <span class="t-blue">+6,900</span>/<span class="t-purple">+7,800</span>/<span class="t-orange">+8,700</span>. Up on hit: Weapon Power <span class="t-blue">+130</span>/<span class="t-purple">+140</span>/<span class="t-orange">+150</span> for 120s every 30s (Max 30 stacks)</td><td class="t-blue">2.81%</td><td class="t-purple">3.17%</td><td class="t-orange">3.52%</td></tr>
-        <tr><td><span class="rank-badge">7</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span></td><td class="t-blue">2.38%</td><td class="t-purple">2.95%</td><td class="t-orange">3.51%</td></tr>
-        <tr><td><span class="rank-badge">8</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.38%</td><td class="t-purple">2.94%</td><td class="t-orange">3.50%</td></tr>
-        <tr><td><span class="rank-badge">9</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span></td><td class="t-blue">2.64%</td><td class="t-purple">2.97%</td><td class="t-orange">3.30%</td></tr>
-        <tr><td><span class="rank-badge">10</span></td><td>Non-Directional Skill Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span> (does not apply to Awakening skills)</td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">10</span></td><td>Back Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">10</span></td><td>Front Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
-        <tr><td><span class="rank-badge">11</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span>. Outgoing Damage against Staggered foes <span class="t-blue">+4</span>/<span class="t-purple">+4.5</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.00%</td><td class="t-purple">2.50%</td><td class="t-orange">3.00%</td></tr>
-        <tr><td><span class="rank-badge">12</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span></td><td class="t-blue">2.00%</td><td class="t-purple">2.50%</td><td class="t-orange">3.00%</td></tr>
-        <tr><td><span class="rank-badge">13</span></td><td>Additional Damage <span class="t-blue">+3</span>/<span class="t-purple">+3.5</span>/<span class="t-orange">+4%</span></td><td class="t-blue">2.12%</td><td class="t-purple">2.48%</td><td class="t-orange">2.83%</td></tr>
-        <tr><td><span class="rank-badge">14</span></td><td>On hit: Weapon Power <span class="t-blue">+1,160</span>/<span class="t-purple">+1,320</span>/<span class="t-orange">+1,480</span> and Attack and Movement Speed +1% for 10s (Max 6 stacks)</td><td class="t-blue">2.12%</td><td class="t-purple">2.42%</td><td class="t-orange">2.71%</td></tr>
-        <tr><td><span class="rank-badge">15</span></td><td>Dexterity/Intelligence/Strength <span class="t-blue">+10,000</span>/<span class="t-purple">+13,000</span>/<span class="t-orange">+16,000</span></td><td class="t-blue">1.14%</td><td class="t-purple">1.48%</td><td class="t-orange">1.82%</td></tr>
-        <tr><td><span class="rank-badge">16</span></td><td>Attack and Movement Speed <span class="t-blue">+4</span>/<span class="t-purple">+5</span>/<span class="t-orange">+6%</span></td><td class="t-blue">1.20%</td><td class="t-purple">1.50%</td><td class="t-orange">1.80%</td></tr>
+        <tr><td><span class="rank-badge">1</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.83%</td><td class="t-purple">4.43%</td><td class="t-orange">5.03%</td></tr>
+        <tr><td><span class="rank-badge">2</span></td><td>Additional Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span>. Bonus vs. Demon/Archdemon +2.5%<button type="button" class="info-tip" data-tip="tip-add" aria-label="About this value" aria-expanded="false" aria-controls="tip-add"></button></td><td class="t-blue">4.23%</td><td class="t-purple">4.61%</td><td class="t-orange">4.99%</td></tr>
+        <tr><td><span class="rank-badge">3</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span>. Crit Hit Damage +1.5%</td><td class="t-blue">3.64%</td><td class="t-purple">4.19%</td><td class="t-orange">4.75%</td></tr>
+        <tr><td><span class="rank-badge">4</span></td><td>Outgoing Damage <span class="t-blue">+4.5</span>/<span class="t-purple">+5</span>/<span class="t-orange">+5.5%</span>, but Skill Cooldown +2%.</td><td class="t-blue">3.10%</td><td class="t-purple">3.60%</td><td class="t-orange">4.10%</td></tr>
+        <tr><td><span class="rank-badge">5</span></td><td>Crit Rate <span class="t-blue">+3.4</span>/<span class="t-purple">+4.2</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.49%</td><td class="t-purple">3.07%</td><td class="t-orange">3.66%</td></tr>
+        <tr><td><span class="rank-badge">6</span></td><td>Crit Damage <span class="t-blue">+6.8</span>/<span class="t-purple">+8.4</span>/<span class="t-orange">+10%</span></td><td class="t-blue">2.32%</td><td class="t-purple">2.87%</td><td class="t-orange">3.41%</td></tr>
+        <tr><td><span class="rank-badge">7</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span>. Outgoing Damage against Staggered foes <span class="t-blue">+4</span>/<span class="t-purple">+4.5</span>/<span class="t-orange">+5%</span></td><td class="t-blue">2.20%</td><td class="t-purple">2.73%</td><td class="t-orange">3.25%</td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td>Non-Directional Skill Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span> (does not apply to Awakening skills)</td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td>Back Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-back" aria-label="About this value" aria-expanded="false" aria-controls="tip-back"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td>Front Attack Damage <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span><button type="button" class="info-tip" data-tip="tip-front" aria-label="About this value" aria-expanded="false" aria-controls="tip-front"></button></td><td class="t-blue">2.25%</td><td class="t-purple">2.70%</td><td class="t-orange">3.15%</td></tr>
+        <tr><td><span class="rank-badge">9</span></td><td>Outgoing Damage <span class="t-blue">+2</span>/<span class="t-purple">+2.5</span>/<span class="t-orange">+3%</span></td><td class="t-blue">2.00%</td><td class="t-purple">2.50%</td><td class="t-orange">3.00%</td></tr>
+        <tr><td><span class="rank-badge">10</span></td><td>Additional Damage <span class="t-blue">+3</span>/<span class="t-purple">+3.5</span>/<span class="t-orange">+4%</span></td><td class="t-blue">2.22%</td><td class="t-purple">2.59%</td><td class="t-orange">2.96%</td></tr>
+        <tr><td><span class="rank-badge">11</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span>. When HP above 50%, up on hit: Weapon Power <span class="t-blue">+2,000</span>/<span class="t-purple">+2,200</span>/<span class="t-orange">+2,400</span> for 5s.</td><td class="t-blue">1.57%</td><td class="t-purple">1.76%</td><td class="t-orange">1.94%</td></tr>
+        <tr><td><span class="rank-badge">12</span></td><td>Weapon Power <span class="t-blue">+6,900</span>/<span class="t-purple">+7,800</span>/<span class="t-orange">+8,700</span>. Up on hit: Weapon Power <span class="t-blue">+130</span>/<span class="t-purple">+140</span>/<span class="t-orange">+150</span> for 120s every 30s (Max 30 stacks)</td><td class="t-blue">1.46%</td><td class="t-purple">1.64%</td><td class="t-orange">1.81%</td></tr>
+        <tr><td><span class="rank-badge">13</span></td><td>Weapon Power <span class="t-blue">+7,200</span>/<span class="t-purple">+8,100</span>/<span class="t-orange">+9,000</span></td><td class="t-blue">1.24%</td><td class="t-purple">1.39%</td><td class="t-orange">1.54%</td></tr>
+        <tr><td><span class="rank-badge">14</span></td><td>On hit: Weapon Power <span class="t-blue">+1,160</span>/<span class="t-purple">+1,320</span>/<span class="t-orange">+1,480</span> and Attack and Movement Speed +1% for 10s (Max 6 stacks)</td><td class="t-blue">1.00%</td><td class="t-purple">1.13%</td><td class="t-orange">1.27%</td></tr>
+        <tr><td><span class="rank-badge">15</span></td><td>Dexterity/Intelligence/Strength <span class="t-blue">+12,000</span>/<span class="t-purple">+14,000</span>/<span class="t-orange">+16,000</span></td><td class="t-blue">0.75%</td><td class="t-purple">0.88%</td><td class="t-orange">1.00%</td></tr>
         </tbody>
       </table>
     </section>
@@ -2900,7 +2937,6 @@
         <tr><td><span class="rank-badge">12</span></td><td>Max HP <span class="t-blue">+11,200</span>/<span class="t-purple">+14,000</span>/<span class="t-orange">+16,800</span></td></tr>
         <tr><td><span class="rank-badge">13</span></td><td>Natural Resource Recovery <span class="t-blue">+8</span>/<span class="t-purple">+10</span>/<span class="t-orange">+12%</span></td></tr>
         <tr><td><span class="rank-badge">14</span></td><td>HP Recovery and Shield effects' efficiency on party members <span class="t-blue">+2.5</span>/<span class="t-purple">+3</span>/<span class="t-orange">+3.5%</span></td></tr>
-        <tr><td><span class="rank-badge">15</span></td><td>Attack and Movement Speed <span class="t-blue">+4</span>/<span class="t-purple">+5</span>/<span class="t-orange">+6%</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -4448,31 +4484,30 @@ init();
 /* Bracelet effect calculator: plain sum of the "Total Damage Value" column in the DPS Bracelet table below. */
 (function () {
   const EFFECTS = [
-    ['a1', 'Additional Damage + Demon/Archdemon bonus', 4.30, 4.67, 5.04],
-    ['a2', 'Crit Damage + Crit Hit Damage', 3.78, 4.36, 4.93],
-    ['a3', 'Crit Rate + Crit Hit Damage', 3.78, 4.36, 4.91],
-    ['a4', 'Weapon Power + HP above 50% on-hit buff', 3.37, 3.77, 4.18],
+    ['a3', 'Crit Rate + Crit Hit Damage', 3.83, 4.43, 5.03],
+    ['a1', 'Additional Damage + Demon/Archdemon bonus', 4.23, 4.61, 4.99],
+    ['a2', 'Crit Damage + Crit Hit Damage', 3.64, 4.19, 4.75],
     ['a5', 'Outgoing Damage (with Skill Cooldown +2%)', 3.10, 3.60, 4.10],
-    ['a6', 'Weapon Power + 30-stack on-hit buff', 2.81, 3.17, 3.52],
-    ['a7', 'Crit Damage', 2.38, 2.95, 3.51],
-    ['a8', 'Crit Rate', 2.38, 2.94, 3.50],
-    ['a9', 'Weapon Power', 2.64, 2.97, 3.30],
+    ['a8', 'Crit Rate', 2.49, 3.07, 3.66],
+    ['a7', 'Crit Damage', 2.32, 2.87, 3.41],
+    ['a13', 'Outgoing Damage + Staggered bonus', 2.20, 2.73, 3.25],
     ['a10', 'Non-Directional Skill Damage', 2.25, 2.70, 3.15],
     ['a11', 'Back Attack Damage', 2.25, 2.70, 3.15],
     ['a12', 'Front Attack Damage', 2.25, 2.70, 3.15],
-    ['a13', 'Outgoing Damage + Staggered bonus', 2.00, 2.50, 3.00],
     ['a14', 'Outgoing Damage', 2.00, 2.50, 3.00],
-    ['a15', 'Additional Damage', 2.12, 2.48, 2.83],
-    ['a16', 'On-hit Weapon Power + Attack/Move Speed', 2.12, 2.42, 2.71],
-    ['a17', 'Dexterity / Intelligence / Strength', 1.14, 1.48, 1.82],
-    ['a18', 'Attack and Movement Speed', 1.20, 1.50, 1.80]
+    ['a15', 'Additional Damage', 2.22, 2.59, 2.96],
+    ['a4', 'Weapon Power + HP above 50% on-hit buff', 1.57, 1.76, 1.94],
+    ['a6', 'Weapon Power + 30-stack on-hit buff', 1.46, 1.64, 1.81],
+    ['a9', 'Weapon Power', 1.24, 1.39, 1.54],
+    ['a16', 'On-hit Weapon Power + Attack/Move Speed', 1.00, 1.13, 1.27],
+    ['a17', 'Dexterity / Intelligence / Strength', 0.75, 0.88, 1.00]
   ];
   /* Effect wording (with the coloured per-grade values) is taken from the DPS Bracelet table, so the two never drift apart. */
   const tableRows = [...document.querySelectorAll('.table-bracelet-dps tbody tr')];
   EFFECTS.forEach((e, i) => {
     const td = tableRows[i] && tableRows[i].children[1];
     if (td) {
-      const c = td.cloneNode(true); c.querySelectorAll('.footnote').forEach((x) => x.remove());
+      const c = td.cloneNode(true); c.querySelectorAll('.footnote, .info-tip, .info-pop').forEach((x) => x.remove());
       e.html = c.innerHTML.replace(/(<br\s*\/?>\s*)+$/i, '').trim(); e[1] = c.textContent.replace(/\s+/g, ' ').trim();
     } else { e.html = e[1]; }
   });
@@ -4631,6 +4666,36 @@ init();
     document.addEventListener('mousedown', (e) => { if (isOpen() && !wrap.contains(e.target)) close(false); });
     sel.addEventListener('change', label); label();
   });
+})();
+</script>
+<script>
+/* Info tooltips: <button class="info-tip" data-tip="ID"> shows <div class="info-pop" id="ID" hidden>. Hover or focus previews it; click or tap pins it open; Esc or an outside tap closes. */
+(function () {
+  const btns = [...document.querySelectorAll('.info-tip[data-tip]')];
+  let openBtn = null, pinned = false, hoverTimer = null;
+  const pop = (b) => document.getElementById(b.dataset.tip);
+  const place = (b, p) => {
+    p.style.left = '0px'; p.style.top = '0px';
+    const r = b.getBoundingClientRect(), w = p.offsetWidth, h = p.offsetHeight, m = 12, g = 8;
+    const left = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m);
+    let top = r.bottom + g; if (top + h > innerHeight - m && r.top - g - h > m) top = r.top - g - h;
+    p.style.left = Math.round(left) + 'px'; p.style.top = Math.round(top) + 'px';
+  };
+  const close = () => { if (!openBtn) return; const p = pop(openBtn); if (p) p.hidden = true; openBtn.setAttribute('aria-expanded', 'false'); openBtn.removeAttribute('aria-describedby'); openBtn = null; pinned = false; };
+  const open = (b) => { if (openBtn === b) return; close(); const p = pop(b); if (!p) return; p.hidden = false; place(b, p); b.setAttribute('aria-expanded', 'true'); b.setAttribute('aria-describedby', p.id); openBtn = b; };
+  btns.forEach((b) => {
+    b.addEventListener('click', (e) => { e.stopPropagation(); if (openBtn === b && pinned) close(); else { open(b); pinned = true; } });
+    b.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); if (!pinned) open(b); });
+    b.addEventListener('mouseleave', () => { hoverTimer = setTimeout(() => { if (openBtn === b && !pinned) close(); }, 150); });
+    b.addEventListener('focus', () => { if (!pinned) open(b); });
+    b.addEventListener('blur', () => { setTimeout(() => { if (openBtn === b && !pinned && !b.matches(':hover')) close(); }, 0); });
+  });
+  const reposition = () => { if (!openBtn) return; const r = openBtn.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) close(); else place(openBtn, pop(openBtn)); };
+  document.addEventListener('click', (e) => { if (openBtn && !e.target.closest('.info-pop')) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && openBtn) { const b = openBtn; close(); b.focus(); } });
+  addEventListener('scroll', reposition, { passive: true, capture: true });
+  addEventListener('resize', reposition);
+  document.querySelectorAll('nav.tabs button, .group-nav button').forEach((x) => x.addEventListener('click', close));
 })();
 </script>
 <script>
