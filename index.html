@@ -1632,106 +1632,124 @@
 
 
   /* ---------- SSB Calculator ---------- */
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--sp-15); margin-bottom: var(--sp-15); align-items: start; }
-  @media (max-width: 860px) { :is(#ssb, #bluntthorn, #bracelets) .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--r-md); padding: var(--sp-15) var(--sp-15); min-width: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-results { border-top-color: var(--teal); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-info { border-top-color: var(--purple); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-h { margin: 0 0 var(--sp-10); font-size: var(--fs-110); font-weight: 600; color: var(--gold); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-results .ssb-h { color: var(--teal); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-info .ssb-h { color: var(--purple); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-group-title { margin: var(--sp-12) 0 var(--sp-6); padding-top: var(--sp-12); border-top: 1px solid var(--line); font-size: var(--fs-80); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-dim); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-field { margin-bottom: var(--sp-9); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-field label { display: block; font-size: var(--fs-95); font-weight: 600; margin-bottom: var(--sp-3); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-field input[type="number"], :is(#ssb, #bluntthorn, #bracelets) .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-field input[type="number"]:focus, :is(#ssb, #bluntthorn, #bracelets) .ssb-field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-hint { color: var(--text-dim); font-size: var(--fs-80); margin-top: var(--sp-3); line-height: var(--lh-ui); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-class-section[hidden] { display: none; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-class-section .ssb-hint { margin: 0 0 var(--sp-9); }
-  :is(#ssb, #bluntthorn, #bracelets) label.ssb-check { display: flex; align-items: center; gap: var(--sp-6); font-weight: 600; cursor: pointer; margin: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg label { margin: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg span { display: block; text-align: center; padding: var(--sp-6) var(--sp-6); border-radius: 999px; background: var(--wh-2); border: 1px solid var(--wh-3); color: var(--text-dim); font-size: var(--fs-88); font-weight: 600; cursor: pointer; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--sp-15); margin-bottom: var(--sp-15); align-items: start; }
+  @media (max-width: 860px) { :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--r-md); padding: var(--sp-15) var(--sp-15); min-width: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-results { border-top-color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-info { border-top-color: var(--purple); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-h { margin: 0 0 var(--sp-10); font-size: var(--fs-110); font-weight: 600; color: var(--gold); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-results .ssb-h { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-info .ssb-h { color: var(--purple); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-group-title { margin: var(--sp-12) 0 var(--sp-6); padding-top: var(--sp-12); border-top: 1px solid var(--line); font-size: var(--fs-80); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field { margin-bottom: var(--sp-9); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field label { display: block; font-size: var(--fs-95); font-weight: 600; margin-bottom: var(--sp-3); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field input[type="number"], :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field input[type="number"]:focus, :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-hint { color: var(--text-dim); font-size: var(--fs-80); margin-top: var(--sp-3); line-height: var(--lh-ui); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-class-section[hidden] { display: none; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-class-section .ssb-hint { margin: 0 0 var(--sp-9); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) label.ssb-check { display: flex; align-items: center; gap: var(--sp-6); font-weight: 600; cursor: pointer; margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg label { margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg span { display: block; text-align: center; padding: var(--sp-6) var(--sp-6); border-radius: 999px; background: var(--wh-2); border: 1px solid var(--wh-3); color: var(--text-dim); font-size: var(--fs-88); font-weight: 600; cursor: pointer; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
   @media (hover: hover) {
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-seg label:hover span { color: var(--text); background: var(--wh-3); }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg label:hover span { color: var(--text); background: var(--wh-3); }
   }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-stat, :is(#ssb, #bluntthorn, #bracelets) .ssb-mini, :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-8) var(--sp-10); min-width: 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-label { font-size: var(--fs-70); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-dim); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-value { font-size: var(--fs-200); font-weight: 700; line-height: var(--lh-tight); margin: var(--sp-2) 0; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-stat-main .ssb-value { color: var(--gold); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-value-sm { font-size: var(--fs-110); font-weight: 700; margin: var(--sp-3) 0 var(--sp-1); overflow-wrap: anywhere; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-muted { color: var(--text-dim); font-size: var(--fs-80); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress { margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width var(--dur) var(--ease); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-text { margin-top: var(--sp-4); font-size: var(--fs-88); color: var(--text-dim); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-mini-wide { grid-column: 1 / -1; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp { margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); margin-top: var(--sp-5); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-label { font-size: var(--fs-70); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-value-sm { color: var(--teal); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-callouts p { margin: 0 0 var(--sp-4); padding: var(--sp-6) var(--sp-8); border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: var(--fs-88); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-stat, :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-mini, :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-8) var(--sp-10); min-width: 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-label { font-size: var(--fs-70); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-value { font-size: var(--fs-200); font-weight: 700; line-height: var(--lh-tight); margin: var(--sp-2) 0; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-stat-main .ssb-value { color: var(--gold); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-value-sm { font-size: var(--fs-110); font-weight: 700; margin: var(--sp-3) 0 var(--sp-1); overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-muted { color: var(--text-dim); font-size: var(--fs-80); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-progress { margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width var(--dur) var(--ease); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-progress-text { margin-top: var(--sp-4); font-size: var(--fs-88); color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-mini-wide { grid-column: 1 / -1; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp { margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); margin-top: var(--sp-5); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-item .ssb-label { font-size: var(--fs-70); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-item .ssb-value-sm { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-callouts p { margin: 0 0 var(--sp-4); padding: var(--sp-6) var(--sp-8); border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: var(--fs-88); }
   @media (max-width: 560px) {
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-card { padding: var(--sp-12) var(--sp-10); }
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-value { font-size: var(--fs-170); }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-card { padding: var(--sp-12) var(--sp-10); }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-value { font-size: var(--fs-170); }
   }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-formula { display: grid; gap: var(--sp-4); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-7); font-size: var(--fs-88); color: var(--text); overflow-wrap: anywhere; }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-legend { color: var(--text-dim); font-size: var(--fs-95); display: grid; gap: var(--sp-3); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-legend strong { color: var(--text); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-credit { margin: var(--sp-10) 0 0; color: var(--text-dim); font-size: var(--fs-80); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-credit a { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-formula { display: grid; gap: var(--sp-4); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-7); font-size: var(--fs-88); color: var(--text); overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-legend { color: var(--text-dim); font-size: var(--fs-95); display: grid; gap: var(--sp-3); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-legend strong { color: var(--text); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-credit { margin: var(--sp-10) 0 0; color: var(--text-dim); font-size: var(--fs-80); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-credit a { color: var(--teal); }
 
 
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-sub { margin: -0.3rem 0 var(--sp-10) var(--sp-6); padding-left: var(--sp-9); border-left: 2px solid var(--line); }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-sub[hidden] { display: none; }
-  #bracelets .br-card { padding: var(--sp-10) var(--sp-12); }
-  #bracelets .br-row { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: var(--sp-6); align-items: stretch; margin-bottom: var(--sp-5); }
-  #bracelets .br-row select { width: 100%; min-height: 44px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-8); font: inherit; font-size: var(--fs-95); }
-  #bracelets .br-row select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
-  #bracelets .br-row select.br-native { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; min-height: 0; padding: 0; border: 0; }
-  #bracelets .br-dd { position: relative; min-width: 0; display: flex; }
-  #bracelets .br-dd-btn { flex: 1; min-width: 0; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-8); text-align: left; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); cursor: pointer; transition: border-color var(--dur-fast) var(--ease); }
-  #bracelets .br-dd-btn:hover { border-color: var(--wh-3); }
-  #bracelets .br-dd-btn:focus-visible, #bracelets .br-dd-btn[aria-expanded="true"] { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
-  #bracelets .br-dd-btn.is-empty .br-dd-text { color: var(--text-dim); }
-  #bracelets .br-dd-text { min-width: 0; line-height: 1.3; }
-  #bracelets .br-dd-btn::after { content: ""; flex: none; width: 0.5rem; height: 0.5rem; border-right: 2px solid var(--text-dim); border-bottom: 2px solid var(--text-dim); transform: translateY(-2px) rotate(45deg); transition: transform var(--dur-fast) var(--ease); }
-  #bracelets .br-dd-btn[aria-expanded="true"]::after { transform: translateY(2px) rotate(225deg); }
-  #bracelets .br-dd-list { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30; max-height: min(320px, 50vh); overflow-y: auto; margin: 0; padding: var(--sp-3); list-style: none; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5); outline: none; }
-  #bracelets .br-dd-list.flip { top: auto; bottom: calc(100% + 6px); }
-  #bracelets .br-dd-list[hidden] { display: none; }
-  #bracelets .br-dd-opt { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-10); padding: var(--sp-6) var(--sp-8); border-radius: var(--r-sm, 6px); cursor: pointer; font-size: var(--fs-95); line-height: 1.35; }
-  #bracelets .br-dd-opt.is-active { background: var(--wh-3); }
-  #bracelets .br-dd-opt[aria-selected="true"] { color: var(--gold); font-weight: 600; }
-  #bracelets .br-dd-opt[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
-  #bracelets .br-dd-opt.is-none { color: var(--text-dim); }
-  #bracelets .br-grade span { min-height: 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); padding: var(--sp-4) var(--sp-4); }
-  #bracelets .br-grade label { display: flex; }
-  #bracelets .br-dd-text .t-blue, #bracelets .br-dd-text .t-purple, #bracelets .br-dd-text .t-orange { font-weight: 600; }
-  #bracelets .br-grade label span { width: 100%; }
-  #bracelets .br-grade input[value="R"]:checked + span { background: var(--blue); border-color: var(--blue); }
-  #bracelets .br-grade input[value="E"]:checked + span { background: var(--purple); border-color: var(--purple); }
-  #bracelets .br-grade input[value="L"]:checked + span { background: var(--orange); border-color: var(--orange); }
-  #bracelets .br-total-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-8); border-top: 1px solid var(--line); margin-top: var(--sp-6); padding-top: var(--sp-6); }
-  #bracelets .br-total-bar .calc-tools { margin: 0; }
-  #bracelets .br-total-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-8); }
-  #bracelets .br-total { font-size: var(--fs-170); font-weight: 700; color: var(--gold); line-height: var(--lh-tight); }
-  #bracelets .ssb-callouts:empty { display: none; }
-  #bracelets .br-card .ssb-callouts { margin-top: var(--sp-8); }
-  #bracelets .br-card .ssb-callouts p { margin: 0; padding: var(--sp-4) var(--sp-8); }
-  #bracelets .br-total-bar .calc-btn { padding: var(--sp-3) var(--sp-8); }
-  @media (max-width: 860px) { #bracelets .br-row { grid-template-columns: minmax(0, 1fr); margin-bottom: var(--sp-8); } }
-  :is(#ssb, #bluntthorn, #bracelets) .ssb-hint-top { margin: -0.2rem 0 var(--sp-8); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-sub { margin: -0.3rem 0 var(--sp-10) var(--sp-6); padding-left: var(--sp-9); border-left: 2px solid var(--line); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-sub[hidden] { display: none; }
+  /* Accessory calculator */
+  #accessories .acc-cap { margin: var(--sp-8) 0 var(--sp-4); font-size: var(--fs-70); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-dim); }
+  #accessories .acc-cap:first-child { margin-top: 0; }
+  #accessories .acc-label { display: flex; align-items: center; min-height: 40px; box-sizing: border-box; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font-size: var(--fs-100); font-weight: 600; }
+  #accessories .acc-tier { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #accessories .acc-tier span b { font-weight: 700; margin-left: 0.3em; }
+  #accessories .acc-tier input[value="0"]:checked + span { background: var(--wh-3); border-color: var(--gold); color: var(--text); font-weight: 700; }
+  #accessories .acc-tier input[value="low"]:checked + span { background: var(--blue); border-color: var(--blue); }
+  #accessories .acc-tier input[value="mid"]:checked + span { background: var(--purple); border-color: var(--purple); }
+  #accessories .acc-tier input[value="high"]:checked + span { background: var(--orange); border-color: var(--orange); }
+  #accessories .acc-tier label[hidden] { display: none; }
+  #accessories #acc-tier3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #accessories .acc-tier.is-off { opacity: 0.4; pointer-events: none; }
+  #accessories .acc-seg3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-5); }
+  #accessories .acc-seg3 span, #accessories .acc-type span, #accessories .acc-tier span { min-height: 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); padding: var(--sp-4) var(--sp-4); }
+  #accessories .acc-type { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: var(--sp-8); }
+  #accessories .acc-type + .acc-cap { margin-top: 0; }
+  @media (max-width: 560px) { #accessories .acc-tier span { flex-direction: column; gap: 0; line-height: 1.2; } #accessories .acc-tier span b { margin-left: 0; } }
+  :is(#bracelets, #accessories) .br-card { padding: var(--sp-10) var(--sp-12); }
+  :is(#bracelets, #accessories) .br-row { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: var(--sp-6); align-items: stretch; margin-bottom: var(--sp-5); }
+  :is(#bracelets, #accessories) .br-row select { width: 100%; min-height: 44px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-8); font: inherit; font-size: var(--fs-95); }
+  :is(#bracelets, #accessories) .br-row select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  :is(#bracelets, #accessories) .br-row select.br-native { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; min-height: 0; padding: 0; border: 0; }
+  :is(#bracelets, #accessories) .br-dd { position: relative; min-width: 0; display: flex; }
+  :is(#bracelets, #accessories) .br-dd-btn { flex: 1; min-width: 0; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-8); text-align: left; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); cursor: pointer; transition: border-color var(--dur-fast) var(--ease); }
+  :is(#bracelets, #accessories) .br-dd-btn:hover { border-color: var(--wh-3); }
+  :is(#bracelets, #accessories) .br-dd-btn:focus-visible, #bracelets .br-dd-btn[aria-expanded="true"] { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  :is(#bracelets, #accessories) .br-dd-btn.is-empty .br-dd-text { color: var(--text-dim); }
+  :is(#bracelets, #accessories) .br-dd-text { min-width: 0; line-height: 1.3; }
+  :is(#bracelets, #accessories) .br-dd-btn::after { content: ""; flex: none; width: 0.5rem; height: 0.5rem; border-right: 2px solid var(--text-dim); border-bottom: 2px solid var(--text-dim); transform: translateY(-2px) rotate(45deg); transition: transform var(--dur-fast) var(--ease); }
+  :is(#bracelets, #accessories) .br-dd-btn[aria-expanded="true"]::after { transform: translateY(2px) rotate(225deg); }
+  :is(#bracelets, #accessories) .br-dd-list { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30; max-height: min(320px, 50vh); overflow-y: auto; margin: 0; padding: var(--sp-3); list-style: none; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5); outline: none; }
+  :is(#bracelets, #accessories) .br-dd-list.flip { top: auto; bottom: calc(100% + 6px); }
+  :is(#bracelets, #accessories) .br-dd-list[hidden] { display: none; }
+  :is(#bracelets, #accessories) .br-dd-opt { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-10); padding: var(--sp-6) var(--sp-8); border-radius: var(--r-sm, 6px); cursor: pointer; font-size: var(--fs-95); line-height: 1.35; }
+  :is(#bracelets, #accessories) .br-dd-opt.is-active { background: var(--wh-3); }
+  :is(#bracelets, #accessories) .br-dd-opt[aria-selected="true"] { color: var(--gold); font-weight: 600; }
+  :is(#bracelets, #accessories) .br-dd-opt[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
+  :is(#bracelets, #accessories) .br-dd-opt.is-none { color: var(--text-dim); }
+  :is(#bracelets, #accessories) .br-grade span { min-height: 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); padding: var(--sp-4) var(--sp-4); }
+  :is(#bracelets, #accessories) .br-grade label { display: flex; }
+  :is(#bracelets, #accessories) .br-dd-text .t-blue, #bracelets .br-dd-text .t-purple, #bracelets .br-dd-text .t-orange { font-weight: 600; }
+  :is(#bracelets, #accessories) .br-grade label span { width: 100%; }
+  :is(#bracelets, #accessories) .br-grade input[value="R"]:checked + span { background: var(--blue); border-color: var(--blue); }
+  :is(#bracelets, #accessories) .br-grade input[value="E"]:checked + span { background: var(--purple); border-color: var(--purple); }
+  :is(#bracelets, #accessories) .br-grade input[value="L"]:checked + span { background: var(--orange); border-color: var(--orange); }
+  :is(#bracelets, #accessories) .br-total-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-8); border-top: 1px solid var(--line); margin-top: var(--sp-6); padding-top: var(--sp-6); }
+  :is(#bracelets, #accessories) .br-total-bar .calc-tools { margin: 0; }
+  :is(#bracelets, #accessories) .br-total-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-8); }
+  :is(#bracelets, #accessories) .br-total { font-size: var(--fs-170); font-weight: 700; color: var(--gold); line-height: var(--lh-tight); }
+  :is(#bracelets, #accessories) .ssb-callouts:empty { display: none; }
+  :is(#bracelets, #accessories) .br-card .ssb-callouts { margin-top: var(--sp-8); }
+  :is(#bracelets, #accessories) .br-card .ssb-callouts p { margin: 0; padding: var(--sp-4) var(--sp-8); }
+  :is(#bracelets, #accessories) .br-total-bar .calc-btn { padding: var(--sp-3) var(--sp-8); }
+  @media (max-width: 860px) { :is(#bracelets, #accessories) .br-row { grid-template-columns: minmax(0, 1fr); margin-bottom: var(--sp-8); } }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-hint-top { margin: -0.2rem 0 var(--sp-8); }
   #resources .table-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 900px) { #resources .table-trio { grid-template-columns: minmax(0, 1fr); } }
 
@@ -1782,9 +1800,9 @@
     h1 { font-size: clamp(0.92rem, 4.4vw, 1.25rem); white-space: nowrap; max-width: calc(100% - 3.4rem); }
 
     /* Touch targets: at least 44px */
-    :is(#ssb, #bluntthorn, #bracelets) label.ssb-check { min-height: 44px; }
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-check input { width: 1.4rem; height: 1.4rem; }
-    :is(#ssb, #bluntthorn, #bracelets) .ssb-seg span { min-height: 44px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) label.ssb-check { min-height: 44px; }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-check input { width: 1.4rem; height: 1.4rem; }
+    :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg span { min-height: 44px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
     .subtabs button, .subtabs2 button { min-height: 44px; }
     .resource-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
     .syn-filter-toggle { min-height: 44px; }
@@ -1800,7 +1818,7 @@
     .pos-value { min-width: 0; overflow-wrap: break-word; }
 
     /* The few labels under 12px go up to 12.25px (0.7rem) */
-    .astro-tag, .th-group-label, :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-label { font-size: 0.7rem; }
+    .astro-tag, .th-group-label, :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-bp-item .ssb-label { font-size: 0.7rem; }
   }
   /* ---------- Phones: tables, bracelets, Paradise image, Synergy cards (max-width 640px) ---------- */
   @media (max-width: 640px) {
@@ -1879,6 +1897,48 @@
   @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
+
+  /* ---------- Button system ----------
+     Level 1 (main tabs) = gold pill. Level 2 (switch between sections: Calculators, Combat, Paradise, accessory type) = teal pill.
+     Level 3 (options inside a tool) = gold pill. Utility buttons (Copy link, Reset, Close...) = neutral pill. */
+  .calc-btn, .report-close, .report-actions button, .group-nav button, .report-types span {
+    border-radius: 999px; background: var(--wh-2); border: 1px solid var(--wh-3); color: var(--text-dim); font-weight: 600;
+    transition: transform var(--dur-fast) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .calc-btn, .report-close, .report-actions button { color: var(--text); padding: var(--sp-5) var(--sp-12); }
+  .group-nav button { padding: var(--sp-6) var(--sp-12); }
+  @media (hover: hover) {
+    .calc-btn:hover, .report-close:hover, .report-actions button:hover, .group-nav button:hover { color: var(--text); background: var(--wh-3); border-color: var(--wh-4); }
+  }
+  .group-nav button[aria-current="page"] { color: var(--bg); background: var(--teal); border-color: color-mix(in srgb, var(--teal) 70%, white 15%); font-weight: 700; }
+  .report-actions .report-send { color: var(--bg); background: var(--gold); border-color: color-mix(in srgb, var(--gold) 70%, white 15%); font-weight: 700; }
+  @media (hover: hover) { .report-actions .report-send:hover:not(:disabled) { background: var(--gold); color: var(--bg); } }
+  .report-types { border: 0; border-radius: 0; overflow: visible; gap: var(--sp-5); }
+  .report-types span { padding: var(--sp-6) var(--sp-8); }
+  .report-types label:first-child span { border-left: 1px solid var(--wh-3); }
+  .report-types input:checked + span { color: var(--bg); background: var(--gold); border-color: var(--gold); font-weight: 700; }
+  .report-types input:focus-visible + span { outline-offset: 2px; }
+  :is(#bracelets, #accessories) .br-grade span, #accessories .acc-seg3 span, #accessories .acc-type span, #accessories .acc-tier span { border-radius: 999px; }
+  #accessories .acc-type input:checked + span { background: var(--teal); border-color: var(--teal); }
+  @media (max-width: 560px) { #accessories .acc-seg3 span, #accessories .acc-tier span { border-radius: 18px; } }
+
+  /* ---------- Raised buttons: a darker edge and a soft shadow under every button (no glow) ---------- */
+  :root { --btn-edge: rgba(0, 0, 0, 0.55); --btn-drop: 0 7px 12px rgba(0, 0, 0, 0.4); }
+  nav.tabs button, .subtabs button, .subtabs2 button, .group-nav button, .calc-btn, .report-close, .report-actions button, .report-types span, .syn-filter-clear, .search-toggle,
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg span { box-shadow: 0 3px 0 var(--btn-edge), var(--btn-drop); transform: none; }
+  nav.tabs button.active, nav.tabs button.active:hover, .subtabs2 button.active2, .report-actions .report-send, .report-types input:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--gold) 70%, black), 0 3px 0 color-mix(in srgb, var(--gold) 45%, black), var(--btn-drop); }
+  .subtabs button.active, .group-nav button[aria-current="page"], #accessories .acc-type input:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--teal) 70%, black), 0 3px 0 color-mix(in srgb, var(--teal) 45%, black), var(--btn-drop); }
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg input:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--gold) 70%, black), 0 3px 0 color-mix(in srgb, var(--gold) 45%, black), var(--btn-drop); }
+  #accessories .acc-type input:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--teal) 70%, black), 0 3px 0 color-mix(in srgb, var(--teal) 45%, black), var(--btn-drop); }
+  :is(#bracelets, #accessories) .br-grade input[value="R"]:checked + span, #accessories .acc-tier input[value="low"]:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--blue) 70%, black), 0 3px 0 color-mix(in srgb, var(--blue) 45%, black), var(--btn-drop); }
+  :is(#bracelets, #accessories) .br-grade input[value="E"]:checked + span, #accessories .acc-tier input[value="mid"]:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--purple) 70%, black), 0 3px 0 color-mix(in srgb, var(--purple) 45%, black), var(--btn-drop); }
+  :is(#bracelets, #accessories) .br-grade input[value="L"]:checked + span, #accessories .acc-tier input[value="high"]:checked + span { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--orange) 70%, black), 0 3px 0 color-mix(in srgb, var(--orange) 45%, black), var(--btn-drop); }
+  #accessories .acc-tier input[value="0"]:checked + span { box-shadow: 0 3px 0 var(--btn-edge), var(--btn-drop); }
+  nav.tabs button, nav.tabs button:hover, nav.tabs button.active, nav.tabs button.active:hover, .subtabs button, .subtabs button:hover, .subtabs button.active, .subtabs2 button, .subtabs2 button:hover, .subtabs2 button.active2,
+  .group-nav button, .group-nav button:hover, .group-nav button[aria-current="page"], .calc-btn, .calc-btn:hover { transform: none; }
+  /* pressed: the button sinks onto its edge */
+  nav.tabs button:active, .subtabs button:active, .subtabs2 button:active, .group-nav button:active, .calc-btn:active, .report-close:active, .report-actions button:active, .syn-filter-clear:active,
+  :is(#ssb, #bluntthorn, #bracelets, #accessories) .ssb-seg label:active span { transform: translateY(2px) !important; box-shadow: 0 1px 0 var(--btn-edge) !important; }
 </style>
 </head>
 <body>
@@ -1961,6 +2021,7 @@
       <h2 class="section-head-dot c-teal">Updates</h2>
       <p class="updates-meta">Last updated: 13 October 2026</p>
       <ul>
+        <li><time datetime="2026-10-13">13 Oct 2026</time><span>New Accessory Calculator on the Accessories tab: choose a necklace, earring or ring, the tier of each bonus effect and an optional common effect to see the combined damage value.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New DPS Bracelet Calculator on the Bracelets tab: pick up to three effects and their grade to see the combined damage value.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Slightly smaller logo and title on desktop, so the menu takes less room at the top.</span></li>
@@ -2526,6 +2587,60 @@
             <tr><td><span class="rank-badge">9</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">Low</span></td><td class="t-blue">0.73%</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="acc-calc">
+      <div class="section-title fs-110">Accessory Calculator</div>
+      <p class="section-sub">Pick an accessory, the tier of each of its two bonus effects, and an optional common effect. The total adds up the damage values from the Value &rarr; Damage Conversion tables above.</p>
+      <div class="ssb-card br-card">
+        <div class="acc-cap">Accessory</div>
+        <div class="ssb-seg acc-type" role="radiogroup" aria-label="Accessory type">
+          <label><input type="radio" name="acc-type" value="necklace" checked><span>Necklace</span></label>
+          <label><input type="radio" name="acc-type" value="earring"><span>Earring</span></label>
+          <label><input type="radio" name="acc-type" value="ring"><span>Ring</span></label>
+        </div>
+        <div class="acc-cap">Bonus effects</div>
+        <div class="br-row">
+          <div class="acc-label t-stat-a" id="acc-l1"></div>
+            <div class="ssb-seg br-grade acc-tier" id="acc-tier1" role="radiogroup" aria-label="First bonus effect tier">
+              <label><input type="radio" name="acc-t1" value="0" checked><span>None</span></label>
+              <label><input type="radio" name="acc-t1" value="low"><span data-tier="low">Low</span></label>
+              <label><input type="radio" name="acc-t1" value="mid"><span data-tier="mid">Mid</span></label>
+              <label><input type="radio" name="acc-t1" value="high"><span data-tier="high">High</span></label>
+            </div>
+        </div>
+        <div class="br-row">
+          <div class="acc-label t-stat-b" id="acc-l2"></div>
+            <div class="ssb-seg br-grade acc-tier" id="acc-tier2" role="radiogroup" aria-label="Second bonus effect tier">
+              <label><input type="radio" name="acc-t2" value="0" checked><span>None</span></label>
+              <label><input type="radio" name="acc-t2" value="low"><span data-tier="low">Low</span></label>
+              <label><input type="radio" name="acc-t2" value="mid"><span data-tier="mid">Mid</span></label>
+              <label><input type="radio" name="acc-t2" value="high"><span data-tier="high">High</span></label>
+            </div>
+        </div>
+        <div class="acc-cap">Common effect (optional)</div>
+        <div class="br-row">
+          <div class="ssb-seg acc-seg3" role="radiogroup" aria-label="Common effect">
+            <label><input type="radio" name="acc-c" value="none" checked><span>None</span></label>
+            <label><input type="radio" name="acc-c" value="wp"><span>Weapon Power Flat</span></label>
+            <label><input type="radio" name="acc-c" value="ap"><span>Attack Power Flat</span></label>
+          </div>
+            <div class="ssb-seg br-grade acc-tier" id="acc-tier3" role="radiogroup" aria-label="Common effect tier">
+              <label hidden><input type="radio" name="acc-t3" value="0" checked><span>None</span></label>
+              <label><input type="radio" name="acc-t3" value="low"><span data-tier="low">Low</span></label>
+              <label><input type="radio" name="acc-t3" value="mid"><span data-tier="mid">Mid</span></label>
+              <label><input type="radio" name="acc-t3" value="high"><span data-tier="high">High</span></label>
+            </div>
+        </div>
+        <div class="br-total-bar">
+          <div class="br-total-main"><span class="ssb-label">Total damage value</span><span class="br-total" id="acc-total">0.00%</span><span class="ssb-muted" id="acc-count">Nothing selected</span></div>
+          <div class="calc-tools">
+            <button type="button" class="calc-btn" data-calc-copy="ac">Copy link</button>
+            <button type="button" class="calc-btn" data-calc-reset="ac">Reset</button>
+            <span class="calc-status" role="status" aria-live="polite"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -4452,12 +4567,59 @@ init();
   update();
 })();
 </script><script>
+/* Accessory calculator: reads the Value -> Damage Conversion tables above, so the numbers can never drift from them. */
+(function () {
+  const root = document.getElementById('acc-calc'); if (!root) return;
+  const $ = (id) => document.getElementById(id);
+  const readTable = (cls) => {
+    const t = document.querySelector('#accessories .table-pair table.' + cls); if (!t) return [];
+    const groups = [];
+    t.querySelectorAll('tbody tr').forEach((tr) => {
+      if (tr.classList.contains('group-header')) { groups.push({ name: tr.textContent.trim(), tiers: {} }); return; }
+      const c = tr.children, g = groups[groups.length - 1]; if (!g || c.length < 3) return;
+      g.tiers[c[0].textContent.trim().toLowerCase()] = { val: c[1].textContent.trim(), cents: Math.round(parseFloat(c[2].textContent) * 100) };
+    });
+    return groups;
+  };
+  const DATA = { necklace: readTable('tv-necklace'), earring: readTable('tv-earring'), ring: readTable('tv-ring') };
+  const common = readTable('tv-common');
+  const COMMON = { wp: common[0], ap: common[1] };
+  window.__ACC_DATA = { DATA, COMMON };
+  const val = (name) => { const r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; };
+  const setTier = (n, group) => {
+    const box = $('acc-tier' + n);
+    box.classList.toggle('is-off', !group);
+    box.querySelectorAll('span[data-tier]').forEach((sp) => {
+      const t = group && group.tiers[sp.dataset.tier];
+      sp.textContent = ''; sp.appendChild(document.createTextNode(sp.dataset.tier.charAt(0).toUpperCase() + sp.dataset.tier.slice(1)));
+      if (t) { const b = document.createElement('b'); b.textContent = t.val; sp.appendChild(b); }
+    });
+  };
+  const update = () => {
+    const type = val('acc-type') || 'necklace', g = DATA[type] || [];
+    const cm = val('acc-c'), cg = COMMON[cm] || null;
+    $('acc-l1').textContent = g[0] ? g[0].name : ''; $('acc-l2').textContent = g[1] ? g[1].name : '';
+    setTier(1, g[0]); setTier(2, g[1]); setTier(3, cg);
+    if (!cg) { const z = document.querySelector('input[name="acc-t3"][value="0"]'); if (z && !z.checked) z.checked = true; }
+    const parts = [];
+    [[g[0], val('acc-t1')], [g[1], val('acc-t2')], [cg, val('acc-t3')]].forEach(([grp, tier]) => {
+      const t = grp && grp.tiers[tier]; if (t) parts.push(t.cents);
+    });
+    const total = parts.reduce((a, b) => a + b, 0);
+    $('acc-total').textContent = (total / 100).toFixed(2) + '%';
+    $('acc-count').textContent = parts.length ? parts.map((c) => (c / 100).toFixed(2) + '%').join(' + ') : 'Nothing selected';
+  };
+  root.addEventListener('change', update);
+  update();
+})();
+</script><script>
 /* Calculator state: remember inputs (localStorage, this device only), Reset, and Copy link (inputs encoded in the URL). */
 (function () {
   const CALCS = {
     ssb: { tab: 'ssb', fields: ['ssb-classSelect','ssb-spec','ssb-sheetAs','ssb-sheetMs','ssb-feast','ssb-support'], radios: ['ssb-wine','ssb-level'] },
     bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] },
-    br:  { tab: 'bracelets', fields: ['br-e1','br-e2','br-e3'], radios: ['br-g1','br-g2','br-g3'] }
+    br:  { tab: 'bracelets', fields: ['br-e1','br-e2','br-e3'], radios: ['br-g1','br-g2','br-g3'] },
+    ac:  { tab: 'accessories', fields: [], radios: ['acc-type','acc-t1','acc-t2','acc-c','acc-t3'] }
   };
   const store = { get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }, del(k){ try { localStorage.removeItem(k); } catch (e) {} } };
   const key = (c) => 'lopg-calc-' + c;
