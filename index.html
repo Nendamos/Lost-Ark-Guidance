@@ -1948,7 +1948,7 @@
   .info-tip::before { content: "i"; font-style: italic; }
   .info-tip:hover, .info-tip[aria-expanded="true"] { color: var(--gold); border-color: var(--gold); background: color-mix(in srgb, var(--gold) 14%, transparent); }
   .info-tip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-  .info-pop { position: fixed; z-index: 60; width: min(21rem, calc(100vw - 2rem)); box-sizing: border-box; padding: var(--sp-8) var(--sp-10); background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55); font-size: var(--fs-88); font-weight: 400; line-height: 1.5; text-align: left; letter-spacing: 0; text-transform: none; }
+  .info-pop { position: fixed; left: -9999px; top: 0; z-index: 60; width: min(21rem, calc(100vw - 2rem)); box-sizing: border-box; padding: var(--sp-8) var(--sp-10); background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55); font-size: var(--fs-88); font-weight: 400; line-height: 1.5; text-align: left; letter-spacing: 0; text-transform: none; }
   .info-pop[hidden] { display: none; }
   .info-pop p { margin: 0 0 var(--sp-5); }
   .info-pop p:last-child, .info-pop ul:last-child { margin-bottom: 0; }
@@ -4681,8 +4681,8 @@ init();
     let top = r.bottom + g; if (top + h > innerHeight - m && r.top - g - h > m) top = r.top - g - h;
     p.style.left = Math.round(left) + 'px'; p.style.top = Math.round(top) + 'px';
   };
-  const close = () => { if (!openBtn) return; const p = pop(openBtn); if (p) p.hidden = true; openBtn.setAttribute('aria-expanded', 'false'); openBtn.removeAttribute('aria-describedby'); openBtn = null; pinned = false; };
-  const open = (b) => { if (openBtn === b) return; close(); const p = pop(b); if (!p) return; p.hidden = false; place(b, p); b.setAttribute('aria-expanded', 'true'); b.setAttribute('aria-describedby', p.id); openBtn = b; };
+  const close = () => { if (!openBtn) return; const p = pop(openBtn); if (p) { p.hidden = true; p.style.left = '-9999px'; }  openBtn.setAttribute('aria-expanded', 'false'); openBtn.removeAttribute('aria-describedby'); openBtn = null; pinned = false; };
+  const open = (b) => { if (openBtn === b) return; close(); const p = pop(b); if (!p) return; p.style.visibility = 'hidden'; p.hidden = false; place(b, p); p.style.visibility = ''; b.setAttribute('aria-expanded', 'true'); b.setAttribute('aria-describedby', p.id); openBtn = b; };
   btns.forEach((b) => {
     b.addEventListener('click', (e) => { e.stopPropagation(); if (openBtn === b && pinned) close(); else { open(b); pinned = true; } });
     b.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); if (!pinned) open(b); });
