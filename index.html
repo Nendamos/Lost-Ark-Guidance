@@ -1632,69 +1632,106 @@
 
 
   /* ---------- SSB Calculator ---------- */
-  :is(#ssb, #bluntthorn) .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--sp-15); margin-bottom: var(--sp-15); align-items: start; }
-  @media (max-width: 860px) { :is(#ssb, #bluntthorn) .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
-  :is(#ssb, #bluntthorn) .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--r-md); padding: var(--sp-15) var(--sp-15); min-width: 0; }
-  :is(#ssb, #bluntthorn) .ssb-results { border-top-color: var(--teal); }
-  :is(#ssb, #bluntthorn) .ssb-info { border-top-color: var(--purple); }
-  :is(#ssb, #bluntthorn) .ssb-h { margin: 0 0 var(--sp-10); font-size: var(--fs-110); font-weight: 600; color: var(--gold); }
-  :is(#ssb, #bluntthorn) .ssb-results .ssb-h { color: var(--teal); }
-  :is(#ssb, #bluntthorn) .ssb-info .ssb-h { color: var(--purple); }
-  :is(#ssb, #bluntthorn) .ssb-group-title { margin: var(--sp-12) 0 var(--sp-6); padding-top: var(--sp-12); border-top: 1px solid var(--line); font-size: var(--fs-80); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-dim); }
-  :is(#ssb, #bluntthorn) .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-  :is(#ssb, #bluntthorn) .ssb-field { margin-bottom: var(--sp-9); }
-  :is(#ssb, #bluntthorn) .ssb-field label { display: block; font-size: var(--fs-95); font-weight: 600; margin-bottom: var(--sp-3); }
-  :is(#ssb, #bluntthorn) .ssb-field input[type="number"], :is(#ssb, #bluntthorn) .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); }
-  :is(#ssb, #bluntthorn) .ssb-field input[type="number"]:focus, :is(#ssb, #bluntthorn) .ssb-field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
-  :is(#ssb, #bluntthorn) .ssb-hint { color: var(--text-dim); font-size: var(--fs-80); margin-top: var(--sp-3); line-height: var(--lh-ui); }
-  :is(#ssb, #bluntthorn) .ssb-class-section[hidden] { display: none; }
-  :is(#ssb, #bluntthorn) .ssb-class-section .ssb-hint { margin: 0 0 var(--sp-9); }
-  :is(#ssb, #bluntthorn) label.ssb-check { display: flex; align-items: center; gap: var(--sp-6); font-weight: 600; cursor: pointer; margin: 0; }
-  :is(#ssb, #bluntthorn) .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
-  :is(#ssb, #bluntthorn) .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
-  :is(#ssb, #bluntthorn) .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
-  :is(#ssb, #bluntthorn) .ssb-seg label { margin: 0; }
-  :is(#ssb, #bluntthorn) .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
-  :is(#ssb, #bluntthorn) .ssb-seg span { display: block; text-align: center; padding: var(--sp-6) var(--sp-6); border-radius: 999px; background: var(--wh-2); border: 1px solid var(--wh-3); color: var(--text-dim); font-size: var(--fs-88); font-weight: 600; cursor: pointer; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--sp-15); margin-bottom: var(--sp-15); align-items: start; }
+  @media (max-width: 860px) { :is(#ssb, #bluntthorn, #bracelets) .ssb-grid { grid-template-columns: minmax(0, 1fr); } }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--r-md); padding: var(--sp-15) var(--sp-15); min-width: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-results { border-top-color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-info { border-top-color: var(--purple); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-h { margin: 0 0 var(--sp-10); font-size: var(--fs-110); font-weight: 600; color: var(--gold); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-results .ssb-h { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-info .ssb-h { color: var(--purple); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-group-title { margin: var(--sp-12) 0 var(--sp-6); padding-top: var(--sp-12); border-top: 1px solid var(--line); font-size: var(--fs-80); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-group-title:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-field { margin-bottom: var(--sp-9); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-field label { display: block; font-size: var(--fs-95); font-weight: 600; margin-bottom: var(--sp-3); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-field input[type="number"], :is(#ssb, #bluntthorn, #bracelets) .ssb-field select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-field input[type="number"]:focus, :is(#ssb, #bluntthorn, #bracelets) .ssb-field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-hint { color: var(--text-dim); font-size: var(--fs-80); margin-top: var(--sp-3); line-height: var(--lh-ui); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-class-section[hidden] { display: none; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-class-section .ssb-hint { margin: 0 0 var(--sp-9); }
+  :is(#ssb, #bluntthorn, #bracelets) label.ssb-check { display: flex; align-items: center; gap: var(--sp-6); font-weight: 600; cursor: pointer; margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-check input { width: 1.15rem; height: 1.15rem; accent-color: var(--gold); margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg-2 { grid-template-columns: repeat(2, 1fr); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg label { margin: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg span { display: block; text-align: center; padding: var(--sp-6) var(--sp-6); border-radius: 999px; background: var(--wh-2); border: 1px solid var(--wh-3); color: var(--text-dim); font-size: var(--fs-88); font-weight: 600; cursor: pointer; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
   @media (hover: hover) {
-    :is(#ssb, #bluntthorn) .ssb-seg label:hover span { color: var(--text); background: var(--wh-3); }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-seg label:hover span { color: var(--text); background: var(--wh-3); }
   }
-  :is(#ssb, #bluntthorn) .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
-  :is(#ssb, #bluntthorn) .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
-  :is(#ssb, #bluntthorn) .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn) .ssb-stat, :is(#ssb, #bluntthorn) .ssb-mini, :is(#ssb, #bluntthorn) .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-8) var(--sp-10); min-width: 0; }
-  :is(#ssb, #bluntthorn) .ssb-label { font-size: var(--fs-70); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-dim); }
-  :is(#ssb, #bluntthorn) .ssb-value { font-size: var(--fs-200); font-weight: 700; line-height: var(--lh-tight); margin: var(--sp-2) 0; }
-  :is(#ssb, #bluntthorn) .ssb-stat-main .ssb-value { color: var(--gold); }
-  :is(#ssb, #bluntthorn) .ssb-value-sm { font-size: var(--fs-110); font-weight: 700; margin: var(--sp-3) 0 var(--sp-1); overflow-wrap: anywhere; }
-  :is(#ssb, #bluntthorn) .ssb-muted { color: var(--text-dim); font-size: var(--fs-80); }
-  :is(#ssb, #bluntthorn) .ssb-progress { margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn) .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
-  :is(#ssb, #bluntthorn) .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width var(--dur) var(--ease); }
-  :is(#ssb, #bluntthorn) .ssb-progress-text { margin-top: var(--sp-4); font-size: var(--fs-88); color: var(--text-dim); }
-  :is(#ssb, #bluntthorn) .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn) .ssb-mini-wide { grid-column: 1 / -1; }
-  :is(#ssb, #bluntthorn) .ssb-bp { margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn) .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); margin-top: var(--sp-5); }
-  :is(#ssb, #bluntthorn) .ssb-bp-item .ssb-label { font-size: var(--fs-70); }
-  :is(#ssb, #bluntthorn) .ssb-bp-item .ssb-value-sm { color: var(--teal); }
-  :is(#ssb, #bluntthorn) .ssb-callouts p { margin: 0 0 var(--sp-4); padding: var(--sp-6) var(--sp-8); border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: var(--fs-88); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-seg input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-stat, :is(#ssb, #bluntthorn, #bracelets) .ssb-mini, :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-8) var(--sp-10); min-width: 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-label { font-size: var(--fs-70); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-value { font-size: var(--fs-200); font-weight: 700; line-height: var(--lh-tight); margin: var(--sp-2) 0; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-stat-main .ssb-value { color: var(--gold); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-value-sm { font-size: var(--fs-110); font-weight: 700; margin: var(--sp-3) 0 var(--sp-1); overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-muted { color: var(--text-dim); font-size: var(--fs-80); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress { margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-track { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-bar { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width var(--dur) var(--ease); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-progress-text { margin-top: var(--sp-4); font-size: var(--fs-88); color: var(--text-dim); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-mini-wide { grid-column: 1 / -1; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp { margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); margin-top: var(--sp-5); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-label { font-size: var(--fs-70); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-value-sm { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-callouts p { margin: 0 0 var(--sp-4); padding: var(--sp-6) var(--sp-8); border-left: 3px solid var(--gold); background: rgba(224,169,79,0.07); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: var(--fs-88); }
   @media (max-width: 560px) {
-    :is(#ssb, #bluntthorn) .ssb-card { padding: var(--sp-12) var(--sp-10); }
-    :is(#ssb, #bluntthorn) .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
-    :is(#ssb, #bluntthorn) .ssb-value { font-size: var(--fs-170); }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-card { padding: var(--sp-12) var(--sp-10); }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-grid { grid-template-columns: minmax(0, 1fr); }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-value { font-size: var(--fs-170); }
   }
-  :is(#ssb, #bluntthorn) .ssb-formula { display: grid; gap: var(--sp-4); margin-bottom: var(--sp-10); }
-  :is(#ssb, #bluntthorn) .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-7); font-size: var(--fs-88); color: var(--text); overflow-wrap: anywhere; }
-  :is(#ssb, #bluntthorn) .ssb-legend { color: var(--text-dim); font-size: var(--fs-95); display: grid; gap: var(--sp-3); }
-  :is(#ssb, #bluntthorn) .ssb-legend strong { color: var(--text); }
-  :is(#ssb, #bluntthorn) .ssb-credit { margin: var(--sp-10) 0 0; color: var(--text-dim); font-size: var(--fs-80); }
-  :is(#ssb, #bluntthorn) .ssb-credit a { color: var(--teal); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-formula { display: grid; gap: var(--sp-4); margin-bottom: var(--sp-10); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-formula code { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-7); font-size: var(--fs-88); color: var(--text); overflow-wrap: anywhere; }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-legend { color: var(--text-dim); font-size: var(--fs-95); display: grid; gap: var(--sp-3); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-legend strong { color: var(--text); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-credit { margin: var(--sp-10) 0 0; color: var(--text-dim); font-size: var(--fs-80); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-credit a { color: var(--teal); }
 
 
-  :is(#ssb, #bluntthorn) .ssb-sub { margin: -0.3rem 0 var(--sp-10) var(--sp-6); padding-left: var(--sp-9); border-left: 2px solid var(--line); }
-  :is(#ssb, #bluntthorn) .ssb-sub[hidden] { display: none; }
-  :is(#ssb, #bluntthorn) .ssb-hint-top { margin: -0.2rem 0 var(--sp-8); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-sub { margin: -0.3rem 0 var(--sp-10) var(--sp-6); padding-left: var(--sp-9); border-left: 2px solid var(--line); }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-sub[hidden] { display: none; }
+  #bracelets .br-card { padding: var(--sp-10) var(--sp-12); }
+  #bracelets .br-row { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: var(--sp-6); align-items: stretch; margin-bottom: var(--sp-5); }
+  #bracelets .br-row select { width: 100%; min-height: 44px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-8); font: inherit; font-size: var(--fs-95); }
+  #bracelets .br-row select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  #bracelets .br-row select.br-native { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; min-height: 0; padding: 0; border: 0; }
+  #bracelets .br-dd { position: relative; min-width: 0; display: flex; }
+  #bracelets .br-dd-btn { flex: 1; min-width: 0; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-8); text-align: left; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-6) var(--sp-8); font: inherit; font-size: var(--fs-100); cursor: pointer; transition: border-color var(--dur-fast) var(--ease); }
+  #bracelets .br-dd-btn:hover { border-color: var(--wh-3); }
+  #bracelets .br-dd-btn:focus-visible, #bracelets .br-dd-btn[aria-expanded="true"] { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); }
+  #bracelets .br-dd-btn.is-empty .br-dd-text { color: var(--text-dim); }
+  #bracelets .br-dd-text { min-width: 0; line-height: 1.3; }
+  #bracelets .br-dd-btn::after { content: ""; flex: none; width: 0.5rem; height: 0.5rem; border-right: 2px solid var(--text-dim); border-bottom: 2px solid var(--text-dim); transform: translateY(-2px) rotate(45deg); transition: transform var(--dur-fast) var(--ease); }
+  #bracelets .br-dd-btn[aria-expanded="true"]::after { transform: translateY(2px) rotate(225deg); }
+  #bracelets .br-dd-list { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30; max-height: min(320px, 50vh); overflow-y: auto; margin: 0; padding: var(--sp-3); list-style: none; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5); outline: none; }
+  #bracelets .br-dd-list.flip { top: auto; bottom: calc(100% + 6px); }
+  #bracelets .br-dd-list[hidden] { display: none; }
+  #bracelets .br-dd-opt { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-10); padding: var(--sp-6) var(--sp-8); border-radius: var(--r-sm, 6px); cursor: pointer; font-size: var(--fs-95); line-height: 1.35; }
+  #bracelets .br-dd-opt.is-active { background: var(--wh-3); }
+  #bracelets .br-dd-opt[aria-selected="true"] { color: var(--gold); font-weight: 600; }
+  #bracelets .br-dd-opt[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
+  #bracelets .br-dd-opt.is-none { color: var(--text-dim); }
+  #bracelets .br-grade span { min-height: 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); padding: var(--sp-4) var(--sp-4); }
+  #bracelets .br-grade label { display: flex; }
+  #bracelets .br-dd-text .t-blue, #bracelets .br-dd-text .t-purple, #bracelets .br-dd-text .t-orange { font-weight: 600; }
+  #bracelets .br-grade label span { width: 100%; }
+  #bracelets .br-grade input[value="R"]:checked + span { background: var(--blue); border-color: var(--blue); }
+  #bracelets .br-grade input[value="E"]:checked + span { background: var(--purple); border-color: var(--purple); }
+  #bracelets .br-grade input[value="L"]:checked + span { background: var(--orange); border-color: var(--orange); }
+  #bracelets .br-total-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-8); border-top: 1px solid var(--line); margin-top: var(--sp-6); padding-top: var(--sp-6); }
+  #bracelets .br-total-bar .calc-tools { margin: 0; }
+  #bracelets .br-total-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-8); }
+  #bracelets .br-total { font-size: var(--fs-170); font-weight: 700; color: var(--gold); line-height: var(--lh-tight); }
+  #bracelets .ssb-callouts:empty { display: none; }
+  #bracelets .br-card .ssb-callouts { margin-top: var(--sp-8); }
+  #bracelets .br-card .ssb-callouts p { margin: 0; padding: var(--sp-4) var(--sp-8); }
+  #bracelets .br-total-bar .calc-btn { padding: var(--sp-3) var(--sp-8); }
+  @media (max-width: 860px) { #bracelets .br-row { grid-template-columns: minmax(0, 1fr); margin-bottom: var(--sp-8); } }
+  :is(#ssb, #bluntthorn, #bracelets) .ssb-hint-top { margin: -0.2rem 0 var(--sp-8); }
   #resources .table-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 900px) { #resources .table-trio { grid-template-columns: minmax(0, 1fr); } }
 
@@ -1745,9 +1782,9 @@
     h1 { font-size: clamp(0.92rem, 4.4vw, 1.25rem); white-space: nowrap; max-width: calc(100% - 3.4rem); }
 
     /* Touch targets: at least 44px */
-    :is(#ssb, #bluntthorn) label.ssb-check { min-height: 44px; }
-    :is(#ssb, #bluntthorn) .ssb-check input { width: 1.4rem; height: 1.4rem; }
-    :is(#ssb, #bluntthorn) .ssb-seg span { min-height: 44px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+    :is(#ssb, #bluntthorn, #bracelets) label.ssb-check { min-height: 44px; }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-check input { width: 1.4rem; height: 1.4rem; }
+    :is(#ssb, #bluntthorn, #bracelets) .ssb-seg span { min-height: 44px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
     .subtabs button, .subtabs2 button { min-height: 44px; }
     .resource-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
     .syn-filter-toggle { min-height: 44px; }
@@ -1763,7 +1800,7 @@
     .pos-value { min-width: 0; overflow-wrap: break-word; }
 
     /* The few labels under 12px go up to 12.25px (0.7rem) */
-    .astro-tag, .th-group-label, :is(#ssb, #bluntthorn) .ssb-bp-item .ssb-label { font-size: 0.7rem; }
+    .astro-tag, .th-group-label, :is(#ssb, #bluntthorn, #bracelets) .ssb-bp-item .ssb-label { font-size: 0.7rem; }
   }
   /* ---------- Phones: tables, bracelets, Paradise image, Synergy cards (max-width 640px) ---------- */
   @media (max-width: 640px) {
@@ -1922,8 +1959,9 @@
 
     <div class="updates" id="updates">
       <h2 class="section-head-dot c-teal">Updates</h2>
-      <p class="updates-meta">Last updated: 12 October 2026</p>
+      <p class="updates-meta">Last updated: 13 October 2026</p>
       <ul>
+        <li><time datetime="2026-10-13">13 Oct 2026</time><span>New DPS Bracelet Calculator on the Bracelets tab: pick up to three effects and their grade to see the combined damage value.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Slightly smaller logo and title on desktop, so the menu takes less room at the top.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
@@ -2653,6 +2691,46 @@
     <p class="section-sub">Fixed bracelet effects ranked by value, for both DPS and Support builds.</p>
 
     <section class="block">
+      <h3 class="section-head-dot c-gold">DPS Bracelet Calculator</h3>
+      <p class="note-line">Pick up to three effects and a grade for each. The total adds up the values from the table below, so use it to compare bracelets.</p>
+      <div class="ssb-card br-card">
+        <div class="br-row">
+          <select id="br-e1" aria-label="Effect 1"></select>
+          <div class="ssb-seg br-grade" role="radiogroup" aria-label="Effect 1 grade">
+            <label><input type="radio" name="br-g1" value="R"><span>Rare</span></label>
+            <label><input type="radio" name="br-g1" value="E"><span>Epic</span></label>
+            <label><input type="radio" name="br-g1" value="L" checked><span>Legendary</span></label>
+          </div>
+        </div>
+        <div class="br-row">
+          <select id="br-e2" aria-label="Effect 2"></select>
+          <div class="ssb-seg br-grade" role="radiogroup" aria-label="Effect 2 grade">
+            <label><input type="radio" name="br-g2" value="R"><span>Rare</span></label>
+            <label><input type="radio" name="br-g2" value="E"><span>Epic</span></label>
+            <label><input type="radio" name="br-g2" value="L" checked><span>Legendary</span></label>
+          </div>
+        </div>
+        <div class="br-row">
+          <select id="br-e3" aria-label="Effect 3"></select>
+          <div class="ssb-seg br-grade" role="radiogroup" aria-label="Effect 3 grade">
+            <label><input type="radio" name="br-g3" value="R"><span>Rare</span></label>
+            <label><input type="radio" name="br-g3" value="E"><span>Epic</span></label>
+            <label><input type="radio" name="br-g3" value="L" checked><span>Legendary</span></label>
+          </div>
+        </div>
+        <div class="br-total-bar">
+          <div class="br-total-main"><span class="ssb-label">Total damage value</span><span class="br-total" id="br-total">0.00%</span><span class="ssb-muted" id="br-count">No effects selected</span></div>
+          <div class="calc-tools">
+            <button type="button" class="calc-btn" data-calc-copy="br">Copy link</button>
+            <button type="button" class="calc-btn" data-calc-reset="br">Reset</button>
+            <span class="calc-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="ssb-callouts" id="br-notes"></div>
+      </div>
+    </section>
+
+    <section class="block">
       <h3 class="section-head-dot c-gold">DPS Bracelet</h3>
       <p class="note-line">Ranked by the Legendary (L) grade value — the R and E columns for the same row won't always be in descending order on their own.</p>
       <table class="data table-bracelet-dps">
@@ -3247,7 +3325,7 @@
   </section>
 
 </main>
-<footer class="site-footer">Last updated 12 October 2026 · Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.<br>Spotted a wrong number or a bug? <button type="button" class="link-btn" id="report-open">Report a mistake</button></footer>
+<footer class="site-footer">Last updated 13 October 2026 · Lost Ark Power Guide is a fan-made reference. Lost Ark and its related names are trademarks of their respective owners.<br>Spotted a wrong number or a bug? <button type="button" class="link-btn" id="report-open">Report a mistake</button></footer>
 
 <dialog class="report" id="report-dialog" aria-labelledby="report-title">
   <div class="report-head">
@@ -4249,11 +4327,137 @@ init();
   update();
 })();
 </script><script>
+/* Bracelet effect calculator: plain sum of the "Total Damage Value" column in the DPS Bracelet table below. */
+(function () {
+  const EFFECTS = [
+    ['a1', 'Additional Damage + Demon/Archdemon bonus', 4.30, 4.67, 5.04],
+    ['a2', 'Crit Damage + Crit Hit Damage', 3.78, 4.36, 4.93],
+    ['a3', 'Crit Rate + Crit Hit Damage', 3.78, 4.36, 4.91],
+    ['a4', 'Weapon Power + HP above 50% on-hit buff', 3.37, 3.77, 4.18],
+    ['a5', 'Outgoing Damage (with Skill Cooldown +2%)', 3.10, 3.60, 4.10],
+    ['a6', 'Weapon Power + 30-stack on-hit buff', 2.81, 3.17, 3.52],
+    ['a7', 'Crit Damage', 2.38, 2.95, 3.51],
+    ['a8', 'Crit Rate', 2.38, 2.94, 3.50],
+    ['a9', 'Weapon Power', 2.64, 2.97, 3.30],
+    ['a10', 'Non-Directional Skill Damage', 2.25, 2.70, 3.15],
+    ['a11', 'Back Attack Damage', 2.25, 2.70, 3.15],
+    ['a12', 'Front Attack Damage', 2.25, 2.70, 3.15],
+    ['a13', 'Outgoing Damage + Staggered bonus', 2.00, 2.50, 3.00],
+    ['a14', 'Outgoing Damage', 2.00, 2.50, 3.00],
+    ['a15', 'Additional Damage', 2.12, 2.48, 2.83],
+    ['a16', 'On-hit Weapon Power + Attack/Move Speed', 2.12, 2.42, 2.71],
+    ['a17', 'Dexterity / Intelligence / Strength', 1.14, 1.48, 1.82],
+    ['a18', 'Attack and Movement Speed', 1.20, 1.50, 1.80]
+  ];
+  /* Effect wording (with the coloured per-grade values) is taken from the DPS Bracelet table, so the two never drift apart. */
+  const tableRows = [...document.querySelectorAll('.table-bracelet-dps tbody tr')];
+  EFFECTS.forEach((e, i) => {
+    const td = tableRows[i] && tableRows[i].children[1];
+    if (td) {
+      const c = td.cloneNode(true); c.querySelectorAll('.footnote').forEach((x) => x.remove());
+      e.html = c.innerHTML.replace(/(<br\s*\/?>\s*)+$/i, '').trim(); e[1] = c.textContent.replace(/\s+/g, ' ').trim();
+    } else { e.html = e[1]; }
+  });
+  window.__BRACELET_EFFECTS = EFFECTS;
+  const GRADE = { R: [2, 'Rare'], E: [3, 'Epic'], L: [4, 'Legendary'] };
+  const $ = (id) => document.getElementById(id);
+  const sels = [1, 2, 3].map((n) => $('br-e' + n));
+  if (!sels.every(Boolean)) return;
+  sels.forEach((sel) => {
+    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = '\u2014 Choose an effect \u2014'; sel.appendChild(o0);
+    EFFECTS.forEach((e) => { const o = document.createElement('option'); o.value = e[0]; o.textContent = e[1]; sel.appendChild(o); });
+  });
+  const grade = (n) => { const r = document.querySelector('input[name="br-g' + n + '"]:checked'); return r ? r.value : 'L'; };
+  const update = () => {
+    const chosen = sels.map((s) => s.value);
+    sels.forEach((s, i) => { [...s.options].forEach((o) => { o.disabled = !!o.value && chosen.some((c, j) => j !== i && c === o.value); }); });
+    let cents = 0, count = 0;
+    const notes = [];
+    chosen.forEach((key, i) => {
+      if (!key) return;
+      const e = EFFECTS.find((x) => x[0] === key); if (!e) return;
+      const g = grade(i + 1), v = e[GRADE[g][0]];
+      cents += Math.round(v * 100); count++;
+      if (key === 'a1') notes.push('Additional Damage + Demon/Archdemon bonus only reaches this value against Kazeros/Legion raid bosses; outside that content the value drops by 50%.');
+    });
+    $('br-total').textContent = (cents / 100).toFixed(2) + '%';
+    $('br-count').textContent = count === 0 ? 'No effects selected' : count + (count === 1 ? ' effect selected' : ' effects selected');
+    const box = $('br-notes'); box.innerHTML = '';
+    notes.forEach((m) => { const p = document.createElement('p'); p.textContent = m; box.appendChild(p); });
+  };
+  /* Custom dropdown mirroring each native select (the select stays as the source of truth for saved state and links). */
+  const buildDD = (sel, n) => {
+    sel.classList.add('br-native'); sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true');
+    const wrap = document.createElement('div'); wrap.className = 'br-dd';
+    sel.parentNode.insertBefore(wrap, sel); wrap.appendChild(sel);
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'br-dd-btn';
+    btn.setAttribute('aria-haspopup', 'listbox'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Effect ' + n);
+    const txt = document.createElement('span'); txt.className = 'br-dd-text'; btn.appendChild(txt);
+    const list = document.createElement('ul'); list.className = 'br-dd-list'; list.id = 'br-dd-list' + n; list.setAttribute('role', 'listbox'); list.tabIndex = -1; list.hidden = true;
+    list.setAttribute('aria-label', 'Effect ' + n + ' options'); btn.setAttribute('aria-controls', list.id);
+    wrap.appendChild(btn); wrap.appendChild(list);
+    let items = [], active = -1;
+    const label = () => { const o = sel.options[sel.selectedIndex]; const has = !!(o && o.value); const e = has && EFFECTS.find((x) => x[0] === o.value); if (e && e.html) txt.innerHTML = e.html; else txt.textContent = has ? o.textContent : 'Choose an effect'; btn.classList.toggle('is-empty', !has); };
+    const setActive = (i, scroll) => {
+      if (items[active]) items[active].classList.remove('is-active');
+      active = i; const it = items[i];
+      if (it) { it.classList.add('is-active'); list.setAttribute('aria-activedescendant', it.id); if (scroll) it.scrollIntoView({ block: 'nearest' }); }
+    };
+    const render = () => {
+      list.innerHTML = ''; items = [];
+      [...sel.options].forEach((o, i) => {
+        const li = document.createElement('li'); li.className = 'br-dd-opt' + (o.value ? '' : ' is-none'); li.id = 'br-dd' + n + '-' + i; li.setAttribute('role', 'option');
+        li.dataset.value = o.value; li.setAttribute('aria-selected', String(sel.selectedIndex === i)); if (o.disabled) li.setAttribute('aria-disabled', 'true');
+        const e = EFFECTS.find((x) => x[0] === o.value); const t = document.createElement('span'); if (e && e.html) t.innerHTML = e.html; else t.textContent = 'None'; li.appendChild(t);
+        list.appendChild(li); items.push(li);
+      });
+    };
+    const isOpen = () => !list.hidden;
+    const open = () => {
+      render(); list.hidden = false; btn.setAttribute('aria-expanded', 'true');
+      list.classList.remove('flip'); const r = list.getBoundingClientRect(); if (r.bottom > innerHeight && btn.getBoundingClientRect().top > r.height + 12) list.classList.add('flip');
+      setActive(Math.max(0, sel.selectedIndex), true); list.focus({ preventScroll: true });
+    };
+    const close = (refocus) => { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (refocus) btn.focus(); };
+    const choose = (i) => {
+      const o = sel.options[i]; if (!o || o.disabled) return;
+      sel.value = o.value; sel.dispatchEvent(new Event('change', { bubbles: true })); close(true);
+    };
+    const move = (d) => { let i = active; do { i += d; } while (items[i] && items[i].getAttribute('aria-disabled') === 'true'); if (items[i]) setActive(i, true); };
+    btn.addEventListener('click', () => { isOpen() ? close(false) : open(); });
+    btn.addEventListener('keydown', (e) => { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!isOpen()) open(); } });
+    list.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+      else if (e.key === 'Home') { e.preventDefault(); setActive(0, true); }
+      else if (e.key === 'End') { e.preventDefault(); setActive(items.length - 1, true); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(active); }
+      else if (e.key === 'Escape') { e.preventDefault(); close(true); }
+      else if (e.key === 'Tab') { close(false); }
+      else if (e.key.length === 1) {
+        const q = e.key.toLowerCase(); const from = active + 1;
+        const order = items.map((_, i) => (from + i) % items.length).find((i) => sel.options[i].textContent.toLowerCase().startsWith(q) && sel.options[i].value && !sel.options[i].disabled);
+        if (order !== undefined) setActive(order, true);
+      }
+    });
+    list.addEventListener('mousemove', (e) => { const li = e.target.closest('.br-dd-opt'); if (li) { const i = items.indexOf(li); if (i !== active) setActive(i, false); } });
+    list.addEventListener('click', (e) => { const li = e.target.closest('.br-dd-opt'); if (li) choose(items.indexOf(li)); });
+    document.addEventListener('mousedown', (e) => { if (isOpen() && !wrap.contains(e.target)) close(false); });
+    sel.addEventListener('change', label);
+    label();
+  };
+  sels.forEach((sel, i) => buildDD(sel, i + 1));
+  sels.forEach((s) => s.addEventListener('change', update));
+  document.querySelectorAll('input[name^="br-g"]').forEach((r) => r.addEventListener('change', update));
+  update();
+})();
+</script><script>
 /* Calculator state: remember inputs (localStorage, this device only), Reset, and Copy link (inputs encoded in the URL). */
 (function () {
   const CALCS = {
     ssb: { tab: 'ssb', fields: ['ssb-classSelect','ssb-spec','ssb-sheetAs','ssb-sheetMs','ssb-feast','ssb-support'], radios: ['ssb-wine','ssb-level'] },
-    bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] }
+    bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] },
+    br:  { tab: 'bracelets', fields: ['br-e1','br-e2','br-e3'], radios: ['br-g1','br-g2','br-g3'] }
   };
   const store = { get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }, del(k){ try { localStorage.removeItem(k); } catch (e) {} } };
   const key = (c) => 'lopg-calc-' + c;
