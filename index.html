@@ -2320,6 +2320,13 @@
             <span>Crit Synergy (+10% Crit Rate)</span>
           </label>
         </div>
+        <div class="ssb-field">
+          <label class="ssb-check" for="bt-master">
+            <input type="checkbox" id="bt-master">
+            <span>Master (Ark Passive, +8% Crit Rate)</span>
+          </label>
+          <div class="ssb-hint">Only tick this if it is not already included in the Crit Rate above.</div>
+        </div>
 
         <div class="ssb-group-title">Crit Engravings</div>
         <div class="ssb-hint ssb-hint-top">Only add these if they are not already included in the Crit Rate above.</div>
@@ -4466,6 +4473,7 @@ init();
   const MAX_CRIT_INPUT = 150;
   const BACK_ATTACK = 10;
   const SYNERGY = 10;
+  const MASTER = 8;
   const LEVELS = {
     1: { flat: 7.5, rate: 1.25, cap: 52.5 },
     2: { flat: 15, rate: 1.5, cap: 75 },
@@ -4489,7 +4497,7 @@ init();
     if (critField.value !== "" && Number.parseFloat(critField.value) < 0) critField.value = 0;
     const adr = $("adr").checked ? num($("adr-book").value) : 0;
     const pd = $("pd").checked ? num($("pd-book").value) + num($("pd-stone").value) : 0;
-    const total = Math.min(num($("other").value), MAX_CRIT_INPUT) + ($("back").checked ? BACK_ATTACK : 0) + ($("synergy").checked ? SYNERGY : 0) + adr + pd;
+    const total = Math.min(num($("other").value), MAX_CRIT_INPUT) + ($("back").checked ? BACK_ATTACK : 0) + ($("synergy").checked ? SYNERGY : 0) + ($("master").checked ? MASTER : 0) + adr + pd;
     $("adr-sub").hidden = !$("adr").checked;
     $("pd-sub").hidden = !$("pd").checked;
     const above = Math.max(total - CRIT_CAP, 0);
@@ -4528,7 +4536,7 @@ init();
   };
 
   $("other").addEventListener("input", update);
-  ["back", "synergy", "adr", "pd", "adr-book", "pd-book", "pd-stone"].forEach((id) => $(id).addEventListener("change", update));
+  ["back", "synergy", "master", "adr", "pd", "adr-book", "pd-book", "pd-stone"].forEach((id) => $(id).addEventListener("change", update));
   document.querySelectorAll("input[name='bt-level']").forEach((i) => i.addEventListener("change", update));
   update();
 })();
@@ -4584,7 +4592,7 @@ init();
       const e = EFFECTS.find((x) => x[0] === key); if (!e) return;
       const g = grade(i + 1), v = e[GRADE[g][0]];
       cents += Math.round(v * 100); count++;
-      if (key === 'a1') notes.push('Additional Damage + Demon/Archdemon bonus only reaches this value against Kazeros/Legion raid bosses; outside that content the value drops by 50%.');
+      if (key === 'a1') notes.push('Total value, applicable only against Demon and Archdemon bosses (such as Kazeros and Legion raids).');
     });
     if (BR_CUSTOM && count) notes.push('Totals use your custom baseline (see the DPS Bracelet section).');
     $('br-total').textContent = (cents / 100).toFixed(2) + '%';
@@ -4913,7 +4921,7 @@ init();
 (function () {
   const CALCS = {
     ssb: { tab: 'ssb', fields: ['ssb-classSelect','ssb-spec','ssb-sheetAs','ssb-sheetMs','ssb-feast','ssb-support'], radios: ['ssb-wine','ssb-level'] },
-    bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] },
+    bt:  { tab: 'bluntthorn', fields: ['bt-other','bt-back','bt-synergy','bt-master','bt-adr','bt-adr-book','bt-pd','bt-pd-book','bt-pd-stone'], radios: ['bt-level'] },
     br:  { tab: 'bracelets', fields: ['br-e1','br-e2','br-e3'], radios: ['br-g1','br-g2','br-g3'] },
     ac:  { tab: 'accessories', fields: [], radios: ['acc-type','acc-t1','acc-t2','acc-c','acc-t3'] }
   };
