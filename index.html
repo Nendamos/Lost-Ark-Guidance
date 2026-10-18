@@ -2236,7 +2236,7 @@
           </div>
           <div class="ssb-mini">
             <div class="ssb-label">Overcap Needed</div>
-            <div class="ssb-value-sm" id="ssb-neededExcess">26.66%</div>
+            <div class="ssb-value-sm" id="ssb-neededExcess">26.67%</div>
             <div class="ssb-muted">combined above 140</div>
           </div>
         </div>
@@ -2268,6 +2268,7 @@
       <div class="ssb-legend">
         <div><strong>Level 1</strong> base 5%, excess 15%, flat 4%, max 12%</div>
         <div><strong>Level 2</strong> base 10%, excess 30%, flat 8%, max 24%</div>
+        <div><strong>Why 26.67% and not 26.66%?</strong> At 140% on both speeds the base conversion gives 8% and the flat bonus gives 8%, so the excess has to provide the remaining 8%. That is 8 / 0.30 = 26.666...% of combined overcap. The calculator works in 0.01% steps and rounds each value down, so 26.66% would give 7.99% excess and a total of 23.99%, which is just short of the cap. 26.67% is the smallest overcap that gives the full 8.00% and reaches the 24% maximum. Level 1 ends up at the same number: (12 - 4 - 4) / 0.15 = 26.67%.</div>
       </div>
       <p class="ssb-credit">Calculation logic from the <a href="https://ssbcalc.poyomi.fyi/" target="_blank" rel="noopener">Supersonic Breakthrough Calculator</a> by poyomi. Class bonuses are game values and can change with patches.</p>
     </div>
