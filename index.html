@@ -2023,6 +2023,51 @@
   @media (max-width: 560px) { #bracelets h3.section-head-dot { flex-wrap: wrap; } .br-chip { margin-left: 0; } }
   .info-pop .br-tip-custom { color: var(--gold); }
   .info-pop .br-tip-custom[hidden] { display: none; }
+
+  /* compact accessory calculator */
+  @media (min-width: 1180px) {
+    #accessories .br-card { --ctl: 42px; --g: 6px; padding: 16px; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 22rem; grid-template-rows: auto repeat(3, var(--ctl)); column-gap: 16px; row-gap: var(--g); align-items: stretch; }
+    #accessories .br-card > .acc-cap { margin: 0; padding: 0 0 2px; line-height: 1; align-self: end; white-space: nowrap; }
+    #accessories .br-card > .acc-type, #accessories .br-card > .br-row { margin: 0; gap: var(--g); }
+    #accessories .acc-label, #accessories .acc-seg3 span, #accessories .acc-type span, #accessories .acc-tier span { box-sizing: border-box; height: var(--ctl); min-height: var(--ctl); padding: 0 6px; font-size: var(--fs-88); line-height: 1; white-space: nowrap; }
+    #accessories .acc-label { padding: 0 14px; font-size: var(--fs-95); }
+    #accessories .br-card > :nth-child(1) { grid-column: 1; grid-row: 1; }
+    #accessories .br-card > :nth-child(2) { grid-column: 1; grid-row: 2 / span 3; grid-template-columns: 1fr; grid-template-rows: repeat(3, var(--ctl)); }
+    #accessories .br-card > :nth-child(3) { grid-column: 2; grid-row: 1; }
+    #accessories .br-card > :nth-child(4) { grid-column: 2; grid-row: 2; grid-template-columns: 11.5rem minmax(0, 1fr); }
+    #accessories .br-card > :nth-child(5) { grid-column: 2; grid-row: 3; grid-template-columns: 11.5rem minmax(0, 1fr); }
+    #accessories .br-card > :nth-child(6) { grid-column: 3; grid-row: 1; }
+    #accessories .br-card > :nth-child(7) { grid-column: 3; grid-row: 2 / span 2; grid-template-columns: 1fr; grid-template-rows: repeat(2, var(--ctl)); }
+    #accessories .acc-seg3 span { white-space: normal; text-align: center; line-height: 1.15; }
+    #accessories .acc-tier span, #accessories .acc-seg3 span, #accessories .br-total-bar .calc-btn { font-size: var(--fs-95); }
+    #accessories .acc-type span { font-size: var(--fs-88); }
+    #accessories .acc-seg3 span { font-size: var(--fs-88); padding: 0 4px; text-wrap: balance; }
+    #accessories .br-card > :nth-child(8) { display: contents; }
+    #accessories .br-total-main { grid-column: 2; grid-row: 4; align-self: center; flex-wrap: nowrap; gap: 12px; }
+    #accessories .br-total-bar .calc-tools { grid-column: 3; grid-row: 4; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); margin: 0; }
+    #accessories .br-total-bar .calc-btn { grid-row: 1; height: var(--ctl); padding: 0; box-sizing: border-box; }
+    #accessories .br-total-bar .calc-btn:nth-of-type(1) { grid-column: 2; }
+    #accessories .br-total-bar .calc-btn:nth-of-type(2) { grid-column: 3; }
+    #accessories .br-total-bar .calc-status { position: absolute; }
+    #accessories .br-total { font-size: var(--fs-140); line-height: 1; }
+    #acc-calc .section-sub { margin: 0 0 var(--sp-8); font-size: var(--fs-88); }
+  }
+  #acc-calc .section-sub { margin-bottom: var(--sp-8); }
+
+  @media (min-width: 1180px) {
+    #accessories .br-card { --ctl: 50px; --g: 10px; padding: 24px 22px; column-gap: 24px; row-gap: var(--g); }
+    #accessories .br-card > .acc-cap { padding-bottom: 6px; font-size: var(--fs-80); }
+    #accessories .acc-label, #accessories .acc-seg3 span, #accessories .acc-type span, #accessories .acc-tier span { font-size: var(--fs-100); }
+    #accessories .acc-seg3 span { font-size: var(--fs-95); }
+    #accessories .br-total-bar .calc-btn { font-size: var(--fs-100); }
+    #accessories .br-total { font-size: var(--fs-170); }
+    #acc-calc .section-sub { margin-bottom: var(--sp-12); }
+  }
+
+  @media (min-width: 1180px) {
+    #accessories .br-total-bar .calc-tools { display: flex; justify-content: flex-end; align-self: center; gap: 8px; }
+    #accessories .br-total-bar .calc-btn { height: 34px; padding: 0 16px; font-size: var(--fs-88); grid-column: auto; }
+  }
 </style>
 </head>
 <body>
@@ -2772,7 +2817,7 @@
 
     <section class="block" id="acc-calc">
       <div class="section-title fs-110">Accessory Calculator</div>
-      <p class="section-sub">Pick an accessory, the tier of each of its two bonus effects, and an optional common effect. The total adds up the damage values from the Value &rarr; Damage Conversion tables above.</p>
+      <p class="section-sub">Pick an accessory, the tier of each bonus effect and an optional common effect. Values come from the conversion tables above.</p>
       <div class="ssb-card br-card">
         <div class="acc-cap">Accessory</div>
         <div class="ssb-seg acc-type" role="radiogroup" aria-label="Accessory type">
