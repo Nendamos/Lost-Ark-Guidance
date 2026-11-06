@@ -490,6 +490,10 @@
   .calc-status { font-size: var(--fs-88); color: var(--text-dim); }
   .updates { margin-top: var(--sp-15); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--sp-15); }
   .updates h2 { margin-bottom: var(--sp-5); }
+  .updates-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-10); flex-wrap: wrap; margin-bottom: var(--sp-5); }
+  .updates-head h2 { margin: 0; }
+  .updates.is-collapsed li:nth-child(n+4) { display: none; }
+  @media (max-width: 560px) { .updates-head { flex-wrap: nowrap; } .updates-toggle .u-long { display: none; } }
   .updates .updates-meta { color: var(--text-dim); font-size: var(--fs-88); margin-bottom: var(--sp-10); }
   .updates ul { list-style: none; margin: 0; padding: 0; }
   .updates li { display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--sp-10); padding: var(--sp-6) 0; border-top: 1px solid var(--line); line-height: var(--lh-read); }
@@ -1808,7 +1812,9 @@
   @media (min-width: 900px) {
     h1 { font-size: 1.45rem; margin-bottom: var(--sp-4); }
   }
-  @media (min-width: 900px) and (max-width: 1699px) { nav.tabs { max-width: 1000px; margin-left: auto; margin-right: auto; } }
+  /* Tab bar: tighter spacing; one row from 1140px, even 5 + 4 rows below that */
+  @media (min-width: 641px) { nav.tabs { gap: var(--sp-3); } nav.tabs button { padding-left: var(--sp-10); padding-right: var(--sp-10); } }
+  @media (min-width: 641px) and (max-width: 1139px) { nav.tabs { max-width: 620px; margin-left: auto; margin-right: auto; } }
   @media print {
     header { position: static; background: none; border: 0; }
     nav.tabs, .site-search, .skip-link { display: none !important; }
@@ -2111,6 +2117,16 @@
   .brand-name { color: var(--text); }
   .brand-tag { color: var(--gold); font-size: .5em; font-weight: 600; margin-top: .2em; }
   @media (max-width: 640px) { .brand-tag { font-size: .62em; } }
+
+  /* Desktop: slim one-row header (logo left, tabs centred, search right) from 1180px */
+  @media (min-width: 1180px) {
+    header { display: flex; align-items: center; gap: 1.2rem; padding: .4rem 1.5rem; text-align: left; }
+    header h1.brand { margin: 0; flex-shrink: 0; font-size: 1.05rem; }
+    header .brand-tag { font-size: .62em; }
+    header nav.tabs { flex: 1; flex-wrap: nowrap; justify-content: center; gap: .1rem; max-width: none; margin: 0; }
+    header nav.tabs button { padding: .55rem .75rem; font-size: .9rem; }
+    header .site-search { position: static; flex-shrink: 0; margin-left: auto; }
+  }
 </style>
 </head>
 <body>
@@ -2190,9 +2206,12 @@
     </div>
 
     <div class="updates" id="updates">
-      <h2 class="section-head-dot c-teal">Updates</h2>
+      <div class="updates-head">
+        <h2 class="section-head-dot c-teal">Updates</h2>
+        <button type="button" class="calc-btn updates-toggle" id="updates-toggle" aria-controls="updates-list" aria-expanded="false" hidden>View all updates</button>
+      </div>
       <p class="updates-meta">Last updated: 2 November 2026</p>
-      <ul>
+      <ul id="updates-list">
         <li><time datetime="2026-11-02">2 Nov 2026</time><span>The site has a name: Paragon. The header now shows Paragon with &ldquo;Lost Ark Power Guide&rdquo; underneath. The address stays the same. There is also a new logo: a cut crystal, which shows up in the header, the browser tab and your phone&rsquo;s home screen.</span></li>
         <li><time datetime="2026-10-20">20 Oct 2026</time><span>New Auction Calculator in the Calculators tab: enter an item&rsquo;s market value to see the bid amounts for 4, 8 and 16 player parties, with a Profit option and copy buttons.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: DPS bracelet values are now estimated for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator. The Weapon Power and STR/DEX/INT lines are lower than before, the table is re-ranked, and new info icons explain the baseline.</span></li>
@@ -5371,6 +5390,26 @@ init();
   document.addEventListener('focusout', () => setTimeout(() => { if (!typing(document.activeElement)) document.body.classList.remove('mnav-typing'); }, 0));
   sync();
 })();
+</script>
+<script>
+  // Home > Updates: show the latest 3, with a button to show all
+  (function () {
+    const box = document.getElementById('updates'), btn = document.getElementById('updates-toggle');
+    if (!box || !btn) return;
+    const total = box.querySelectorAll('#updates-list > li').length;
+    if (total <= 3) return;
+    const label = () => {
+      const open = !box.classList.contains('is-collapsed');
+      btn.innerHTML = open ? 'Show latest<span class="u-long"> only</span>' : 'View all<span class="u-long"> updates</span> (' + total + ')';
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    box.classList.add('is-collapsed'); btn.hidden = false; label();
+    btn.addEventListener('click', () => {
+      const wasOpen = !box.classList.contains('is-collapsed');
+      box.classList.toggle('is-collapsed'); label();
+      if (wasOpen) box.scrollIntoView({ block: 'nearest' });
+    });
+  })();
 </script>
 </body>
 </html>
