@@ -2128,6 +2128,21 @@
     header .site-search { position: static; flex-shrink: 0; margin-left: auto; }
   }
 </style>
+<style id="acc-sup-css">
+#accessories .acc-intro{display:flex;flex-direction:column;gap:var(--sp-8);margin:0 0 var(--sp-15)}
+#accessories .acc-intro .note-line{margin:0}
+#accessories .acc-intro .note-line a{color:var(--gold)}
+#accessories .acc-sup{display:flex;align-items:center;gap:var(--sp-10);width:fit-content;max-width:100%;padding:var(--sp-8) var(--sp-12);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);cursor:pointer}
+#accessories .acc-sup input{appearance:none;-webkit-appearance:none;flex:none;width:2.4rem;height:1.35rem;border-radius:999px;background:var(--wh-3);border:1px solid var(--line);position:relative;margin:0;cursor:pointer;transition:background var(--dur-fast,.15s) var(--ease,ease),border-color var(--dur-fast,.15s) var(--ease,ease)}
+#accessories .acc-sup input::after{content:'';position:absolute;top:2px;left:2px;width:calc(1.35rem - 6px);height:calc(1.35rem - 6px);border-radius:50%;background:var(--text-dim);transition:transform var(--dur-fast,.15s) var(--ease,ease),background var(--dur-fast,.15s) var(--ease,ease)}
+#accessories .acc-sup input:checked{background:color-mix(in srgb,var(--gold) 30%,transparent);border-color:var(--gold)}
+#accessories .acc-sup input:checked::after{transform:translateX(1.05rem);background:var(--gold)}
+#accessories .acc-sup input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#accessories .acc-sup span{display:flex;flex-direction:column;gap:2px}
+#accessories .acc-sup b{font-weight:600}
+#accessories .acc-sup small{font-size:var(--fs-80);color:var(--text-dim)}
+#accessories #acc-how code{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:1px 6px;font-size:.9em}
+</style>
 <style id="honing-css">
 /* ================= HONING CALCULATOR ================= */
 #honing{--bg:#0d0d0e; --panel:#151516; --panel-2:#1c1c1e; --line:#2c2c30;
@@ -3107,7 +3122,11 @@
 
   <section class="page" id="accessories" role="tabpanel" aria-labelledby="tab-accessories">
     <div class="section-title">Accessories</div>
-    <p class="section-sub">Enlightenment breakpoints and role split for each accessory, followed by the real damage value each individual bonus is worth.</p>
+    <p class="section-sub">Enlightenment breakpoints and role split for each accessory, followed by roughly how much damage each bonus is worth.</p>
+    <div class="acc-intro">
+      <label class="acc-sup" for="acc-sup"><input type="checkbox" id="acc-sup" role="switch" checked><span><b>Support buffs</b> <small>On: you play with a typical support in your party. Off: you play without a support. Only the Attack Power and Weapon Power lines change.</small></span></label>
+      <p class="note-line">The damage values below are for a <b>DPS character with average gear</b>. The better your gear and the stronger your support, the more Attack Power % is worth. See <a href="#acc-how">how the values are calculated</a> at the bottom of the page.</p>
+    </div>
 
     <section class="block">
       <div class="card-row">
@@ -3118,13 +3137,13 @@
           <div class="role-split">
             <div>
               <div class="role-label">DPS</div>
-              <div class="stat-line">Additional Damage <span class="t-blue">+0.70%</span> / <span class="t-purple">1.6%</span> / <span class="t-orange">2.6%</span></div>
-              <div class="stat-line">Outgoing Damage <span class="t-blue">+0.55%</span> / <span class="t-purple">1.2%</span> / <span class="t-orange">2.0%</span></div>
+              <div class="stat-line">Additional Damage <span class="t-blue">+0.70%</span> / <span class="t-purple">1.60%</span> / <span class="t-orange">2.60%</span></div>
+              <div class="stat-line">Outgoing Damage <span class="t-blue">+0.55%</span> / <span class="t-purple">1.20%</span> / <span class="t-orange">2.00%</span></div>
             </div>
             <div>
               <div class="role-label">Support</div>
-              <div class="stat-line">Brand Power <span class="t-blue">+2.15%</span> / <span class="t-purple">4.8%</span> / <span class="t-orange">8.0%</span></div>
-              <div class="stat-line">Identity Gain <span class="t-blue">+1.60%</span> / <span class="t-purple">3.6%</span> / <span class="t-orange">6.0%</span></div>
+              <div class="stat-line">Brand Power <span class="t-blue">+2.15%</span> / <span class="t-purple">4.80%</span> / <span class="t-orange">8.00%</span></div>
+              <div class="stat-line">Identity Gain <span class="t-blue">+1.60%</span> / <span class="t-purple">3.60%</span> / <span class="t-orange">6.00%</span></div>
             </div>
           </div>
         </div>
@@ -3136,12 +3155,12 @@
           <div class="role-split">
             <div>
               <div class="role-label">DPS</div>
-              <div class="stat-line">Attack Power <span class="t-blue">+0.4%</span> / <span class="t-purple">0.95%</span> / <span class="t-orange">1.55%</span></div>
-              <div class="stat-line">Weapon Power <span class="t-blue">+0.8%</span> / <span class="t-purple">1.80%</span> / <span class="t-orange">3.00%</span></div>
+              <div class="stat-line">Attack Power % <span class="t-blue">+0.40%</span> / <span class="t-purple">0.95%</span> / <span class="t-orange">1.55%</span></div>
+              <div class="stat-line">Weapon Power % <span class="t-blue">+0.80%</span> / <span class="t-purple">1.80%</span> / <span class="t-orange">3.00%</span></div>
             </div>
             <div>
               <div class="role-label">Support</div>
-              <div class="stat-line">Weapon Power <span class="t-blue">+0.8%</span> / <span class="t-purple">1.80%</span> / <span class="t-orange">3.00%</span></div>
+              <div class="stat-line">Weapon Power % <span class="t-blue">+0.80%</span> / <span class="t-purple">1.80%</span> / <span class="t-orange">3.00%</span></div>
             </div>
           </div>
         </div>
@@ -3153,13 +3172,13 @@
           <div class="role-split">
             <div>
               <div class="role-label">DPS</div>
-              <div class="stat-line">Crit Rate <span class="t-blue">+0.4%</span> / <span class="t-purple">0.95%</span> / <span class="t-orange">1.55%</span></div>
-              <div class="stat-line">Crit Damage <span class="t-blue">+1.10%</span> / <span class="t-purple">2.4%</span> / <span class="t-orange">4.00%</span></div>
+              <div class="stat-line">Crit Rate <span class="t-blue">+0.40%</span> / <span class="t-purple">0.95%</span> / <span class="t-orange">1.55%</span></div>
+              <div class="stat-line">Crit Damage <span class="t-blue">+1.10%</span> / <span class="t-purple">2.40%</span> / <span class="t-orange">4.00%</span></div>
             </div>
             <div>
               <div class="role-label">Support</div>
-              <div class="stat-line">Ally ATK <span class="t-blue">+1.35%</span> / <span class="t-purple">3%</span> / <span class="t-orange">5%</span></div>
-              <div class="stat-line">Ally Dmg <span class="t-blue">+2%</span> / <span class="t-purple">4.5%</span> / <span class="t-orange">7.5%</span></div>
+              <div class="stat-line">Ally Attack Enhancement <span class="t-blue">+1.35%</span> / <span class="t-purple">3.00%</span> / <span class="t-orange">5.00%</span></div>
+              <div class="stat-line">Ally Damage Enhancement <span class="t-blue">+2.00%</span> / <span class="t-purple">4.50%</span> / <span class="t-orange">7.50%</span></div>
             </div>
           </div>
         </div>
@@ -3168,7 +3187,7 @@
 
     <section class="block">
       <div class="section-title fs-110">Value → Damage Conversion</div>
-      <p class="section-sub">What each individual accessory bonus is actually worth in damage, by tier.</p>
+      <p class="section-sub">Roughly how much damage each accessory bonus adds, by tier.</p>
 
       <div class="table-pair">
         <div class="table-wrap">
@@ -3177,13 +3196,13 @@
             <thead><tr><th>Tier</th><th>Value</th><th>Damage</th></tr></thead>
             <tbody>
             <tr class="group-header cat-necklace"><td colspan="3">Additional Damage</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">0.70</td><td class="t-blue">0.50%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">1.60</td><td class="t-purple">1.15%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">2.60</td><td class="t-orange">1.86%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">0.70</td><td class="t-blue" data-sup="0.52" data-nosup="0.52">0.52%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">1.60</td><td class="t-purple" data-sup="1.19" data-nosup="1.19">1.19%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">2.60</td><td class="t-orange" data-sup="1.93" data-nosup="1.93">1.93%</td></tr>
             <tr class="group-header cat-necklace"><td colspan="3">Outgoing Damage</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">0.55</td><td class="t-blue">0.55%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">1.20</td><td class="t-purple">1.20%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">2.00</td><td class="t-orange">2.00%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">0.55</td><td class="t-blue" data-sup="0.55" data-nosup="0.55">0.55%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">1.20</td><td class="t-purple" data-sup="1.20" data-nosup="1.20">1.20%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">2.00</td><td class="t-orange" data-sup="2.00" data-nosup="2.00">2.00%</td></tr>
             </tbody>
           </table>
         </div>
@@ -3194,13 +3213,13 @@
             <thead><tr><th>Tier</th><th>Value</th><th>Damage</th></tr></thead>
             <tbody>
             <tr class="group-header cat-ring"><td colspan="3">Crit Rate</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">0.40</td><td class="t-blue">0.29%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">0.95</td><td class="t-purple">0.68%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">1.55</td><td class="t-orange">1.11%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">0.40</td><td class="t-blue" data-sup="0.31" data-nosup="0.31">0.31%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">0.95</td><td class="t-purple" data-sup="0.74" data-nosup="0.74">0.74%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">1.55</td><td class="t-orange" data-sup="1.20" data-nosup="1.20">1.20%</td></tr>
             <tr class="group-header cat-ring"><td colspan="3">Crit Damage</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">1.10</td><td class="t-blue">0.39%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">2.40</td><td class="t-purple">0.85%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">4.00</td><td class="t-orange">1.41%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">1.10</td><td class="t-blue" data-sup="0.33" data-nosup="0.33">0.33%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">2.40</td><td class="t-purple" data-sup="0.72" data-nosup="0.72">0.72%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">4.00</td><td class="t-orange" data-sup="1.20" data-nosup="1.20">1.20%</td></tr>
             </tbody>
           </table>
         </div>
@@ -3211,15 +3230,16 @@
             <thead><tr><th>Tier</th><th>Value</th><th>Damage</th></tr></thead>
             <tbody>
             <tr class="group-header cat-earring"><td colspan="3">Attack Power %</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">0.40</td><td class="t-blue">0.36%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">0.95</td><td class="t-purple">0.85%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">1.55</td><td class="t-orange">1.39%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">0.40</td><td class="t-blue" data-sup="0.34" data-nosup="0.36">0.34%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">0.95</td><td class="t-purple" data-sup="0.80" data-nosup="0.85">0.80%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">1.55</td><td class="t-orange" data-sup="1.30" data-nosup="1.39">1.30%</td></tr>
             <tr class="group-header cat-earring"><td colspan="3">Weapon Power %</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">0.80</td><td class="t-blue">0.37%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">1.80</td><td class="t-purple">0.84%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">3.00</td><td class="t-orange">1.40%</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">0.80</td><td class="t-blue" data-sup="0.30" data-nosup="0.35">0.30%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">1.80</td><td class="t-purple" data-sup="0.67" data-nosup="0.80">0.67%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">3.00</td><td class="t-orange" data-sup="1.12" data-nosup="1.32">1.12%</td></tr>
             </tbody>
           </table>
+          <p id="acc-ear-note" class="note-line" style="margin-top:var(--sp-8)">Attack Power % converts into damage more efficiently than Weapon Power %. Weapon Power % is roughly half as effective because of the square-root Attack Power formula, and support buffs dilute it more. Values assume a typical DPS character with average support buffs.</p>
         </div>
 
         <div class="table-wrap">
@@ -3227,14 +3247,14 @@
           <table class="data tv-common">
             <thead><tr><th>Tier</th><th>Value</th><th>Damage</th></tr></thead>
             <tbody>
-            <tr class="group-header cat-common"><td colspan="3">Weapon Power Flat</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">195</td><td class="t-blue">0.07%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">480</td><td class="t-purple">0.18%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">960</td><td class="t-orange">0.36%</td></tr>
-            <tr class="group-header cat-common"><td colspan="3">Attack Power Flat</td></tr>
-            <tr><td><b>Low</b></td><td class="t-blue">80</td><td class="t-blue">0.07%</td></tr>
-            <tr><td><b>Mid</b></td><td class="t-purple">195</td><td class="t-purple">0.17%</td></tr>
-            <tr><td><b>High</b></td><td class="t-orange">390</td><td class="t-orange">0.34%</td></tr>
+            <tr class="group-header cat-common"><td colspan="3">Flat Weapon Power</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">195</td><td class="t-blue" data-sup="0.04" data-nosup="0.04">0.04%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">480</td><td class="t-purple" data-sup="0.09" data-nosup="0.10">0.09%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">960</td><td class="t-orange" data-sup="0.18" data-nosup="0.21">0.18%</td></tr>
+            <tr class="group-header cat-common"><td colspan="3">Flat Attack Power</td></tr>
+            <tr><td><b>Low</b></td><td class="t-blue">80</td><td class="t-blue" data-sup="0.05" data-nosup="0.06">0.05%</td></tr>
+            <tr><td><b>Mid</b></td><td class="t-purple">195</td><td class="t-purple" data-sup="0.12" data-nosup="0.14">0.12%</td></tr>
+            <tr><td><b>High</b></td><td class="t-orange">390</td><td class="t-orange" data-sup="0.24" data-nosup="0.27">0.24%</td></tr>
             </tbody>
           </table>
         </div>
@@ -3251,7 +3271,7 @@
           <p class="combo-caption"><span class="t-stat-a">Additional Damage</span> + <span class="t-stat-b">Outgoing Damage</span></p>
           <table class="data tv-necklace">
             <thead><tr><th>#</th><th>Combination</th><th>Total Damage</th></tr></thead>
-            <tbody>
+            <tbody id="acc-neck-combo">
             <tr><td><span class="rank-badge">1</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">High</span></td><td class="t-orange">3.86%</td></tr>
             <tr><td><span class="rank-badge">2</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">High</span></td><td class="t-orange">3.15%</td></tr>
             <tr><td><span class="rank-badge">3</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Mid</span></td><td class="t-orange">3.06%</td></tr>
@@ -3270,7 +3290,7 @@
           <p class="combo-caption"><span class="t-stat-a">Crit Rate</span> + <span class="t-stat-b">Crit Damage</span></p>
           <table class="data tv-ring">
             <thead><tr><th>#</th><th>Combination</th><th>Total Damage</th></tr></thead>
-            <tbody>
+            <tbody id="acc-ring-combo">
             <tr><td><span class="rank-badge">1</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">High</span></td><td class="t-orange">2.52%</td></tr>
             <tr><td><span class="rank-badge">2</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">High</span></td><td class="t-orange">2.09%</td></tr>
             <tr><td><span class="rank-badge">3</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Mid</span></td><td class="t-orange">1.96%</td></tr>
@@ -3289,16 +3309,16 @@
           <p class="combo-caption"><span class="t-stat-a">Attack Power %</span> + <span class="t-stat-b">Weapon Power %</span></p>
           <table class="data tv-earring">
             <thead><tr><th>#</th><th>Combination</th><th>Total Damage</th></tr></thead>
-            <tbody>
-            <tr><td><span class="rank-badge">1</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">High</span></td><td class="t-orange">2.79%</td></tr>
-            <tr><td><span class="rank-badge">2</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">High</span></td><td class="t-orange">2.25%</td></tr>
-            <tr><td><span class="rank-badge">3</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Mid</span></td><td class="t-orange">2.23%</td></tr>
-            <tr><td><span class="rank-badge">4</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Low</span></td><td class="t-purple">1.76%</td></tr>
-            <tr><td><span class="rank-badge">5</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">High</span></td><td class="t-purple">1.76%</td></tr>
-            <tr><td><span class="rank-badge">6</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">Mid</span></td><td class="t-purple">1.69%</td></tr>
-            <tr><td><span class="rank-badge">7</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">Low</span></td><td class="t-blue">1.22%</td></tr>
-            <tr><td><span class="rank-badge">8</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">Mid</span></td><td class="t-blue">1.20%</td></tr>
-            <tr><td><span class="rank-badge">9</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">Low</span></td><td class="t-blue">0.73%</td></tr>
+            <tbody id="acc-ear-combo">
+            <tr><td><span class="rank-badge">1</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">High</span></td><td class="t-orange">2.10%</td></tr>
+            <tr><td><span class="rank-badge">2</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Mid</span></td><td class="t-orange">1.75%</td></tr>
+            <tr><td><span class="rank-badge">3</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">High</span></td><td class="t-orange">1.60%</td></tr>
+            <tr><td><span class="rank-badge">4</span></td><td><span class="t-stat-a">High</span> + <span class="t-stat-b">Low</span></td><td class="t-purple">1.47%</td></tr>
+            <tr><td><span class="rank-badge">5</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">Mid</span></td><td class="t-purple">1.25%</td></tr>
+            <tr><td><span class="rank-badge">6</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">High</span></td><td class="t-purple">1.17%</td></tr>
+            <tr><td><span class="rank-badge">7</span></td><td><span class="t-stat-a">Mid</span> + <span class="t-stat-b">Low</span></td><td class="t-blue">0.97%</td></tr>
+            <tr><td><span class="rank-badge">8</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">Mid</span></td><td class="t-blue">0.82%</td></tr>
+            <tr><td><span class="rank-badge">9</span></td><td><span class="t-stat-a">Low</span> + <span class="t-stat-b">Low</span></td><td class="t-blue">0.54%</td></tr>
             </tbody>
           </table>
         </div>
@@ -3338,8 +3358,8 @@
         <div class="br-row">
           <div class="ssb-seg acc-seg3" role="radiogroup" aria-label="Common effect">
             <label><input type="radio" name="acc-c" value="none" checked><span>None</span></label>
-            <label><input type="radio" name="acc-c" value="wp"><span>Weapon Power Flat</span></label>
-            <label><input type="radio" name="acc-c" value="ap"><span>Attack Power Flat</span></label>
+            <label><input type="radio" name="acc-c" value="wp"><span>Flat Weapon Power</span></label>
+            <label><input type="radio" name="acc-c" value="ap"><span>Flat Attack Power</span></label>
           </div>
             <div class="ssb-seg br-grade acc-tier" id="acc-tier3" role="radiogroup" aria-label="Common effect tier">
               <label hidden><input type="radio" name="acc-t3" value="0" checked><span>None</span></label>
@@ -3355,6 +3375,18 @@
             <button type="button" class="calc-btn" data-calc-reset="ac">Reset</button>
             <span class="calc-status" role="status" aria-live="polite"></span>
           </div>
+        </div>
+      </div>
+      <div class="ssb-card ssb-info" id="acc-how" style="margin-top:var(--sp-18)">
+        <h2 class="ssb-h">How these values are calculated</h2>
+        <div class="ssb-legend">
+          <div>Every bonus is turned into how much more damage you deal, in %, for one example character. The numbers are rough estimates, not exact in-game values.</div>
+          <div><strong>Attack Power</strong> is roughly <code>(&radic;(Weapon Power &times; Main Stat &divide; 6) + flat Attack Power + support buff) &times; (1 + Attack Power %)</code>. Your damage grows at the same rate as your Attack Power.</div>
+          <div><strong>Attack Power %</strong> multiplies the whole Attack Power, so most of its value turns into damage. It is worth slightly less the more Attack Power % you already have.</div>
+          <div><strong>Weapon Power %</strong> only raises Weapon Power inside the square root, so +3% Weapon Power adds only about 1.5% Attack Power. With <b>Support buffs</b> on, it is worth even less, because the support adds a fixed amount of Attack Power that Weapon Power does not increase.</div>
+          <div><strong>Flat Attack Power and Flat Weapon Power</strong> add a small fixed amount to a large total (about 143,000 base Attack Power), so they are worth little. The support makes that total bigger, so with <b>Support buffs</b> on, they are worth slightly less.</div>
+          <div><strong>Additional Damage, Outgoing Damage, Crit Rate and Crit Damage</strong> are separate damage multipliers, so the Support buffs switch does not change them. Outgoing Damage converts 1:1. Additional Damage is worth less the more you already have (we assume 35%). A High Crit Rate roll and a High Crit Damage roll are worth about the same.</div>
+          <div><strong>Sources:</strong> Roll values come from the Korean Inven T4 accessory table. Damage values follow the Korean Inven combat-power formula (July 2025 patch) and a Korean player's earring calculation with and without support. Western guides were also checked, but they only publish stat priorities. Attack Power % with support is the least certain value. A High roll is worth between about 1.18% and 1.39%, depending on how the support's buff stacks, so the page shows the middle.</div>
         </div>
       </div>
     </section>
@@ -5582,6 +5614,7 @@ init();
     });
   };
   const update = () => {
+    DATA.necklace = readTable('tv-necklace'); DATA.earring = readTable('tv-earring'); DATA.ring = readTable('tv-ring'); { const c = readTable('tv-common'); COMMON.wp = c[0]; COMMON.ap = c[1]; }
     const type = val('acc-type') || 'necklace', g = DATA[type] || [];
     const cm = val('acc-c'), cg = COMMON[cm] || null;
     $('acc-l1').textContent = g[0] ? g[0].name : ''; $('acc-l2').textContent = g[1] ? g[1].name : '';
@@ -5596,6 +5629,7 @@ init();
     $('acc-count').textContent = parts.length ? parts.map((c) => (c / 100).toFixed(2) + '%').join(' + ') : 'Nothing selected';
   };
   root.addEventListener('change', update);
+  window.__accUpdate = update;
   update();
 })();
 </script><script>
@@ -5837,6 +5871,38 @@ init();
       if (wasOpen) box.scrollIntoView({ block: 'nearest' });
     });
   })();
+</script>
+<script>
+/* Accessories: Support buffs switch (earring Attack Power % / Weapon Power % values + earring combo ranking) */
+(function(){
+  const sw = document.getElementById('acc-sup'); if (!sw) return;
+  const KEY = 'lopg-acc-support';
+  try { const v = localStorage.getItem(KEY); if (v !== null) sw.checked = v === '1'; } catch (e) {}
+  const T = ['t-orange','t-orange','t-orange','t-purple','t-purple','t-purple','t-blue','t-blue','t-blue'];
+  const NAMES = ['Low','Mid','High'];
+  const vals = (on, name) => { const h = [...document.querySelectorAll('#accessories .table-pair tr.group-header')].find(r => r.textContent.trim() === name); const out = []; let r = h && h.nextElementSibling; while (r && !r.classList.contains('group-header') && out.length < 3) { const td = r.querySelector('td[data-sup]'); if (td) out.push(parseFloat(on ? td.dataset.sup : td.dataset.nosup)); r = r.nextElementSibling; } return out; };
+  function combo(id, A, W){
+    const tb = document.getElementById(id); if (!tb || A.length < 3 || W.length < 3) return;
+    const rows = [];
+    for (let a = 2; a >= 0; a--) for (let w = 2; w >= 0; w--) rows.push({a, w, t: Math.round((A[a] + W[w]) * 100)});
+    rows.sort((x, y) => y.t - x.t || y.a - x.a);
+    tb.innerHTML = rows.map((r, i) => '<tr><td><span class="rank-badge">' + (i + 1) + '</span></td><td><span class="t-stat-a">' + NAMES[r.a] + '</span> + <span class="t-stat-b">' + NAMES[r.w] + '</span></td><td class="' + T[i] + '">' + (r.t / 100).toFixed(2) + '%</td></tr>').join('');
+  }
+  function apply(){
+    const on = sw.checked;
+    document.querySelectorAll('#accessories td[data-sup]').forEach(td => { td.textContent = (on ? td.dataset.sup : td.dataset.nosup) + '%'; });
+    combo('acc-neck-combo', vals(on, 'Additional Damage'), vals(on, 'Outgoing Damage'));
+    combo('acc-ring-combo', vals(on, 'Crit Rate'), vals(on, 'Crit Damage'));
+    combo('acc-ear-combo', vals(on, 'Attack Power %'), vals(on, 'Weapon Power %'));
+    const n = document.getElementById('acc-ear-note');
+    if (n) n.textContent = on
+      ? 'Per point, Attack Power % is worth more than twice as much as Weapon Power %, because Weapon Power sits inside a square root. With a support, Weapon Power % loses a little more value.'
+      : 'Per point, Attack Power % is worth more than twice as much as Weapon Power %, because Weapon Power sits inside a square root. These values are without a support.';
+    if (window.__accUpdate) window.__accUpdate();
+  }
+  sw.addEventListener('change', () => { try { localStorage.setItem(KEY, sw.checked ? '1' : '0'); } catch (e) {} apply(); });
+  apply();
+})();
 </script>
 <script>
 /* ================= HONING CALCULATOR ================= */
