@@ -2155,6 +2155,31 @@
 #honing *{box-sizing:border-box}
 #honing .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 #honing h2{margin:0;font-size:1.05rem;font-weight:700}
+#honing .ilv .num{font-variant-numeric:tabular-nums}
+#honing .ilv-lbl{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);font-weight:700}
+#honing .ilv-up{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:800;font-size:.95rem;background:rgba(235,152,58,.16);color:var(--gold);border:1px solid rgba(235,152,58,.45)}
+#honing .ilv-up.zero{background:var(--panel-2);color:var(--text-dim);border-color:var(--line)}
+#honing .ilv-note{font-size:.78rem;color:var(--text-dim);margin-top:4px}
+#honing #rows .cells button[data-il]{position:relative}
+#honing #rows .cells button[data-il]::after{content:attr(data-il) " iL";position:absolute;left:50%;bottom:calc(100% + 7px);transform:translate(-50%,4px);padding:4px 8px;border-radius:6px;background:#0b0b0c;border:1px solid var(--gold);color:var(--text);font-size:.78rem;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;pointer-events:none;opacity:0;transition:opacity .12s,transform .12s;z-index:20;box-shadow:0 6px 16px rgba(0,0,0,.5)}
+#honing #rows .cells button[data-il]:hover::after,#honing #rows .cells button[data-il]:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+@media (hover:none){#honing #rows .cells button[data-il]::after{display:none}}
+
+#honing .ilvhead-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;width:100%;flex-wrap:wrap}
+#honing .ilv{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+#honing .ilv-now,#honing .ilv-tgt{text-align:right}
+#honing .ilv-now b{display:block;font-size:1.1rem;font-weight:800;color:var(--teal);line-height:1.05}
+#honing .ilv-arrow{font-size:1.1rem;color:var(--text-dim);padding-bottom:3px}
+#honing .ilv-tgt b{display:block;font-size:1.6rem;font-weight:800;color:var(--text);line-height:1}
+#honing .ilv .ilv-up{margin-bottom:4px;font-size:.85rem;padding:1px 8px}#honing .ilv{gap:12px}#honing .ilv .ilv-lbl{font-size:.68rem}
+#honing .ilvbar{width:100%;margin:12px 0 8px}
+#honing .ilv-bar{position:relative;height:8px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+#honing .ilv-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;transition:width .35s ease}
+#honing .ilv-bar .w{background:linear-gradient(90deg,rgba(235,152,58,.55),var(--gold))}
+#honing .ilv-bar .h{background:var(--teal)}
+#honing .ilv-ends{display:flex;justify-content:space-between;margin-top:5px;font-size:.75rem;color:var(--text-dim);font-variant-numeric:tabular-nums}
+@media (max-width:640px){#honing .ilv{justify-content:flex-start;gap:6px 12px;width:100%}#honing .ilv-now,#honing .ilv-tgt{text-align:left}#honing .ilv-tgt b{font-size:1.45rem}#honing .ilv-now{order:3;display:flex;align-items:baseline;gap:6px}#honing .ilv-now b{font-size:1rem;display:inline}#honing .ilv-arrow{display:none}#honing .ilv-ends{flex-wrap:wrap}#honing .ilv-ends #ilv-note{order:3;width:100%;margin-top:3px}}
+
 #honing .card{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:var(--r);padding:20px;min-width:0}
 #honing .dim{color:var(--dim);font-size:.88rem}
 #honing .num{font-variant-numeric:tabular-nums}
@@ -2580,19 +2605,24 @@
         <h2 class="section-head-dot c-teal">Updates</h2>
         <button type="button" class="calc-btn updates-toggle" id="updates-toggle" aria-controls="updates-list" aria-expanded="false" hidden>View all updates</button>
       </div>
-      <p class="updates-meta">Last updated: 2 November 2026</p>
+      <p class="updates-meta">Last updated: 15 November 2026</p>
       <ul id="updates-list">
+        <li><time datetime="2026-11-15">15 Nov 2026</time><span>Honing Calculator: new live item level counter next to &ldquo;Tap the level you want&rdquo;. It shows your item level now, your item level after honing and how much you gain, with a progress bar up to the maximum. On a computer, hover over any level number to see that piece&rsquo;s item level at that level.</span></li>
+        <li><time datetime="2026-11-11">11 Nov 2026</time><span>New Honing Calculator on the Calculators tab. It covers T4 honing (1590+), T4 Upper honing (Serca, with Vambrace) and Advanced honing (+1 to +40). Tap the levels you have and the levels you want, and it shows the gold cost, lucky and unlucky outcomes, a bill for every step and the materials you need. You can enter what you own and today&rsquo;s prices, and tick breaths, books, scrolls and Express Event. Everything is saved on this device.</span></li>
+        <li><time datetime="2026-11-11">11 Nov 2026</time><span>Accessories tab: all damage values are now based on Korean community research. A new Support buffs switch shows the values with or without a support in your party, and the combo tables and the Accessory Calculator update to match. A new &ldquo;How these values are calculated&rdquo; section explains the numbers.</span></li>
+        <li><time datetime="2026-11-11">11 Nov 2026</time><span>Fixed the BT Calculator: Master Ark Passive now counts as 7% Crit Rate (it was 8%). The Calculators tab now opens on the Auction Calculator.</span></li>
+        <li><time datetime="2026-11-06">6 Nov 2026</time><span>Slimmer header with the menu on one row. The Updates box now shows the latest three entries, with a button to view them all.</span></li>
         <li><time datetime="2026-11-02">2 Nov 2026</time><span>The site has a name: Paragon. The header now shows Paragon with &ldquo;Lost Ark Power Guide&rdquo; underneath. The address stays the same. There is also a new logo: a cut crystal, which shows up in the header, the browser tab and your phone&rsquo;s home screen.</span></li>
-        <li><time datetime="2026-10-20">20 Oct 2026</time><span>New Auction Calculator in the Calculators tab: enter an item&rsquo;s market value to see the bid amounts for 4, 8 and 16 player parties, with a Profit option and copy buttons.</span></li>
+        <li><time datetime="2026-10-20">20 Oct 2026</time><span>New Auction Calculator on the Calculators tab: enter an item&rsquo;s market value to see the bid amounts for 4-, 8- and 16-player parties, with a Profit option and copy buttons.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: DPS bracelet values are now estimated for a typical character, using the method from Arsonistic&rsquo;s community bracelet DPS calculator. The Weapon Power and STR/DEX/INT lines are lower than before, the table is re-ranked, and new info icons explain the baseline.</span></li>
-        <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: optional custom baseline. Tick &ldquo;Use a custom baseline&rdquo; above the DPS Bracelet table to enter your own Weapon Power, STR/DEX/INT, Additional Damage, crit rate and Crit Damage. The table, ranking and calculator update to match, and Reset returns to the default baseline.</span></li>
+        <li><time datetime="2026-10-13">13 Oct 2026</time><span>Bracelets tab: optional custom baseline. Tick &ldquo;Use a custom baseline&rdquo; above the DPS Bracelet table to enter your own Weapon Power, STR/DEX/INT, Additional Damage, Crit Rate and Crit Damage. The table, ranking and calculator update to match, and Reset returns to the default baseline.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New Accessory Calculator on the Accessories tab: choose a necklace, earring or ring, the tier of each bonus effect and an optional common effect to see the combined damage value.</span></li>
         <li><time datetime="2026-10-13">13 Oct 2026</time><span>New DPS Bracelet Calculator on the Bracelets tab: pick up to three effects and their grade to see the combined damage value.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>New &ldquo;Report a mistake&rdquo; link in the footer for wrong numbers, bugs and feature requests.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Slightly smaller logo and title on desktop, so the menu takes less room at the top.</span></li>
-        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
-        <li><time datetime="2026-10-12">12 Oct 2026</time><span>The SSB and Blunt Thorn calculators now remember your last inputs on this device, and have a Reset button and a Copy link button for sharing your setup.</span></li>
-        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Fixed a rounding error in the SSB calculator that could be off by 0.01% with decimal inputs. The overcap needed to max the node is now shown correctly as 26.67%.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Tidier menu: the SSB and BT Calculators now live under one Calculators tab, and Positional Attack and Buff Icon Priority share a Combat tab. Old links still work.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>The SSB and BT Calculators now remember your last inputs on this device, and have a Reset button and a Copy link button for sharing your setup.</span></li>
+        <li><time datetime="2026-10-12">12 Oct 2026</time><span>Fixed a rounding error in the SSB Calculator that could make results off by 0.01% with decimal inputs. The overcap needed to max the node is now shown correctly as 26.67%.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Ark Grid passive effects now show a per-level value, so you can see what a single point gives.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Cleaner, easier-to-read design across the whole site, keyboard navigation for tabs and search, and faster loading.</span></li>
         <li><time datetime="2026-10-12">12 Oct 2026</time><span>Better phone layout for tables, bracelets, Ark Grid and Synergy.</span></li>
@@ -3078,7 +3108,13 @@
 
   <section class="card" aria-label="Choose levels">
     <div class="gridhead">
-      <h2>Tap the level you want</h2>
+      <div class="ilvhead-top"><h2>Tap the level you want</h2>
+      <div class="ilv" id="ilv" aria-live="polite">
+        <div class="ilv-now"><span class="ilv-lbl">Now</span><b class="num" id="ilv-now">–</b></div>
+        <div class="ilv-arrow">→</div>
+        <div class="ilv-tgt"><span class="ilv-lbl">Item level after honing</span><b class="num" id="ilv-tgt">–</b></div>
+        <span class="ilv-up num" id="ilv-up">+0.00</span>
+      </div></div><div class="ilvbar"><div class="ilv-bar"><i class="w" id="ilv-bw"></i><i class="h" id="ilv-bh"></i></div><div class="ilv-ends"><span id="ilv-min"></span><span id="ilv-note"></span><span id="ilv-max"></span></div></div>
       <div class="controls">
         <label class="dim" for="cat">What are you honing?</label>
         <select id="cat">
@@ -6313,6 +6349,58 @@ const ddAll=()=>{ enh(document.getElementById('cat')); enh(document.getElementBy
 const _rm=renderMats; renderMats=function(){ _rm(); ddAll(); };
 const _up=update; update=function(){ _up(); ddAll(); };
 ddAll();
+
+
+/* ---- Item level counter ---- */
+const ILV_BASE={t4n:1590,t4a:1590,sn:1675};
+function ilvOf(i){ // i: 0 = have, 1 = want. Item level = average of the 6 pieces (vambrace does not count)
+  const L=S.levels, g=(c,p)=>{ const l=L[c][p]; return i? Math.max(l[0],l[1]) : l[0]; };
+  if(S.cat==='sn'){ let s=0; for(const p of PIECES_N) s+=5*g('sn',p); return {v:1675+s/6,adv:0}; }
+  let s=0, a=0; for(const p of PIECES_N){ s+=5*g('t4n',p)+g('t4a',p); a+=g('t4a',p); } return {v:1590+s/6,adv:a};
+}
+function pieceIlv(p,i){ const L=S.levels, g=(c)=>{ const l=L[c][p]; return i? Math.max(l[0],l[1]) : l[0]; };
+  if(S.cat==='sn') return p==='Vambrace'?null:1675+5*g('sn'); return 1590+5*g('t4n')+g('t4a'); }
+const ilvShown={};
+function tween(id,to){ const el=document.getElementById(id); if(!el) return; const from=ilvShown[id]===undefined?to:ilvShown[id]; ilvShown[id]=to;
+  const t0=performance.now(), d=380; cancelAnimationFrame(el._raf);
+  const step=t=>{ const k=Math.min(1,(t-t0)/d), e=1-Math.pow(1-k,3); el.textContent=(from+(to-from)*e).toFixed(2); if(k<1) el._raf=requestAnimationFrame(step); };
+  if(from===to){ el.textContent=to.toFixed(2); } else el._raf=requestAnimationFrame(step); }
+var renderIlv=function(){
+  const now=ilvOf(0), tgt=ilvOf(1), up=tgt.v-now.v;
+  tween('ilv-now',now.v); tween('ilv-tgt',tgt.v);
+  const u=document.getElementById('ilv-up'); if(u){ u.textContent=(up>0?'+':'')+up.toFixed(2); u.classList.toggle('zero',up<=0.001); }
+  const n=document.getElementById('ilv-note');
+  if(n) n.textContent = S.cat==='sn' ? 'Average of your 6 pieces · Vambrace does not count'
+    : S.cat==='t4a' ? 'Includes your T4 honing levels · each advanced level adds 1 to that piece'
+    : (tgt.adv? 'Includes your advanced honing levels' : 'Average of your 6 pieces · each level adds 5 to that piece');
+  const mn=ILV_BASE[S.cat], mx=S.cat==='sn'?1800:1755;
+  const bh=document.getElementById('ilv-bh'), bw=document.getElementById('ilv-bw');
+  if(bh){ bh.style.width=((now.v-mn)/(mx-mn)*100)+'%'; bw.style.width=((tgt.v-mn)/(mx-mn)*100)+'%';
+    document.getElementById('ilv-min').textContent=mn; document.getElementById('ilv-max').textContent=mx+' max'; }
+  if(window.__ILV_COL) document.querySelectorAll('#rows .row').forEach(r=>{ const p=r.querySelector('.rtxt b').textContent, a=pieceIlv(p,0), b=pieceIlv(p,1);
+    const e=document.createElement('div'); e.className='pcol num'; e.innerHTML = a===null?'–':(b>a?`${a} → <b>${b}</b>`:`${a}`); r.appendChild(e); });
+  if(window.__ILV_PIECES) document.querySelectorAll('#rows .row').forEach(r=>{ const p=r.querySelector('.rtxt b').textContent, a=pieceIlv(p,0), b=pieceIlv(p,1);
+    if(a===null) return; const e=document.createElement('span'); e.className='pil';
+    e.innerHTML = b>a ? `${a} → <b>${b}</b>` : `${a}`; r.querySelector('.rtxt').appendChild(e); });
+};
+function odo(v){ const box=document.getElementById('ilv-odo'); if(!box) return; const t=v.toFixed(2);
+  if(box.dataset.len!=t.length){ box.innerHTML=[...t].map((c,k)=>c==='.'?'<span class="dot">.</span>':`<span class="d${k>t.indexOf('.')?' dec':''}"><span class="s">${'0123456789'.split('').map(n=>'<i>'+n+'</i>').join('')}</span></span>`).join(''); box.dataset.len=t.length; }
+  const ds=box.querySelectorAll('.d .s'); let j=0; for(const c of t){ if(c==='.') continue; const h=ds[j].firstChild.getBoundingClientRect().height||1; ds[j].style.transform='translateY(-'+(+c*h)+'px)'; j++; } }
+const _rI=renderIlv; renderIlv=function(){ _rI(); odo(ilvOf(1).v); };
+addEventListener('resize',()=>odo(ilvOf(1).v));
+function tagLevels(){ // hover: item level of that piece at that level
+  const c=S.cat, L=S.levels;
+  document.querySelectorAll('#rows .row').forEach(r=>{ const p=r.querySelector('.rtxt b').textContent;
+    if(p==='Vambrace') return;
+    r.querySelectorAll('.cells button').forEach((b,i)=>{ const lv=i+1; let v;
+      if(c==='sn') v=1675+5*lv;
+      else if(c==='t4a') v=1590+5*L.t4n[p][0]+lv;
+      else v=1590+5*lv+L.t4a[p][0];
+      b.dataset.il=v; b.title=''; }); });
+}
+const _rI2=renderIlv; renderIlv=function(){ _rI2(); tagLevels(); };
+const _upI=update; update=function(){ _upI(); renderIlv(); };
+renderIlv();
 
 /* ---- Equal, whole-pixel level buttons ---- */
 function fitCells(){
